@@ -3,6 +3,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
   useState,
   type ReactNode,
 } from 'react'
@@ -12,12 +13,43 @@ import type { BankConfig } from '../types/bankConfig'
 
 const FALLBACK = rawDefaults as BankConfig
 
+/** Last good public bank config — avoids a flash of bundled “Bywells…” defaults on refresh. */
+const STORAGE_KEY = 'bw-public-bank-config-v1'
+
+function readCachedBankConfig(): BankConfig | null {
+  try {
+    if (typeof window === 'undefined') return null
+    const raw = window.localStorage.getItem(STORAGE_KEY)
+    if (!raw) return null
+    const parsed = JSON.parse(raw) as BankConfig
+    const short = String(parsed.bankNameShort ?? '').trim()
+    const full = String(parsed.bankName ?? '').trim()
+    if (!short && !full) return null
+    return parsed
+  } catch {
+    return null
+  }
+}
+
+function persistBankConfigCache(next: BankConfig): void {
+  try {
+    if (typeof window === 'undefined') return
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
+  } catch {
+    /* quota / private mode */
+  }
+}
+
+const initialCached = readCachedBankConfig()
+
 const BankConfigContext = createContext<BankConfig>(FALLBACK)
 
 export function BankConfigProvider({ children }: { children: ReactNode }) {
-  const [config, setConfig] = useState<BankConfig>(FALLBACK)
-  /** Avoid showing bundled default `bankName` in the tab before `/api/public/bank-config` loads. */
-  const [bankConfigHydrated, setBankConfigHydrated] = useState(false)
+  const [config, setConfig] = useState<BankConfig>(() => initialCached ?? FALLBACK)
+  /** True once we have cache and/or a successful `/api/public/bank-config` load. */
+  const [bankConfigHydrated, setBankConfigHydrated] = useState(
+    () => initialCached != null,
+  )
 
   const reload = useCallback(() => {
     const base = getApiBase()
@@ -31,6 +63,7 @@ export function BankConfigProvider({ children }: { children: ReactNode }) {
       })
       .then((data) => {
         if (data?.ok && data.config) {
+          persistBankConfigCache(data.config)
           setConfig(data.config)
           setBankConfigHydrated(true)
         }
@@ -53,7 +86,7 @@ export function BankConfigProvider({ children }: { children: ReactNode }) {
     return () => window.removeEventListener('bank-config-updated', reload)
   }, [reload])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!bankConfigHydrated) return
     const short = String(config.bankNameShort ?? '').trim()
     const full = String(config.bankName ?? '').trim()
@@ -61,7 +94,7 @@ export function BankConfigProvider({ children }: { children: ReactNode }) {
     if (tabTitle) document.title = tabTitle
   }, [bankConfigHydrated, config.bankName, config.bankNameShort])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const t = config.theme
     const r = document.documentElement
     r.style.setProperty('--color-bw-navy-950', t.navy950)

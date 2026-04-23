@@ -1017,6 +1017,14 @@ app.post('/api/admin/customers/:userId/deposit', requireAdmin, (req, res) => {
     const amountCents = Math.round(Number(req.body?.amountCents))
     const memo =
       typeof req.body?.memo === 'string' ? req.body.memo.trim().slice(0, 240) : ''
+    const postedOn =
+      typeof req.body?.postedOn === 'string'
+        ? req.body.postedOn.trim().slice(0, 12)
+        : ''
+    const bookedAtBody =
+      typeof req.body?.bookedAt === 'string'
+        ? req.body.bookedAt.trim().slice(0, 80)
+        : ''
     if (!userId || !accountId || !Number.isFinite(amountCents) || amountCents <= 0) {
       return res.status(400).json({
         ok: false,
@@ -1027,13 +1035,22 @@ app.post('/api/admin/customers/:userId/deposit', requireAdmin, (req, res) => {
       accountId,
       deltaCents: amountCents,
       description: memo || 'Operator deposit',
+      ...(postedOn ? { postedOn } : {}),
+      ...(bookedAtBody ? { bookedAt: bookedAtBody } : {}),
     })
+    const top = Array.isArray(banking.activity) ? banking.activity[0] : null
     writeAudit({
       action: 'admin.customer.deposit',
       actorType: 'admin',
       actorId: 'bearer',
       target: userId,
-      meta: { accountId, amountCents },
+      meta: {
+        accountId,
+        amountCents,
+        ...(postedOn ? { postedOn } : {}),
+        ...(bookedAtBody ? { bookedAt: bookedAtBody } : {}),
+        ...(top?.bookedAt ? { effectiveBookedAt: top.bookedAt } : {}),
+      },
       ip: clientIp(req),
     })
     res.json({ ok: true, banking })
@@ -1054,6 +1071,14 @@ app.post('/api/admin/customers/:userId/withdrawal', requireAdmin, (req, res) => 
     const amountCents = Math.round(Number(req.body?.amountCents))
     const memo =
       typeof req.body?.memo === 'string' ? req.body.memo.trim().slice(0, 240) : ''
+    const postedOn =
+      typeof req.body?.postedOn === 'string'
+        ? req.body.postedOn.trim().slice(0, 12)
+        : ''
+    const bookedAtBody =
+      typeof req.body?.bookedAt === 'string'
+        ? req.body.bookedAt.trim().slice(0, 80)
+        : ''
     if (!userId || !accountId || !Number.isFinite(amountCents) || amountCents <= 0) {
       return res.status(400).json({
         ok: false,
@@ -1064,13 +1089,22 @@ app.post('/api/admin/customers/:userId/withdrawal', requireAdmin, (req, res) => 
       accountId,
       deltaCents: -amountCents,
       description: memo || 'Operator withdrawal',
+      ...(postedOn ? { postedOn } : {}),
+      ...(bookedAtBody ? { bookedAt: bookedAtBody } : {}),
     })
+    const top = Array.isArray(banking.activity) ? banking.activity[0] : null
     writeAudit({
       action: 'admin.customer.withdrawal',
       actorType: 'admin',
       actorId: 'bearer',
       target: userId,
-      meta: { accountId, amountCents },
+      meta: {
+        accountId,
+        amountCents,
+        ...(postedOn ? { postedOn } : {}),
+        ...(bookedAtBody ? { bookedAt: bookedAtBody } : {}),
+        ...(top?.bookedAt ? { effectiveBookedAt: top.bookedAt } : {}),
+      },
       ip: clientIp(req),
     })
     res.json({ ok: true, banking })

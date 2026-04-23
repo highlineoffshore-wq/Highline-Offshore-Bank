@@ -1027,11 +1027,21 @@ export async function patchAdminCustomerAccess(
 
 export async function postAdminCustomerDeposit(
   userId: string,
-  input: { accountId: string; amountCents: number; memo?: string },
+  input: {
+    accountId: string
+    amountCents: number
+    memo?: string
+    postedOn?: string
+    bookedAt?: string
+  },
 ): Promise<string | null> {
   const t = getAdminToken()
   if (!t) throw new Error('Not signed in.')
   const enc = encodeURIComponent(userId)
+  const postedOn =
+    typeof input.postedOn === 'string' ? input.postedOn.trim().slice(0, 12) : ''
+  const bookedAt =
+    typeof input.bookedAt === 'string' ? input.bookedAt.trim().slice(0, 80) : ''
   const r = await fetch(`${getApiBase()}/api/admin/customers/${enc}/deposit`, {
     method: 'POST',
     headers: {
@@ -1042,6 +1052,8 @@ export async function postAdminCustomerDeposit(
       accountId: input.accountId,
       amountCents: input.amountCents,
       ...(input.memo?.trim() ? { memo: input.memo.trim() } : {}),
+      ...(postedOn ? { postedOn } : {}),
+      ...(bookedAt ? { bookedAt } : {}),
     }),
   })
   const data = await readJsonBody<{
@@ -1062,11 +1074,21 @@ export async function postAdminCustomerDeposit(
 
 export async function postAdminCustomerWithdrawal(
   userId: string,
-  input: { accountId: string; amountCents: number; memo?: string },
+  input: {
+    accountId: string
+    amountCents: number
+    memo?: string
+    postedOn?: string
+    bookedAt?: string
+  },
 ): Promise<string | null> {
   const t = getAdminToken()
   if (!t) throw new Error('Not signed in.')
   const enc = encodeURIComponent(userId)
+  const postedOn =
+    typeof input.postedOn === 'string' ? input.postedOn.trim().slice(0, 12) : ''
+  const bookedAt =
+    typeof input.bookedAt === 'string' ? input.bookedAt.trim().slice(0, 80) : ''
   const r = await fetch(`${getApiBase()}/api/admin/customers/${enc}/withdrawal`, {
     method: 'POST',
     headers: {
@@ -1077,6 +1099,8 @@ export async function postAdminCustomerWithdrawal(
       accountId: input.accountId,
       amountCents: input.amountCents,
       ...(input.memo?.trim() ? { memo: input.memo.trim() } : {}),
+      ...(postedOn ? { postedOn } : {}),
+      ...(bookedAt ? { bookedAt } : {}),
     }),
   })
   const data = await readJsonBody<{

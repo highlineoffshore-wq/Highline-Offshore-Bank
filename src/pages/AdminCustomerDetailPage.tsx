@@ -39,6 +39,26 @@ function normEmailLocal(s: string): string {
   return s.trim().toLowerCase()
 }
 
+/** Optional admin "when it occurred" from `datetime-local` → ISO for the API. */
+function resolveOperatorLedgerBookedAt(raw: string): {
+  bookedAt?: string
+  error?: string
+} {
+  const t = raw.trim()
+  if (!t) return {}
+  const d = new Date(t)
+  if (Number.isNaN(d.getTime())) {
+    return { error: 'Invalid date and time.' }
+  }
+  if (d.getTime() < Date.UTC(2000, 0, 1)) {
+    return { error: 'Must be on or after 2000-01-01.' }
+  }
+  if (d.getTime() > Date.now()) {
+    return { error: 'Cannot use a future date or time.' }
+  }
+  return { bookedAt: d.toISOString() }
+}
+
 const inpProfile =
   'mt-1 w-full rounded-lg border border-[#2a2f3a] bg-[#151820] px-3 py-2 text-sm text-slate-100 outline-none ring-[#3b82f6]/40 placeholder:text-slate-600 focus:border-[#3b82f6]/55 focus:ring-2'
 
@@ -51,6 +71,7 @@ export function AdminCustomerDetailPage() {
 
   const [ledgerAccountId, setLedgerAccountId] = useState('')
   const [ledgerAmount, setLedgerAmount] = useState('')
+  const [ledgerBookedAtLocal, setLedgerBookedAtLocal] = useState('')
   const [ledgerMemo, setLedgerMemo] = useState('')
   const [ledgerBusy, setLedgerBusy] = useState(false)
   const [ledgerErr, setLedgerErr] = useState('')
@@ -678,7 +699,10 @@ export function AdminCustomerDetailPage() {
             </h2>
             <p className="mt-1 text-sm text-slate-500">
               Credit or debit deposit accounts. Posts to the customer&apos;s balance
-              and activity (dashboard refreshes within a few seconds). Operator
+              and activity (dashboard refreshes within a few seconds). Optionally set
+              when the entry <span className="text-slate-400">occurred</span> using
+              the date and time below (your device timezone); it is stored as an
+              instant and shown in activity with full date and time (UTC). Operator
               credits and debits also appear under{' '}
               <Link
                 to="/admin/transactions?view=history"
@@ -753,6 +777,37 @@ export function AdminCustomerDetailPage() {
             <div className="mt-4">
               <label
                 className="text-[11px] font-semibold uppercase tracking-wide text-slate-500"
+                htmlFor="adm-ledger-booked"
+              >
+                When it occurred (optional)
+              </label>
+              <input
+                id="adm-ledger-booked"
+                type="datetime-local"
+                min="2000-01-01T00:00"
+                max={(() => {
+                  const d = new Date()
+                  const pad = (n: number) => String(n).padStart(2, '0')
+                  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`
+                })()}
+                step={1}
+                disabled={ledgerBusy}
+                className="mt-1 w-full max-w-md rounded-lg border border-[#2a2f3a] bg-[#111318] px-3 py-2.5 text-sm text-slate-100 outline-none focus:border-[#3b82f6]/50"
+                value={ledgerBookedAtLocal}
+                onChange={(e) => {
+                  setLedgerErr('')
+                  setLedgerOk('')
+                  setLedgerBookedAtLocal(e.target.value)
+                }}
+              />
+              <p className="mt-1 text-[11px] text-slate-600">
+                Leave blank to post as now. Must not be in the future. Activity shows
+                date, year, and time in UTC.
+              </p>
+            </div>
+            <div className="mt-4">
+              <label
+                className="text-[11px] font-semibold uppercase tracking-wide text-slate-500"
                 htmlFor="adm-ledger-memo"
               >
                 Memo (optional)
@@ -789,12 +844,20 @@ export function AdminCustomerDetailPage() {
                       setLedgerErr('Select an account.')
                       return
                     }
+                    const ledgerTs = resolveOperatorLedgerBookedAt(ledgerBookedAtLocal)
+                    if (ledgerTs.error) {
+                      setLedgerErr(ledgerTs.error)
+                      return
+                    }
                     setLedgerBusy(true)
                     try {
                       const actId = await postAdminCustomerDeposit(id, {
                         accountId: ledgerAccountId,
                         amountCents: cents,
                         memo: ledgerMemo || undefined,
+                        ...(ledgerTs.bookedAt
+                          ? { bookedAt: ledgerTs.bookedAt }
+                          : {}),
                       })
                       setLedgerOk(
                         actId
@@ -802,6 +865,7 @@ export function AdminCustomerDetailPage() {
                           : 'Deposit posted. Balances updated; customer dashboard picks this up on refresh. In Transactions, open History or All — not Live.',
                       )
                       setLedgerAmount('')
+                      setLedgerBookedAtLocal('')
                       setLedgerMemo('')
                       setDetail(await fetchAdminCustomer(id))
                     } catch (e) {
@@ -833,12 +897,20 @@ export function AdminCustomerDetailPage() {
                       setLedgerErr('Select an account.')
                       return
                     }
+                    const ledgerTs = resolveOperatorLedgerBookedAt(ledgerBookedAtLocal)
+                    if (ledgerTs.error) {
+                      setLedgerErr(ledgerTs.error)
+                      return
+                    }
                     setLedgerBusy(true)
                     try {
                       const actId = await postAdminCustomerWithdrawal(id, {
                         accountId: ledgerAccountId,
                         amountCents: cents,
                         memo: ledgerMemo || undefined,
+                        ...(ledgerTs.bookedAt
+                          ? { bookedAt: ledgerTs.bookedAt }
+                          : {}),
                       })
                       setLedgerOk(
                         actId
@@ -846,6 +918,7 @@ export function AdminCustomerDetailPage() {
                           : 'Withdrawal posted. Balances updated; customer dashboard picks this up on refresh. In Transactions, open History or All — not Live.',
                       )
                       setLedgerAmount('')
+                      setLedgerBookedAtLocal('')
                       setLedgerMemo('')
                       setDetail(await fetchAdminCustomer(id))
                     } catch (e) {

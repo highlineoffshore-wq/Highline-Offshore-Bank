@@ -5,6 +5,7 @@ import { useApprovals } from '../contexts/ApprovalsContext'
 import { useAuth } from '../contexts/AuthContext'
 import { useBankConfig } from '../contexts/BankConfigContext'
 import { fetchCustomerKycMe } from '../lib/kycCustomerApi'
+import { formatActivityListDate } from '../lib/activityWhenLabel'
 import { formatCurrency } from '../lib/money'
 import { AccountsOverviewSection } from '../components/AccountsOverviewSection'
 import { CustomerPendingApprovals } from '../components/CustomerPendingApprovals'
@@ -191,7 +192,9 @@ export function DashboardPage() {
             >
               <div>
                 <p className="font-medium text-bw-navy-900">{row.description}</p>
-                <p className="text-xs text-bw-muted">{row.dateLabel}</p>
+                <p className="text-xs text-bw-muted">
+                  {formatActivityListDate(row)}
+                </p>
               </div>
               <span
                 className={`font-semibold tabular-nums ${

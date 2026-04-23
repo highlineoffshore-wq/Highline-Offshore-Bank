@@ -759,7 +759,76 @@ function isoToActivityDateLabel(iso) {
   return new Intl.DateTimeFormat('en-US', {
     month: 'short',
     day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true,
   }).format(new Date(t))
+}
+
+/** Transfers and other non-operator lines: local wall clock with full date + time. */
+function activityInstantListLabelLocal(d) {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true,
+  }).format(d)
+}
+
+function activityTimestampMsFromRowId(id) {
+  if (typeof id !== 'string') return NaN
+  const adm = /^adm_(\d+)_/.exec(id)
+  if (adm) {
+    const n = Number(adm[1])
+    return Number.isFinite(n) ? n : NaN
+  }
+  const legacy = /^(\d+)-/.exec(id)
+  if (legacy) {
+    const n = Number(legacy[1])
+    return Number.isFinite(n) ? n : NaN
+  }
+  return NaN
+}
+
+/**
+ * Recompute list `dateLabel` from `bookedAt` / `postedAt` / row id so clients always
+ * see year + time even when JSON still has an older short label.
+ * @param {Record<string, unknown>} row
+ */
+function normalizeActivityRowDateLabel(row) {
+  if (!row || typeof row !== 'object') return row
+  const out = { ...row }
+  const bookedRaw =
+    typeof row.bookedAt === 'string' ? row.bookedAt.trim() : ''
+  if (bookedRaw) {
+    const ms = Date.parse(bookedRaw)
+    if (!Number.isNaN(ms)) {
+      out.dateLabel = activityDateLabelFromDate(new Date(ms))
+      return out
+    }
+  }
+  const postedRaw =
+    typeof row.postedAt === 'string' ? row.postedAt.trim() : ''
+  if (postedRaw) {
+    const label = isoToActivityDateLabel(postedRaw)
+    if (label) {
+      out.dateLabel = label
+      return out
+    }
+  }
+  const idMs = activityTimestampMsFromRowId(
+    typeof row.id === 'string' ? row.id : '',
+  )
+  if (!Number.isNaN(idMs) && idMs >= Date.UTC(2000, 0, 1)) {
+    out.dateLabel = activityInstantListLabelLocal(new Date(idMs))
+    return out
+  }
+  return out
 }
 
 function activityRowSortTs(row) {
@@ -845,7 +914,7 @@ export function getUserBankingSnapshot(userId) {
 
   const merged = [...baseActivity, ...cardActivityRows]
   merged.sort((a, b) => activityRowSortTs(b) - activityRowSortTs(a))
-  banking.activity = merged
+  banking.activity = merged.map((row) => normalizeActivityRowDateLabel(row))
 
   return banking
 }
@@ -1263,17 +1332,88 @@ function adminActivityUid() {
   return `adm_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`
 }
 
-function adminTodayLabel() {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-  }).format(new Date())
+function activityDateLabelFromDate(d) {
+  return (
+    new Intl.DateTimeFormat('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+      timeZone: 'UTC',
+    }).format(d) + ' UTC'
+  )
+}
+
+/**
+ * @param {{ postedOn?: string, bookedAt?: string }} opts
+ * @returns {{ bookedAt: string, dateLabel: string }}
+ */
+function resolveOperatorActivityTimestamps(opts) {
+  const postedOn =
+    typeof opts?.postedOn === 'string' ? opts.postedOn.trim().slice(0, 12) : ''
+  const bookedAtRaw =
+    typeof opts?.bookedAt === 'string' ? opts.bookedAt.trim().slice(0, 80) : ''
+  const now = new Date()
+  const minMs = Date.UTC(2000, 0, 1)
+  const maxMs = now.getTime()
+  const err = (m) => {
+    const e = new Error(m)
+    e.statusCode = 400
+    throw e
+  }
+
+  if (bookedAtRaw) {
+    const ms = Date.parse(bookedAtRaw)
+    if (Number.isNaN(ms)) err('bookedAt must be a valid ISO date-time string.')
+    if (ms < minMs || ms > maxMs) {
+      err('bookedAt must be between 2000-01-01 and the current time (server clock).')
+    }
+    const d = new Date(ms)
+    return { bookedAt: d.toISOString(), dateLabel: activityDateLabelFromDate(d) }
+  }
+
+  if (postedOn) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(postedOn)
+    if (!m) err('postedOn must be YYYY-MM-DD (calendar date).')
+    const y = Number(m[1])
+    const mo = Number(m[2]) - 1
+    const da = Number(m[3])
+    const ms = Date.UTC(y, mo, da, 12, 0, 0, 0)
+    const chk = new Date(ms)
+    if (
+      Number.isNaN(ms) ||
+      chk.getUTCFullYear() !== y ||
+      chk.getUTCMonth() !== mo ||
+      chk.getUTCDate() !== da
+    ) {
+      err('postedOn is not a valid calendar date.')
+    }
+    const todayUtc = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, '0')}-${String(now.getUTCDate()).padStart(2, '0')}`
+    if (postedOn < '2000-01-01' || postedOn > todayUtc) {
+      err('postedOn must be between 2000-01-01 and today (UTC calendar date).')
+    }
+    return { bookedAt: chk.toISOString(), dateLabel: activityDateLabelFromDate(chk) }
+  }
+
+  return {
+    bookedAt: now.toISOString(),
+    dateLabel: activityDateLabelFromDate(now),
+  }
 }
 
 /**
  * Operator-initiated ledger credit or debit on a customer deposit account.
  * @param {string} userId
- * @param {{ accountId: string, deltaCents: number, description?: string }} input
+ * @param {{
+ *   accountId: string
+ *   deltaCents: number
+ *   description?: string
+ *   postedOn?: string
+ *   bookedAt?: string
+ * }} input
  */
 export function adminApplyBalanceAdjustment(userId, input) {
   const data = readStore()
@@ -1312,10 +1452,13 @@ export function adminApplyBalanceAdjustment(userId, input) {
       .trim()
       .slice(0, 240) || (d > 0 ? 'Branch / operator credit' : 'Branch / operator debit')
   if (!Array.isArray(banking.activity)) banking.activity = []
-  const bookedAt = new Date().toISOString()
+  const { bookedAt, dateLabel } = resolveOperatorActivityTimestamps({
+    postedOn: input.postedOn,
+    bookedAt: input.bookedAt,
+  })
   banking.activity.unshift({
     id: adminActivityUid(),
-    dateLabel: adminTodayLabel(),
+    dateLabel,
     description: desc,
     amountCents: d,
     bookedAt,

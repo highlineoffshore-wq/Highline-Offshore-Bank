@@ -5,6 +5,7 @@ import {
   formatFullAccountNumberForDisplay,
   getInvestmentAccountProfile,
 } from '../lib/investmentAccountProfiles'
+import { formatActivityListDate } from '../lib/activityWhenLabel'
 import { formatCurrency } from '../lib/money'
 import type { AccountRow, ActivityRow } from '../types/banking'
 
@@ -256,7 +257,9 @@ export function AccountDetailPage() {
                   <p className="font-medium text-bw-navy-900">
                     {row.description}
                   </p>
-                  <p className="text-xs text-bw-muted">{row.dateLabel}</p>
+                  <p className="text-xs text-bw-muted">
+                    {formatActivityListDate(row)}
+                  </p>
                 </div>
                 <span
                   className={`font-semibold tabular-nums ${

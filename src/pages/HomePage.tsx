@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useBankConfig } from '../contexts/BankConfigContext'
+import { resolvePublicMediaUrl } from '../lib/apiBase'
 
 const btnPrimary =
   'inline-flex items-center justify-center rounded-full bg-bw-red-700 px-6 py-3.5 text-sm font-semibold text-white shadow-md shadow-bw-red-900/20 ring-1 ring-white/15 transition hover:bg-bw-red-600 hover:shadow-lg active:scale-[0.98]'
@@ -63,7 +64,7 @@ export function HomePage() {
           </div>
           <figure className="shadow-bw-glow overflow-hidden rounded-2xl border border-white/20 ring-1 ring-white/10">
             <img
-              src={cfg.homeHeroImageSrc}
+              src={resolvePublicMediaUrl(cfg.homeHeroImageSrc)}
               alt="Clients speaking with a banker in a bright, modern banking lounge."
               className="aspect-[4/3] w-full object-cover lg:aspect-auto lg:max-h-[min(28rem,55vh)] lg:min-h-[18rem]"
               width={1200}

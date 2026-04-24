@@ -104,8 +104,9 @@ export type BankConfig = {
   homeHeadline: string
   homeSubtext: string
   /**
-   * Public home hero image: site-root path (e.g. `/home-hero-banking.jpg`) or
-   * API-served upload (e.g. `/api/media/home-hero.jpg`) or `https://…` CDN URL.
+   * Public home hero image: site-root path (e.g. `/home-hero-banking.svg` in `public/`)
+   * or API-served upload (e.g. `/api/media/home-hero.png`) or `https://…` CDN URL.
+   * On Netlify + separate API, set `VITE_API_BASE` at build time so `/api/media/…` resolves.
    */
   homeHeroImageSrc: string
   /**

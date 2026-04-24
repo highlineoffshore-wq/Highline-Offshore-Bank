@@ -1578,8 +1578,6 @@ function WireTransferForm({
   onError: (msg: string) => void
 }) {
   const bankCfg = useBankConfig()
-  const [applyCot, setApplyCot] = useState(false)
-  const [applyImf, setApplyImf] = useState(false)
   const [wireScope, setWireScope] = useState<'domestic' | 'international'>(
     'domestic',
   )
@@ -1612,10 +1610,6 @@ function WireTransferForm({
     wireScope === 'international'
       ? bankCfg.fees.wireInternationalCents
       : bankCfg.fees.wireDomesticCents
-  const cotCents = Number(bankCfg.fees.wireCotCents) || 0
-  const imfCents = Number(bankCfg.fees.wireImfCents) || 0
-  const extraFees =
-    (applyCot ? cotCents : 0) + (applyImf ? imfCents : 0)
 
   async function finalizeWireSubmission(
     pending: PendingWireSubmit,
@@ -1713,8 +1707,6 @@ function WireTransferForm({
             scope: 'domestic' as const,
             routingNumber: routing,
             beneficiaryAccount: acctNum,
-            ...(applyCot ? { applyCot: true } : {}),
-            ...(applyImf ? { applyImf: true } : {}),
           }
         : {
             fromId,
@@ -1725,8 +1717,6 @@ function WireTransferForm({
             country: country.trim(),
             swiftBic: swift,
             ibanOrAccount: iban,
-            ...(applyCot ? { applyCot: true } : {}),
-            ...(applyImf ? { applyImf: true } : {}),
           }
 
     const pending: PendingWireSubmit = {
@@ -1811,8 +1801,6 @@ function WireTransferForm({
     setSwift('')
     setIban('')
     setAmount('')
-    setApplyCot(false)
-    setApplyImf(false)
     setPendingWire(null)
     setWireOtpChallengeId('')
     setWireOtpMaskedEmail(null)
@@ -1830,10 +1818,7 @@ function WireTransferForm({
         a one-time email code to authorize each wire request.{' '}
         {bankCfg.wireDisclaimerFees} Fees:{' '}
         {formatCurrency(bankCfg.fees.wireDomesticCents)} domestic,{' '}
-        {formatCurrency(bankCfg.fees.wireInternationalCents)} international
-        {cotCents > 0 || imfCents > 0
-          ? `; optional surcharges ${formatCurrency(cotCents)} (COT) and ${formatCurrency(imfCents)} (IMF) when selected below.`
-          : '.'}
+        {formatCurrency(bankCfg.fees.wireInternationalCents)} international.
       </p>
 
       {step === 'form' && (
@@ -1988,44 +1973,6 @@ function WireTransferForm({
             </>
           )}
 
-          {(cotCents > 0 || imfCents > 0) && (
-            <fieldset className="rounded-lg border border-bw-sand-100 bg-bw-sand-100/30 px-3 py-3">
-              <legend className="px-1 text-sm font-medium text-bw-navy-900">
-                Optional wire surcharges
-              </legend>
-              <p className="mt-1 text-xs text-bw-muted">
-                Demo-style regulatory fees. Your total debit includes any box
-                you tick, in addition to the standard wire fee.
-              </p>
-              {cotCents > 0 ? (
-                <label className="mt-3 flex cursor-pointer items-start gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={applyCot}
-                    onChange={(e) => setApplyCot(e.target.checked)}
-                    className="mt-0.5 border-bw-sand-200 text-bw-red-700 focus:ring-bw-blue-500"
-                  />
-                  <span>
-                    Apply COT-style fee ({formatCurrency(cotCents)})
-                  </span>
-                </label>
-              ) : null}
-              {imfCents > 0 ? (
-                <label className="mt-2 flex cursor-pointer items-start gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={applyImf}
-                    onChange={(e) => setApplyImf(e.target.checked)}
-                    className="mt-0.5 border-bw-sand-200 text-bw-red-700 focus:ring-bw-blue-500"
-                  />
-                  <span>
-                    Apply IMF-style fee ({formatCurrency(imfCents)})
-                  </span>
-                </label>
-              ) : null}
-            </fieldset>
-          )}
-
           <div>
             <label className="text-sm font-medium text-bw-navy-900" htmlFor="wt-amt">
               Wire amount (USD)
@@ -2039,8 +1986,7 @@ function WireTransferForm({
               onChange={(e) => setAmount(e.target.value)}
             />
             <p className="mt-1 text-xs text-bw-muted">
-              Total debit: wire amount + {formatCurrency(fee)} wire fee
-              {extraFees > 0 ? ` + ${formatCurrency(extraFees)} selected surcharges` : ''}.
+              Total debit: wire amount + {formatCurrency(fee)} wire fee.
             </p>
           </div>
           <button

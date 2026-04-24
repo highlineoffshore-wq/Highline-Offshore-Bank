@@ -1360,7 +1360,7 @@ export function AdminBankSettingsPage() {
                             homeHeroImageSrc: e.target.value,
                           })
                         }
-                        placeholder="/home-hero-banking.jpg or https://…"
+                        placeholder="/home-hero-banking.svg or https://…"
                         autoComplete="off"
                         spellCheck={false}
                       />

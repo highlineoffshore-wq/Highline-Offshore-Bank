@@ -31,7 +31,7 @@ function defaultSeedItems() {
     {
       id: 'kyc-seed-1',
       userId: 'usr_b9aac462a765ae6ec01c9705',
-      customerEmail: 'dev@bywells.local',
+      customerEmail: 'dev@example.invalid',
       customerDisplayName: 'Dev User',
       status: 'pending',
       riskLevel: 'standard',
@@ -70,7 +70,7 @@ function defaultSeedItems() {
     {
       id: 'kyc-seed-2',
       userId: 'usr_kyc_queue_demo_b',
-      customerEmail: 'queue.case.b@bywells.local',
+      customerEmail: 'queue.case.b@example.invalid',
       customerDisplayName: 'Queue case B (demo)',
       status: 'pending',
       riskLevel: 'elevated',
@@ -102,7 +102,7 @@ function defaultSeedItems() {
     {
       id: 'kyc-seed-3',
       userId: 'usr_b9aac462a765ae6ec01c9705',
-      customerEmail: 'dev@bywells.local',
+      customerEmail: 'dev@example.invalid',
       customerDisplayName: 'Dev User',
       status: 'approved',
       riskLevel: 'low',

@@ -1,4 +1,4 @@
--- Optional PostgreSQL schema for Bywells (audit + future user migration).
+-- Optional PostgreSQL schema for this banking API (audit + future user migration).
 -- Apply with: psql "$DATABASE_URL" -f server/db/schema.sql
 -- Or start with docker compose and set DATABASE_URL in server/.env
 

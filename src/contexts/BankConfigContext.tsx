@@ -25,7 +25,7 @@ function mimeForFavicon(urlPath: string): string {
 
 const FALLBACK = rawDefaults as BankConfig
 
-/** Last good public bank config — avoids a flash of bundled “Bywells…” defaults on refresh. */
+/** Last good public bank config — avoids a flash of bundled defaults on refresh. */
 const STORAGE_KEY = 'bw-public-bank-config-v1'
 
 function readCachedBankConfig(): BankConfig | null {
@@ -85,7 +85,7 @@ export function BankConfigProvider({ children }: { children: ReactNode }) {
       .catch(() => {
         if (import.meta.env.PROD && !String(getApiBase()).trim()) {
           console.warn(
-            '[bywells] Could not load /api/public/bank-config. When the SPA is hosted separately (e.g. Netlify), set VITE_API_BASE to your API origin at build time and redeploy.',
+            '[bank-config] Could not load /api/public/bank-config. When the SPA is hosted separately (e.g. Netlify), set VITE_API_BASE to your API origin at build time and redeploy.',
           )
         }
       })

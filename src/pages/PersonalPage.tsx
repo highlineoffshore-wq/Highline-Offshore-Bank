@@ -46,7 +46,7 @@ export function PersonalPage() {
       <SegmentProseBand
         title="Banking that fits real life—not a one-size brochure"
         paragraphs={[
-          'Most people do not wake up thinking about APY—they think about rent, daycare, a car payment, or saving for a trip. Bywells Personal is organized around those rhythms: money in, money out, money set aside, and money working for later.',
+          `Most people do not wake up thinking about APY—they think about rent, daycare, a car payment, or saving for a trip. ${cfg.bankNameShort} Personal is organized around those rhythms: money in, money out, money set aside, and money working for later.`,
           'You get one sign-in for checking, savings, cards, and loans, with permissions you control for partners or family. Alerts can fire on low balance, large purchases, or deposits so surprises are rare. When something does not look right, you can lock a card, dispute from the timeline, or reach a human without re-explaining your whole story.',
           'Below is a deeper look at accounts, borrowing, digital tools, and how onboarding works. Summaries on this page are for orientation only; rates, fees, and terms in your account agreement, Truth in Savings disclosure, and loan documents control.',
         ]}
@@ -54,7 +54,7 @@ export function PersonalPage() {
       />
 
       <SegmentFeatureGrid
-        heading="What you can do with Bywells Personal"
+        heading={`What you can do with ${cfg.bankNameShort} Personal`}
         intro="From your first paycheck to your next big purchase, we keep the essentials straightforward—with optional detail when you want to drill in."
         features={[
           {
@@ -144,7 +144,7 @@ export function PersonalPage() {
             'Competitive APY tier, automatic transfers, joint ownership',
           ],
           [
-            'Bywells Money Market',
+            `${cfg.bankNameShort} Money Market`,
             'Higher balances & check access',
             '$12 waivable',
             'Tiered APY, limited check writing, FDIC insurance within limits',
@@ -202,7 +202,7 @@ export function PersonalPage() {
           },
           {
             title: 'Fund your account',
-            body: 'Link an external bank for micro-deposit or instant verification where supported, or fund later from another Bywells account.',
+            body: `Link an external bank for micro-deposit or instant verification where supported, or fund later from another ${cfg.bankNameShort} account.`,
           },
           {
             title: 'Activate digital banking',
@@ -322,7 +322,7 @@ export function PersonalPage() {
           {
             label: 'Home',
             to: '/',
-            description: 'Overview of everything Bywells offers.',
+            description: `Overview of everything ${cfg.bankNameShort} offers.`,
           },
         ]}
       />

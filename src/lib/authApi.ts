@@ -37,7 +37,7 @@ function restrictionBlockFromBody(data: Record<string, unknown>) {
   const supportEmail =
     typeof data.supportEmail === 'string' && data.supportEmail.trim()
       ? data.supportEmail.trim()
-      : 'support@bywells.com'
+      : 'support@example.com'
   const defaultError = `You cannot use online banking due to suspicions of fraudulent activity. Contact us by email: ${supportEmail}.`
   const block: OnlineBankingAccessBlockPayload = {
     error:
@@ -224,7 +224,7 @@ export async function apiMe(): Promise<ApiMeResult> {
 const LOGIN_FETCH_MS = 45_000
 
 const API_HTML_HINT =
-  'From the repo root run npm run dev (API + Vite). If the API port is busy, set NOTIFY_PORT in server/.env and restart (Vite reads it for the proxy). Check http://127.0.0.1:<NOTIFY_PORT>/api/health — expect {"ok":true,"service":"bywells-bank-api"}.'
+  'From the repo root run npm run dev (API + Vite). If the API port is busy, set NOTIFY_PORT in server/.env and restart (Vite reads it for the proxy). Check http://127.0.0.1:<NOTIFY_PORT>/api/health — expect {"ok":true,"service":"banking-api"}.'
 
 async function readJsonBody(
   r: Response,
@@ -248,7 +248,7 @@ async function readJsonBody(
     return {
       ok: false,
       error: wrongService
-        ? `Wrong service on the API port (${r.status}): another app answered instead of Bywells. Pick a free NOTIFY_PORT in server/.env (e.g. 8791), restart npm run dev, and curl http://127.0.0.1:<port>/api/health — you should see {"ok":true,"service":"bywells-bank-api"}.`
+        ? `Wrong service on the API port (${r.status}): another app answered instead of this banking API. Pick a free NOTIFY_PORT in server/.env (e.g. 8791), restart npm run dev, and curl http://127.0.0.1:<port>/api/health — you should see {"ok":true,"service":"banking-api"}.`
         : `No JSON from API (${r.status}). ${API_HTML_HINT}`,
     }
   }

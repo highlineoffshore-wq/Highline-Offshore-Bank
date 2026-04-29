@@ -1,8 +1,8 @@
 /** Set after register until KYC is submitted or user signs out (digital onboarding). */
-export const OPEN_ACCOUNT_KYC_PENDING_KEY = 'bywells_open_account_kyc_pending'
+export const OPEN_ACCOUNT_KYC_PENDING_KEY = 'online_bank_open_account_kyc_pending'
 
 /** Product-interest slugs chosen during signup (survives refresh until KYC completes). */
-const OPEN_ACCOUNT_INTERESTS_KEY = 'bywells_open_account_interests'
+const OPEN_ACCOUNT_INTERESTS_KEY = 'online_bank_open_account_interests'
 
 export function setOpenAccountKycPending() {
   try {

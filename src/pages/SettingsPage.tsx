@@ -4,7 +4,7 @@ function digitsOnly6(raw: string): string {
   return raw.replace(/\D/g, '').slice(0, 6)
 }
 
-const NOTIF_STORAGE = 'bywells-bank-settings-notif'
+const NOTIF_STORAGE = 'online-bank-settings-notif'
 
 type NotifPrefs = {
   transactionEmail: boolean

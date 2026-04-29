@@ -29,11 +29,11 @@ const apiPort =
 const apiTarget = `http://127.0.0.1:${apiPort}`
 
 /**
- * Forward `/api/*` to the Bywells Node server. Registered at the front of the
+ * Forward `/api/*` to the Node banking API. Registered at the front of the
  * Connect stack so no other dev middleware (SPA fallback, etc.) can answer
  * /api with HTML before this runs.
  */
-function attachBywellsApiProxy(middlewares: Connect.Server, targetStr: string) {
+function attachBankingApiProxy(middlewares: Connect.Server, targetStr: string) {
   const u = new URL(targetStr)
   const isHttps = u.protocol === 'https:'
   const port = u.port ? Number(u.port) : isHttps ? 443 : 80
@@ -109,7 +109,7 @@ function attachBywellsApiProxy(middlewares: Connect.Server, targetStr: string) {
   }
 }
 
-function bywellsApiProxyPlugin(target: string): Plugin {
+function bankingApiProxyPlugin(target: string): Plugin {
   const runHealthProbe = () => {
     setTimeout(() => {
       void fetch(`${target}/api/health`)
@@ -124,10 +124,10 @@ function bywellsApiProxyPlugin(target: string): Plugin {
           if (
             !r.ok ||
             body.ok !== true ||
-            body.service !== 'bywells-bank-api'
+            body.service !== 'banking-api'
           ) {
             console.warn(
-              `[vite] API at ${target} did not return Bywells health JSON. Is the API running on NOTIFY_PORT?`,
+              `[vite] API at ${target} did not return expected health JSON (service: banking-api). Is the API running on NOTIFY_PORT?`,
             )
           }
         })
@@ -140,7 +140,7 @@ function bywellsApiProxyPlugin(target: string): Plugin {
   }
 
   return {
-    name: 'bywells-api-proxy',
+    name: 'banking-api-proxy',
     enforce: 'pre',
     configureServer: {
       order: 'pre',
@@ -148,7 +148,7 @@ function bywellsApiProxyPlugin(target: string): Plugin {
         console.log(
           `[vite] Dev /api -> ${target} (NOTIFY_PORT=${String(apiPort)}, manual forward, stack prepend)`,
         )
-        attachBywellsApiProxy(server.middlewares, target)
+        attachBankingApiProxy(server.middlewares, target)
         runHealthProbe()
       },
     },
@@ -156,7 +156,7 @@ function bywellsApiProxyPlugin(target: string): Plugin {
       order: 'pre',
       handler(server) {
         console.log(`[vite] Preview /api -> ${target} (manual forward, stack prepend)`)
-        attachBywellsApiProxy(server.middlewares, target)
+        attachBankingApiProxy(server.middlewares, target)
       },
     },
   }
@@ -164,7 +164,7 @@ function bywellsApiProxyPlugin(target: string): Plugin {
 
 export default defineConfig({
   plugins: [
-    bywellsApiProxyPlugin(apiTarget),
+    bankingApiProxyPlugin(apiTarget),
     react(),
     tailwindcss(),
   ],

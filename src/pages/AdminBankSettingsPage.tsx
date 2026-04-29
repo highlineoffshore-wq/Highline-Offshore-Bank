@@ -942,7 +942,7 @@ export function AdminBankSettingsPage() {
                           name="smtpFromName"
                           type="text"
                           autoComplete="organization"
-                          placeholder="Bywells Bank"
+                          placeholder="Example National Bank"
                           className={inp}
                           value={smtpForm.fromName}
                           onChange={(e) =>

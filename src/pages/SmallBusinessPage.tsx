@@ -23,7 +23,7 @@ export function SmallBusinessPage() {
       <SegmentHero
         eyebrow="Small business"
         headline="Run your business—not your banking errands."
-        subtext="From first invoice to fiftieth hire, you need visibility into cash, fast ways to get paid, and credit that shows up when payroll and inventory do not wait. Bywells Business combines self-serve digital tools with a relationship manager who understands your industry—so you spend less time on transfers and more time on customers."
+        subtext={`From first invoice to fiftieth hire, you need visibility into cash, fast ways to get paid, and credit that shows up when payroll and inventory do not wait. ${cfg.bankNameShort} Business combines self-serve digital tools with a relationship manager who understands your industry—so you spend less time on transfers and more time on customers.`}
         gradientClass="from-bw-navy-900 via-[#123a5c] to-bw-blue-600"
         stats={[
           { value: '1 RM', label: 'Dedicated contact (typical)' },
@@ -236,7 +236,7 @@ export function SmallBusinessPage() {
               'Multi-user access with view-only accountants',
               'CSV / OFX export for tax season',
               'Loan compliance certificate generation',
-              'Consolidated view if you also bank personally with Bywells',
+              `Consolidated view if you also bank personally with ${cfg.bankNameShort}`,
             ],
           },
         ]}
@@ -321,7 +321,7 @@ export function SmallBusinessPage() {
           {
             label: 'Home',
             to: '/',
-            description: 'Overview of everything Bywells offers.',
+            description: `Overview of everything ${cfg.bankNameShort} offers.`,
           },
         ]}
       />

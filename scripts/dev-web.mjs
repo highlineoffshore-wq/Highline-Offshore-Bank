@@ -1,5 +1,5 @@
 /**
- * Start Vite for local development. If the Bywells API is not already up on
+ * Start Vite for local development. If the banking API is not already up on
  * NOTIFY_PORT (from server/.env), starts server/index.js first so /api proxy
  * always has a backend (avoids HTML 404 responses from an empty port).
  */
@@ -39,7 +39,7 @@ function getHealth() {
             ok:
               res.statusCode === 200 &&
               json?.ok === true &&
-              json?.service === 'bywells-bank-api',
+              json?.service === 'banking-api',
           })
         } catch {
           resolve({ ok: false })

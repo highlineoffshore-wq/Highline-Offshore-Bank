@@ -1,6 +1,6 @@
 import { loadBankConfig } from './bankConfigStore.js'
 
-const FALLBACK_SUPPORT_EMAIL = 'support@bywells.com'
+const FALLBACK_SUPPORT_EMAIL = 'support@example.com'
 
 export function supportEmailForOnlineBankingLockout() {
   try {

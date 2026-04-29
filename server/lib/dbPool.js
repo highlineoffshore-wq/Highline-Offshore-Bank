@@ -35,5 +35,5 @@ export async function initPgSchema() {
     );
     CREATE INDEX IF NOT EXISTS bw_audit_ts ON bw_audit_events (ts DESC);
   `)
-  console.log('[bywells] PostgreSQL: audit table ready (bw_audit_events)')
+  console.log('[api] PostgreSQL: audit table ready (bw_audit_events)')
 }

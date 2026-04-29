@@ -41,7 +41,7 @@ async function main() {
   mkdirSync(backupDir, { recursive: true })
 
   const stamp = new Date().toISOString().replace(/[:.]/g, '-')
-  const baseName = `bywells-data-${stamp}.tar`
+  const baseName = `banking-data-${stamp}.tar`
   const tarPath = path.join(backupDir, baseName)
   const gzPath = `${tarPath}.gz`
 

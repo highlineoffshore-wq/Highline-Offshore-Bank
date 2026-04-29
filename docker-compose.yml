@@ -1,20 +1,20 @@
 # Local PostgreSQL for audit logging (and future user data migration).
 # Usage:
 #   docker compose up -d
-#   echo DATABASE_URL=postgres://bywells:bywells@127.0.0.1:5433/bywells >> server/.env
+#   echo DATABASE_URL=postgres://banking:banking@127.0.0.1:5433/banking >> server/.env
 #   npm run dev:notify
 
 services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: bywells
-      POSTGRES_PASSWORD: bywells
-      POSTGRES_DB: bywells
+      POSTGRES_USER: banking
+      POSTGRES_PASSWORD: banking
+      POSTGRES_DB: banking
     ports:
       - '5433:5432'
     volumes:
-      - bywells_pg:/var/lib/postgresql/data
+      - banking_pg:/var/lib/postgresql/data
 
 volumes:
-  bywells_pg:
+  banking_pg:

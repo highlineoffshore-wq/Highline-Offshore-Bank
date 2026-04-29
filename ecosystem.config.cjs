@@ -8,7 +8,7 @@
 module.exports = {
   apps: [
     {
-      name: 'bywells',
+      name: 'white-label-banking',
       cwd: __dirname,
       script: 'server/index.js',
       interpreter: 'node',

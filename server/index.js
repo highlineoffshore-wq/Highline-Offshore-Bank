@@ -307,7 +307,7 @@ if (isProdRuntime) {
 app.get('/api/health', (_req, res) => {
   res.json({
     ok: true,
-    service: 'bywells-bank-api',
+    service: 'banking-api',
     mode: process.env.NODE_ENV || 'development',
   })
 })
@@ -3152,7 +3152,7 @@ const distDir = path.join(__dirname, '..', 'dist')
 const indexHtml = path.join(distDir, 'index.html')
 const shouldServeClient =
   isProdRuntime &&
-  process.env.BYWELLS_SERVE_STATIC !== '0' &&
+  process.env.BANKING_SERVE_STATIC !== '0' &&
   fs.existsSync(indexHtml)
 
 if (shouldServeClient) {
@@ -3171,11 +3171,11 @@ if (shouldServeClient) {
     })
   })
   console.log(
-    '[bywells] Serving built SPA from dist/ (same origin as /api — set VITE_API_BASE only if UI is hosted elsewhere).',
+    '[api] Serving built SPA from dist/ (same origin as /api — set VITE_API_BASE only if UI is hosted elsewhere).',
   )
 } else if (isProdRuntime) {
   console.warn(
-    '[bywells] Production: dist/index.html not found — this process only serves /api. Run npm run build here or deploy static assets separately. Set BYWELLS_SERVE_STATIC=0 to silence.',
+    '[api] Production: dist/index.html not found — this process only serves /api. Run npm run build here or deploy static assets separately. Set BANKING_SERVE_STATIC=0 to silence.',
   )
 }
 
@@ -3198,30 +3198,30 @@ async function start() {
       await initPgSchema()
     } catch (e) {
       console.error(
-        '[bywells] PostgreSQL init failed:',
+        '[api] PostgreSQL init failed:',
         e instanceof Error ? e.message : e,
       )
     }
   } else {
     console.log(
-      '[bywells] DATABASE_URL not set — audit events append to server/data/audit.log only',
+      '[api] DATABASE_URL not set — audit events append to server/data/audit.log only',
     )
   }
 
   const listenHost =
-    process.env.BYWELLS_LISTEN_HOST?.trim() ||
+    process.env.BANKING_LISTEN_HOST?.trim() ||
     (isProdRuntime ? '0.0.0.0' : undefined)
 
   if (isProdRuntime) {
     if (!process.env.NOTIFY_ALLOWED_ORIGINS?.trim()) {
       console.warn(
-        '[bywells] NOTIFY_ALLOWED_ORIGINS is empty — set it to your live https:// origins so browsers can call this API.',
+        '[api] NOTIFY_ALLOWED_ORIGINS is empty — set it to your live https:// origins so browsers can call this API.',
       )
     }
     const adminSecret = process.env.ADMIN_API_SECRET?.trim()
     if (adminSecret && adminSecret.length < 24) {
       console.warn(
-        '[bywells] ADMIN_API_SECRET is short — use a long random value (32+ chars) in production.',
+        '[api] ADMIN_API_SECRET is short — use a long random value (32+ chars) in production.',
       )
     }
   }
@@ -3229,18 +3229,18 @@ async function start() {
   const onListen = () => {
     const adminOn = Boolean(process.env.ADMIN_API_SECRET?.trim())
     const bind = listenHost ?? '(default)'
-    console.log(`[bywells] Listening on ${bind}:${PORT}`)
-    console.log(`[bywells] Health check: /api/health`)
+    console.log(`[api] Listening on ${bind}:${PORT}`)
+    console.log(`[api] Health check: /api/health`)
     console.log(
-      '[bywells] Customer accounts & banking: server/data/users-store.json',
+      '[api] Customer accounts & banking: server/data/users-store.json',
     )
     console.log(
       adminOn
-        ? '[bywells] Admin console: enabled (ADMIN_API_SECRET set)'
-        : '[bywells] Admin console: disabled until ADMIN_API_SECRET is set',
+        ? '[api] Admin console: enabled (ADMIN_API_SECRET set)'
+        : '[api] Admin console: disabled until ADMIN_API_SECRET is set',
     )
     if (shouldServeClient) {
-      console.log('[bywells] Open the app at http://127.0.0.1:' + PORT + '/')
+      console.log('[api] Open the app at http://127.0.0.1:' + PORT + '/')
     }
   }
 
@@ -3250,10 +3250,10 @@ async function start() {
   httpServer.on('error', (err) => {
     if (err && err.code === 'EADDRINUSE') {
       console.error(
-        `[bywells] Port ${PORT} is already in use (another app or a stuck Bywells process). Set NOTIFY_PORT to a free port in server/.env and restart.`,
+        `[api] Port ${PORT} is already in use (another app or a stuck API process). Set NOTIFY_PORT to a free port in server/.env and restart.`,
       )
     } else {
-      console.error('[bywells] HTTP server error:', err)
+      console.error('[api] HTTP server error:', err)
     }
     process.exit(1)
   })

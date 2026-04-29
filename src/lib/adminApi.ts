@@ -11,7 +11,7 @@ const TOKEN_KEY = 'bw_bank_admin_token'
 
 /** Shown when admin fetch gets HTML or garbage — Vite proxy must match the API port. */
 const DEV_API_HINT =
-  'Run npm run dev (API + Vite) or npm run dev:web (starts the API if it is not already up, then Vite). NOTIFY_PORT in server/.env must match the API and the Vite /api proxy; curl the /api/health URL on that port — expect {"ok":true,"service":"bywells-bank-api"}. For Vite without auto-start use npm run vite:only and npm run dev:api in another terminal.'
+  'Run npm run dev (API + Vite) or npm run dev:web (starts the API if it is not already up, then Vite). NOTIFY_PORT in server/.env must match the API and the Vite /api proxy; curl the /api/health URL on that port — expect {"ok":true,"service":"banking-api"}. For Vite without auto-start use npm run vite:only and npm run dev:api in another terminal.'
 
 async function readJsonBody<T>(r: Response): Promise<T> {
   const text = await r.text()
@@ -1025,7 +1025,7 @@ export async function patchAdminCustomerAccess(
       raw.startsWith('No matching API route')
     ) {
       throw new Error(
-        'Saving access settings failed: the API did not expose this endpoint. Restart the Bywells API server (same NOTIFY_PORT Vite proxies to), then try again.',
+        'Saving access settings failed: the API did not expose this endpoint. Restart the Node API server (same NOTIFY_PORT Vite proxies to), then try again.',
       )
     }
     throw new Error(raw || 'Could not update access.')

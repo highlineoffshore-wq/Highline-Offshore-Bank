@@ -21,7 +21,7 @@ export function WealthPage() {
       <SegmentHero
         eyebrow="Wealth"
         headline="Grow, protect, and pass it on—with a plan that fits."
-        subtext="Wealth is not a single product—it is coordination: investments, tax-aware planning, credit for opportunities, trust administration, and conversations your family actually understands. Bywells Wealth brings advisors, portfolio strategists, and private bankers onto one team with shared notes—not siloed handoffs."
+        subtext={`Wealth is not a single product—it is coordination: investments, tax-aware planning, credit for opportunities, trust administration, and conversations your family actually understands. ${cfg.bankNameShort} Wealth brings advisors, portfolio strategists, and private bankers onto one team with shared notes—not siloed handoffs.`}
         gradientClass="from-[#0a1628] via-bw-navy-900 to-[#1a3d52]"
         stats={[
           { value: '$1M+', label: 'Typical private tier threshold' },
@@ -43,7 +43,7 @@ export function WealthPage() {
       <SegmentProseBand
         title="A single plan—not a stack of statements"
         paragraphs={[
-          `Most clients arrive with accounts scattered across institutions: an old 401(k), a brokerage from a bonus year, rental real estate, and ${cfg.products.savingsName.toLowerCase()} at Bywells. The first job is clarity: what you own, where risk is concentrated, and whether your cash buffer matches your spending and tax obligations.`,
+          `Most clients arrive with accounts scattered across institutions: an old 401(k), a brokerage from a bonus year, rental real estate, and ${cfg.products.savingsName.toLowerCase()} at ${cfg.bankNameShort}. The first job is clarity: what you own, where risk is concentrated, and whether your cash buffer matches your spending and tax obligations.`,
           `From there we align portfolios to goals with different time horizons—education in eight years, retirement in twenty, philanthropy ongoing. ${cfg.investBrandName} provides model portfolios and tax-loss harvesting discipline where appropriate; your advisor explains trade-offs in dollars and scenarios, not just pie charts.`,
           'Trust and estate partners help titling, beneficiary designations, and distribution language match your intent. When life changes—sale of a business, divorce settlement, inheritance—we revisit the whole picture, not just the account that moved.',
         ]}
@@ -274,7 +274,7 @@ export function WealthPage() {
         title="Wealth FAQ"
         items={[
           {
-            q: 'What is the minimum to work with Bywells Wealth?',
+            q: `What is the minimum to work with ${cfg.bankNameShort} Wealth?`,
             a: 'Minimums depend on program, market, and regulatory classification. Your relationship manager explains thresholds, services, and documentation requirements before you share sensitive information.',
           },
           {
@@ -315,7 +315,7 @@ export function WealthPage() {
           {
             label: 'Home',
             to: '/',
-            description: 'Overview of everything Bywells offers.',
+            description: `Overview of everything ${cfg.bankNameShort} offers.`,
           },
         ]}
       />

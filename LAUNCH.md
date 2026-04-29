@@ -20,7 +20,7 @@ Copy from `server/.env.example` and set at minimum:
 | `ADMIN_API_SECRET` | Long random string (32+ characters). Powers `/admin` operator API (`Authorization: Bearer …`). |
 | `TRUST_PROXY_HOPS` | Set to `2` or higher if TLS terminates in front of Node and you rely on `X-Forwarded-*`. |
 
-Optional: `DATABASE_URL`, SMTP fields, `BYWELLS_LISTEN_HOST` (defaults to `0.0.0.0` in production).
+Optional: `DATABASE_URL`, SMTP fields, `BANKING_LISTEN_HOST` (defaults to `0.0.0.0` in production).
 
 ## 3. Same host vs split UI/API
 
@@ -34,7 +34,9 @@ Optional: `DATABASE_URL`, SMTP fields, `BYWELLS_LISTEN_HOST` (defaults to `0.0.0
 npm start
 ```
 
-This runs `NODE_ENV=production node server/index.js`. If `dist/index.html` exists, the API process also serves the SPA; set `BYWELLS_SERVE_STATIC=0` if you only want JSON routes from this process.
+This runs `NODE_ENV=production node server/index.js`. If `dist/index.html` exists, the API process also serves the SPA; set `BANKING_SERVE_STATIC=0` if you only want JSON routes from this process.
+
+If you inherited an older `server/.env` that used legacy `*_SERVE_STATIC` / `*_LISTEN_HOST` variable names from a prior template, rename them to `BANKING_SERVE_STATIC` and `BANKING_LISTEN_HOST` (see `server/.env.example`).
 
 ## 5. Data on the server
 

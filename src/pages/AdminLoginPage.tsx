@@ -47,16 +47,20 @@ export function AdminLoginPage() {
     e.preventDefault()
     setErr('')
     setBusy(true)
-    const ok = await verifyAdminToken(secret.trim())
-    setBusy(false)
-    if (!ok) {
-      setErr(
-        'Invalid secret, or the admin API is disabled. Set ADMIN_API_SECRET in server/.env and restart the server.',
-      )
-      return
+    try {
+      const result = await verifyAdminToken(secret.trim())
+      if (!result.ok) {
+        setErr(
+          result.message ??
+            'Invalid secret, or the admin API is disabled. Set ADMIN_API_SECRET in server/.env and restart the server.',
+        )
+        return
+      }
+      setAdminToken(secret.trim())
+      navigate('/admin', { replace: true })
+    } finally {
+      setBusy(false)
     }
-    setAdminToken(secret.trim())
-    navigate('/admin', { replace: true })
   }
 
   return (

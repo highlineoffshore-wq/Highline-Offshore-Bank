@@ -55,11 +55,64 @@ export function clearAdminToken() {
   }
 }
 
-export async function verifyAdminToken(token: string): Promise<boolean> {
-  const r = await fetch(`${getApiBase()}/api/admin/bank-config`, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-  return r.ok
+export type AdminTokenVerifyResult =
+  | { ok: true }
+  | { ok: false; message: string }
+
+/**
+ * Confirms the bearer matches `ADMIN_API_SECRET` by loading bank config.
+ * Rejects HTML responses (Netlify SPA fallback) and surfaces timeouts/network errors.
+ */
+export async function verifyAdminToken(
+  token: string,
+): Promise<AdminTokenVerifyResult> {
+  const url = `${getApiBase()}/api/admin/bank-config`
+  try {
+    const r = await fetch(url, {
+      headers: { Authorization: `Bearer ${token}` },
+      signal: AbortSignal.timeout(25_000),
+    })
+    const ct = (r.headers.get('content-type') ?? '').toLowerCase()
+    if (!ct.includes('application/json')) {
+      return {
+        ok: false,
+        message:
+          'The admin API returned HTML instead of JSON. Usually Netlify is serving index.html for /api paths: put the /api → droplet redirect above /* → /index.html in netlify.toml, redeploy (clear cache), and remove VITE_API_BASE so requests stay same-origin.',
+      }
+    }
+    let data: { ok?: boolean; error?: string }
+    try {
+      data = (await r.json()) as { ok?: boolean; error?: string }
+    } catch {
+      return {
+        ok: false,
+        message: 'Invalid JSON from admin API. Confirm /api/admin/bank-config reaches your Node server.',
+      }
+    }
+    if (r.status === 401 || r.status === 403) {
+      return {
+        ok: false,
+        message: data.error ?? 'Invalid admin secret.',
+      }
+    }
+    if (!r.ok || data.ok !== true) {
+      return {
+        ok: false,
+        message: data.error ?? 'Could not verify admin access.',
+      }
+    }
+    return { ok: true }
+  } catch (e) {
+    const aborted =
+      e instanceof DOMException &&
+      (e.name === 'AbortError' || e.name === 'TimeoutError')
+    return {
+      ok: false,
+      message: aborted
+        ? 'Request timed out. Check that the API is reachable from the browser (Netlify redirects, firewall, or wrong VITE_API_BASE).'
+        : 'Could not reach the admin API (network or browser blocking). Open DevTools → Network for /api/admin/bank-config.',
+    }
+  }
 }
 
 export async function fetchAdminBankConfig(): Promise<BankConfig> {

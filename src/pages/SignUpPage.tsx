@@ -176,24 +176,27 @@ export function SignUpPage() {
       return
     }
     setBusy(true)
-    const res = await register(
-      email.trim(),
-      password,
-      displayName.trim() || email.trim().split('@')[0] || 'Customer',
-      interestSorted,
-    )
-    setBusy(false)
-    if (!res.ok) {
-      setErr(res.error)
-      return
-    }
-    setOpenAccountInterestSelections(interestSorted)
-    setOpenAccountKycPending()
-    setPathNeedsBusiness(interestSorted.includes('business'))
-    if (interestSorted.includes('business')) {
-      setStep(4)
-    } else {
-      setStep(5)
+    try {
+      const res = await register(
+        email.trim(),
+        password,
+        displayName.trim() || email.trim().split('@')[0] || 'Customer',
+        interestSorted,
+      )
+      if (!res.ok) {
+        setErr(res.error)
+        return
+      }
+      setOpenAccountInterestSelections(interestSorted)
+      setOpenAccountKycPending()
+      setPathNeedsBusiness(interestSorted.includes('business'))
+      if (interestSorted.includes('business')) {
+        setStep(4)
+      } else {
+        setStep(5)
+      }
+    } finally {
+      setBusy(false)
     }
   }
 

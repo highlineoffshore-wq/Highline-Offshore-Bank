@@ -632,36 +632,59 @@ export async function apiRegister(
   displayName: string,
   openAccountInterest?: string[],
 ): Promise<{ ok: true; user: AuthUser } | { ok: false; error: string }> {
-  const r = await fetch(`${getApiBase()}/api/auth/register`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      email,
-      password,
-      displayName,
-      ...(openAccountInterest?.length
-        ? { openAccountInterest }
-        : {}),
-    }),
-  })
-  const data = (await r.json()) as {
-    ok?: boolean
-    accessToken?: string
-    refreshToken?: string
-    user?: AuthUser
-    error?: string
+  try {
+    const r = await fetch(`${getApiBase()}/api/auth/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      signal: AbortSignal.timeout(25_000),
+      body: JSON.stringify({
+        email,
+        password,
+        displayName,
+        ...(openAccountInterest?.length
+          ? { openAccountInterest }
+          : {}),
+      }),
+    })
+    const ct = (r.headers.get('content-type') ?? '').toLowerCase()
+    const text = await r.text()
+    if (!ct.includes('application/json')) {
+      return {
+        ok: false,
+        error:
+          'Registration API returned non-JSON (often Netlify serving the SPA for /api). Remove VITE_API_BASE or use same-origin /api; redeploy with netlify.toml proxy to your server.',
+      }
+    }
+    let data: {
+      ok?: boolean
+      accessToken?: string
+      refreshToken?: string
+      user?: AuthUser
+      error?: string
+    }
+    try {
+      data = JSON.parse(text) as typeof data
+    } catch {
+      return { ok: false, error: 'Invalid response from registration API.' }
+    }
+    if (
+      !r.ok ||
+      !data.ok ||
+      !data.accessToken ||
+      !data.refreshToken ||
+      !data.user
+    ) {
+      return { ok: false, error: data.error ?? 'Registration failed.' }
+    }
+    setCustomerTokens(data.accessToken, data.refreshToken)
+    return { ok: true, user: data.user }
+  } catch {
+    return {
+      ok: false,
+      error:
+        'Could not reach the registration API. From an HTTPS site you cannot use http:// for VITE_API_BASE — remove it and use Netlify /api proxy, or use an HTTPS API URL.',
+    }
   }
-  if (
-    !r.ok ||
-    !data.ok ||
-    !data.accessToken ||
-    !data.refreshToken ||
-    !data.user
-  ) {
-    return { ok: false, error: data.error ?? 'Registration failed.' }
-  }
-  setCustomerTokens(data.accessToken, data.refreshToken)
-  return { ok: true, user: data.user }
 }
 
 export async function apiLogout(): Promise<void> {

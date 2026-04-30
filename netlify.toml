@@ -9,6 +9,13 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# API must come BEFORE the SPA catch-all, or `/api/*` returns index.html (admin login breaks).
+[[redirects]]
+  from = "/api/*"
+  to = "http://137.184.125.95/api/:splat"
+  status = 200
+  force = true
+
 # Client-side routing (React Router): non-file paths serve index.html
 [[redirects]]
   from = "/*"

@@ -22,6 +22,11 @@ async function readJsonBody<T>(r: Response): Promise<T> {
   try {
     return JSON.parse(trimmed) as T
   } catch {
+    if (r.status === 413) {
+      throw new Error(
+        'Upload too large for this route (413). Netlify’s /api proxy limits request body size — large hero images (base64 JSON) often hit that limit. Fix: set Netlify env VITE_API_BASE to your HTTPS API origin (Cloudflare tunnel or api.yourdomain.com → droplet) so requests bypass Netlify, or use a smaller/compressed image.',
+      )
+    }
     const hint =
       trimmed.startsWith('<') || trimmed.startsWith('<!')
         ? 'Received HTML instead of JSON (wrong URL or dev proxy not reaching the API).'

@@ -1,6 +1,8 @@
-# Static SPA only — the Node API runs elsewhere (e.g. Render).
-# In Netlify: Site settings → Environment variables → add VITE_API_BASE=https://your-api.onrender.com
-# (no trailing slash). Match NOTIFY_ALLOWED_ORIGINS on the API to your Netlify URL (and custom domain).
+# Static SPA only — the Node API runs elsewhere (e.g. DigitalOcean).
+# Small JSON calls can use the /api proxy below. Large uploads (admin hero image base64)
+# often get HTTP 413 through Netlify’s edge — then set VITE_API_BASE to an HTTPS API URL
+# that hits your server directly (tunnel or api.domain), not through Netlify.
+# Match NOTIFY_ALLOWED_ORIGINS on the API to your Netlify URL (and custom domain).
 
 [build]
   command = "npm ci && npm run build"

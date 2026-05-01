@@ -41,6 +41,8 @@ const THEME_KEYS = [
   ['navy800', 'Navy 800'],
   ['blue600', 'Blue 600'],
   ['blue500', 'Blue 500'],
+  ['blue700', 'Blue 700'],
+  ['blue800', 'Blue 800'],
   ['sky100', 'Sky 100'],
   ['red800', 'Red 800'],
   ['red700', 'Red 700'],

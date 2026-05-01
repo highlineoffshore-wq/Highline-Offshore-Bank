@@ -15,6 +15,8 @@ export type BankTheme = {
   navy800: string
   blue600: string
   blue500: string
+  blue700: string
+  blue800: string
   sky100: string
   red800: string
   red700: string

@@ -236,6 +236,8 @@ function validateBankConfig(c) {
     'navy800',
     'blue600',
     'blue500',
+    'blue700',
+    'blue800',
     'sky100',
     'red800',
     'red700',

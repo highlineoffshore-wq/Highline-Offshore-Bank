@@ -148,6 +148,14 @@ export function BankConfigProvider({ children }: { children: ReactNode }) {
     r.style.setProperty('--color-bw-navy-800', t.navy800)
     r.style.setProperty('--color-bw-blue-600', t.blue600)
     r.style.setProperty('--color-bw-blue-500', t.blue500)
+    r.style.setProperty(
+      '--color-bw-blue-700',
+      t.blue700 ?? FALLBACK.theme.blue700,
+    )
+    r.style.setProperty(
+      '--color-bw-blue-800',
+      t.blue800 ?? FALLBACK.theme.blue800,
+    )
     r.style.setProperty('--color-bw-sky-100', t.sky100)
     r.style.setProperty('--color-bw-red-800', t.red800)
     r.style.setProperty('--color-bw-red-700', t.red700)

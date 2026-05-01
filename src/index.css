@@ -9,6 +9,9 @@
   --color-bw-navy-800: #b45309;
   --color-bw-blue-600: #d97706;
   --color-bw-blue-500: #fbbf24;
+  /* Named “blue” for history; values are amber/gold. Required so Tailwind does not fall back to default blue-700/800. */
+  --color-bw-blue-700: #b45309;
+  --color-bw-blue-800: #92400e;
   --color-bw-sky-100: #fef3c7;
 
   --color-bw-red-800: #991b1b;

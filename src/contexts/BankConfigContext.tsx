@@ -9,6 +9,7 @@ import {
 } from 'react'
 import rawDefaults from '../data/bank.defaults.json'
 import { getApiBase, resolvePublicMediaUrl } from '../lib/apiBase'
+import { normalizeBankConfig } from '../lib/bankThemeCoerce'
 import type { BankConfig } from '../types/bankConfig'
 
 const DEFAULT_FAVICON_PATH = '/favicon.svg'
@@ -26,7 +27,7 @@ function mimeForFavicon(urlPath: string): string {
 const FALLBACK = rawDefaults as BankConfig
 
 /** Last good public bank config — avoids a flash of bundled defaults on refresh. */
-const STORAGE_KEY = 'bw-public-bank-config-v1'
+const STORAGE_KEY = 'bw-public-bank-config-v2'
 
 function readCachedBankConfig(): BankConfig | null {
   try {
@@ -37,7 +38,7 @@ function readCachedBankConfig(): BankConfig | null {
     const short = String(parsed.bankNameShort ?? '').trim()
     const full = String(parsed.bankName ?? '').trim()
     if (!short && !full) return null
-    return parsed
+    return normalizeBankConfig(parsed, FALLBACK)
   } catch {
     return null
   }
@@ -77,8 +78,9 @@ export function BankConfigProvider({ children }: { children: ReactNode }) {
       })
       .then((data) => {
         if (data?.ok && data.config) {
-          persistBankConfigCache(data.config)
-          setConfig(data.config)
+          const next = normalizeBankConfig(data.config, FALLBACK)
+          persistBankConfigCache(next)
+          setConfig(next)
           setBankConfigHydrated(true)
         }
       })

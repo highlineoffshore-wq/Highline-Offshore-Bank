@@ -29,6 +29,11 @@
     0 24px 64px -24px rgb(180 83 9 / 0.12);
 }
 
+:root {
+  /* Native checks/radios/progress — avoids browser default blue when using bw-* accents */
+  accent-color: var(--color-bw-blue-600);
+}
+
 html {
   scroll-behavior: smooth;
 }

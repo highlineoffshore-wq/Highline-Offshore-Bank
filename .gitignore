@@ -15,8 +15,7 @@ dist-ssr
 # Mail service credentials (never commit)
 server/.env
 
-# Live bank branding / copy (operator edits); defaults stay in src/data/bank.defaults.json
-server/data/bank-config.json
+# Operator-local mutable data (defaults stay in src/data/bank.defaults.json)
 server/data/approvals.json
 server/data/kyc-submissions.json
 server/data/kyc-uploads/

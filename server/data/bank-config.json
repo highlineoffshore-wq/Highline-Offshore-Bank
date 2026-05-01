@@ -1,0 +1,93 @@
+{
+  "bankName": "knetmyanmar Offshore Bank",
+  "bankNameShort": "knetmyanmar Offshore ",
+  "taglineHeader": "Financial partnership, tuned to real life",
+  "homeEyebrow": "knetmyanmar Offshore",
+  "homeHeadline": "Where ambition meets steadier ground.",
+  "homeSubtext": "House everyday cash flow, borrowing, and long-horizon goals in one place—honest pricing in plain language, digital tools that stay out of your way, and people who remember the conversation.",
+  "homeHeroImageSrc": "/api/media/home-hero.png",
+  "bankLogoSrc": "/api/media/bank-logo.jpg",
+  "homeCtaTalk": "Speak with knetmyanmar Offshore",
+  "signInDisclaimer": "Sign in with the email or Internet Banking ID you enrolled with, plus your password. Prefer private devices, skip shared computers when you can, and sign out when your session ends.",
+  "supportPhone": "1-800-555-1234",
+  "supportPhoneFraud": "1-800-555-9999",
+  "supportEmail": "support@knetmyanmar.com",
+  "supportHoursLine": "Lost or stolen cards and suspected fraud: anytime. Personal bankers and lending desks: 8am–10pm Eastern, daily.",
+  "chatAgentName": "Riley",
+  "chatHeaderTitle": "Secure chat",
+  "chatHeaderSubtitle": "Guidance from our virtual banking desk",
+  "investBrandName": "Horizon Advisory",
+  "products": {
+    "checkingName": "Canvas Checking",
+    "checkingMask": "4821",
+    "savingsName": "Summit Savings",
+    "savingsMask": "9033",
+    "fundTotalMarket": "Horizon Offshore Total Market Index",
+    "fundInternational": "Reach International Equity",
+    "fundCoreBond": "Harbor Core Bond",
+    "fundCashSweep": "Liquidity reserve (sweep)"
+  },
+  "fees": {
+    "wireDomesticCents": 2500,
+    "wireInternationalCents": 5000,
+    "wireCotCents": 1500,
+    "wireImfCents": 1500,
+    "fxUsdPerEur": 1.08
+  },
+  "depositsAndFees": {
+    "manualDepositApprovalRequired": true,
+    "transactionFeesMode": "auto",
+    "maintenanceFeesMode": "manual",
+    "maintenanceFeeMonthlyCents": 0,
+    "incomingBankTransferFeeCents": 0,
+    "cardFundingFeeCents": 0,
+    "cryptoDepositFeeCents": 0,
+    "depositMethods": {
+      "bankTransfer": true,
+      "crypto": false,
+      "cardFunding": true
+    }
+  },
+  "withdrawals": {
+    "multiStepEnabled": false,
+    "secondStepThresholdCents": 2500000,
+    "maxSingleWithdrawalCents": null,
+    "maxDailyWithdrawalPerCustomerCents": null
+  },
+  "theme": {
+    "navy950": "#1c1917",
+    "navy900": "#292524",
+    "navy800": "#b45309",
+    "blue600": "#d97706",
+    "blue500": "#fbbf24",
+    "sky100": "#fef3c7",
+    "red800": "#991b1b",
+    "red700": "#b91c1c",
+    "red600": "#dc2626",
+    "sand100": "#fffbeb",
+    "sand200": "#fde68a",
+    "muted": "#78716c"
+  },
+  "legalDemoFooter": "Member FDIC. Equal Housing Lender. Deposit insurance applies within program limits. Rates, fees, and offers change; approval required. Read disclosures before opening accounts or taking credit.",
+  "legalCopyright": "All rights reserved.",
+  "mobileDepositEndorsement": "Mobile deposit only. Sign as your card shows and add your account number.",
+  "wireAuthLine": "By confirming, you instruct us to move funds between the accounts you selected.",
+  "wireDisclaimerFees": "Wire pricing, cutoff times, and delivery vary by corridor and product. Figures shown follow your account’s schedule—review totals before you authorize.",
+  "emailLetters": {
+    "otpSubjectTemplate": "{{bankName}} · your secure sign-in code",
+    "otpInnerHtml": "<p style=\"margin:0 0 18px;color:#292524;font-size:15px;line-height:1.65\">{{greetingLine}}</p>\n<p style=\"margin:0 0 10px;color:#78716c;font-size:14px;line-height:1.5\">Enter this one-time code to finish signing in to Online Banking:</p>\n<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:22px 0;border-collapse:separate;border-spacing:0\"><tr><td align=\"center\" style=\"background:#fffbeb;border:2px solid #fde68a;border-radius:10px;padding:22px 20px\"><span style=\"font-family:Consolas,Menlo,Monaco,monospace;font-size:28px;font-weight:700;letter-spacing:0.42em;color:#1c1917;display:inline-block\">{{code}}</span></td></tr></table>\n<p style=\"margin:18px 0 0;color:#78716c;font-size:13px;line-height:1.55\">Valid for <strong style=\"color:#78716c\">{{expiryMinutes}}</strong> minutes. Didn’t try to sign in? Call Fraud at {{supportPhoneFraud}} or write {{supportEmail}}.</p>",
+    "otpTextBody": "{{greetingLine}}\n\nYour Online Banking verification code: {{code}}\n\nExpires in {{expiryMinutes}} minutes.\n\nIf this wasn’t you, reach Fraud at {{supportPhoneFraud}} or {{supportEmail}}.\n\n{{bankName}}",
+    "emailChangeSubjectTemplate": "{{bankName}} · confirm your new email",
+    "emailChangeInnerHtml": "<p style=\"margin:0 0 18px;color:#292524;font-size:15px;line-height:1.65\">{{greetingLine}}</p>\n<p style=\"margin:0 0 10px;color:#78716c;font-size:14px;line-height:1.5\">Use this code to verify that you control this email for alerts and sign-in:</p>\n<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:22px 0;border-collapse:separate;border-spacing:0\"><tr><td align=\"center\" style=\"background:#fffbeb;border:2px solid #fde68a;border-radius:10px;padding:22px 20px\"><span style=\"font-family:Consolas,Menlo,Monaco,monospace;font-size:28px;font-weight:700;letter-spacing:0.42em;color:#1c1917;display:inline-block\">{{code}}</span></td></tr></table>\n<p style=\"margin:18px 0 0;color:#78716c;font-size:13px;line-height:1.55\">Expires in <strong style=\"color:#78716c\">{{expiryMinutes}}</strong> minutes. If you didn’t request this change, contact Fraud at {{supportPhoneFraud}} or {{supportEmail}}.</p>",
+    "emailChangeTextBody": "{{greetingLine}}\n\nEmail verification code: {{code}}\n\nExpires in {{expiryMinutes}} minutes.\n\nDidn’t request this? Contact Fraud at {{supportPhoneFraud}} or {{supportEmail}}.\n\n{{bankName}}",
+    "kycNotifySubjectTemplate": "{{bankName}} · identity packet received ({{submissionId}})",
+    "kycNotifyInnerHtml": "<p style=\"margin:0 0 14px;color:#292524;font-size:15px;line-height:1.6\">A customer uploaded identity documents through Online Banking.</p>\n<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:16px 0;border-collapse:collapse;font-size:14px;color:#78716c\"><tr><td style=\"padding:8px 0;border-bottom:1px solid #fde68a\"><strong>Submission ID</strong></td><td style=\"padding:8px 0;border-bottom:1px solid #fde68a;text-align:right;font-family:monospace\">{{submissionId}}</td></tr><tr><td style=\"padding:8px 0;border-bottom:1px solid #fde68a\"><strong>Customer name</strong></td><td style=\"padding:8px 0;border-bottom:1px solid #fde68a;text-align:right\">{{displayName}}</td></tr><tr><td style=\"padding:8px 0\"><strong>Customer email</strong></td><td style=\"padding:8px 0;text-align:right\">{{customerEmail}}</td></tr></table>\n<p style=\"margin:18px 0 0;color:#78716c;font-size:13px;line-height:1.55\">Open the operator console → <strong>KYC verification</strong> to review.</p>",
+    "kycNotifyTextBody": "New identity packet.\n\nID: {{submissionId}}\nName: {{displayName}}\nEmail: {{customerEmail}}\n\nReview under KYC verification in the console.\n\n{{bankName}}",
+    "testSubjectTemplate": "{{bankName}} · outbound mail test",
+    "testInnerHtml": "<p style=\"margin:0 0 14px;color:#292524;font-size:15px;line-height:1.65\">{{greetingLine}}</p>\n<p style=\"margin:0;color:#78716c;font-size:14px;line-height:1.55\">This automated note confirms {{bankName}} can send Online Banking email from this environment.</p>\n<p style=\"margin:18px 0 0;color:#78716c;font-size:14px;line-height:1.55\">You requested the test—nothing else to do. If not, alert {{supportEmail}}.</p>",
+    "testTextBody": "{{greetingLine}}\n\nSMTP test from {{bankName}}.\n\nQuestions: {{supportEmail}}\n\nRole: {{displayName}}",
+    "wireTransferOtpSubjectTemplate": "{{bankName}} · approve your wire",
+    "wireTransferOtpInnerHtml": "<p style=\"margin:0 0 18px;color:#292524;font-size:15px;line-height:1.65\">{{greetingLine}}</p>\n<p style=\"margin:0 0 10px;color:#78716c;font-size:14px;line-height:1.5\">Enter this code to authorize the outgoing wire you started in Online Banking:</p>\n<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:22px 0;border-collapse:separate;border-spacing:0\"><tr><td align=\"center\" style=\"background:#fffbeb;border:2px solid #fde68a;border-radius:10px;padding:22px 20px\"><span style=\"font-family:Consolas,Menlo,Monaco,monospace;font-size:28px;font-weight:700;letter-spacing:0.42em;color:#1c1917;display:inline-block\">{{code}}</span></td></tr></table>\n<p style=\"margin:18px 0 0;color:#78716c;font-size:13px;line-height:1.55\">Expires in <strong style=\"color:#78716c\">{{expiryMinutes}}</strong> minutes. Wire wasn’t yours? Call Fraud at {{supportPhoneFraud}} or {{supportEmail}} immediately.</p>",
+    "wireTransferOtpTextBody": "{{greetingLine}}\n\nWire authorization code: {{code}}\n\nExpires in {{expiryMinutes}} minutes.\n\nNot your wire? Fraud: {{supportPhoneFraud}} · {{supportEmail}}\n\n{{bankName}}"
+  }
+}

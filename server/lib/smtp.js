@@ -42,6 +42,11 @@ export function isMailReady(cfg) {
   return true
 }
 
+function envFlag(name) {
+  const v = process.env[name]?.trim().toLowerCase()
+  return v === '1' || v === 'true' || v === 'yes'
+}
+
 export function createTransport(cfg) {
   /** @type {import('nodemailer').TransportOptions} */
   const transportOpts = {
@@ -53,19 +58,36 @@ export function createTransport(cfg) {
     greetingTimeout: 18_000,
     socketTimeout: 25_000,
   }
+
+  /** DigitalOcean / some VPS: IPv6 egress can fail while AAAA exists — force IPv4. */
+  if (envFlag('MAIL_SMTP_FORCE_IPV4')) {
+    transportOpts.family = 4
+  }
+
   /**
    * Ports 587 / 2525 use STARTTLS (implicit TLS uses 465 + secure:true).
    * requireTLS helps some hosts (e.g. Microsoft 365). Restrict to these ports so
    * dev mail sinks on arbitrary ports (1025, etc.) still work.
+   * Set MAIL_SMTP_REQUIRE_TLS=0 if your relay rejects STARTTLS negotiation.
    */
   const p = cfg.port
+  const requireTlsOff = /^0|false|no$/i.test(
+    String(process.env.MAIL_SMTP_REQUIRE_TLS ?? '').trim(),
+  )
   if (
+    !requireTlsOff &&
     !cfg.secure &&
     typeof p === 'number' &&
     (p === 587 || p === 2525)
   ) {
     transportOpts.requireTLS = true
   }
+
+  if (envFlag('MAIL_SMTP_DEBUG')) {
+    transportOpts.debug = true
+    transportOpts.logger = console
+  }
+
   if (cfg.user && cfg.pass) {
     transportOpts.auth = { user: cfg.user, pass: cfg.pass }
   }

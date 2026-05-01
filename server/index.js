@@ -3101,9 +3101,14 @@ app.post('/api/notify/test', async (req, res) => {
     await sendNotifyTestLetter({ to, displayName })
     res.json({ ok: true, message: 'Test email sent.' })
   } catch (e) {
-    const msg = e instanceof Error ? e.message : 'Send failed'
-    console.error('[notify] test send failed:', msg)
-    res.status(500).json({ ok: false, error: msg })
+    console.error('[notify] test send failed:', e)
+    res.status(500).json({
+      ok: false,
+      error: clientMessageForMailSendFailure(
+        e,
+        'Could not send test email. Check MAIL_* and provider credentials.',
+      ),
+    })
   }
 })
 
@@ -3142,9 +3147,11 @@ app.post('/api/notify/send', async (req, res) => {
     })
     res.json({ ok: true })
   } catch (e) {
-    const msg = e instanceof Error ? e.message : 'Send failed'
-    console.error('[notify] send failed:', msg)
-    res.status(500).json({ ok: false, error: msg })
+    console.error('[notify] send failed:', e)
+    res.status(500).json({
+      ok: false,
+      error: clientMessageForMailSendFailure(e, 'Could not send mail.'),
+    })
   }
 })
 

@@ -22,6 +22,17 @@ Copy from `server/.env.example` and set at minimum:
 
 Optional: `DATABASE_URL`, SMTP fields, `BANKING_LISTEN_HOST` (defaults to `0.0.0.0` in production).
 
+### SMTP on a VPS (e.g. DigitalOcean)
+
+- **Port 25 is usually blocked** for outbound mail from droplets. Do not point `MAIL_SMTP_HOST` at port 25. Use your provider’s **submission** endpoint on **587** (STARTTLS, `MAIL_SMTP_SECURE=false`) or **465** (implicit TLS, `MAIL_SMTP_SECURE=true`).
+- **Credentials:** Most relays need `MAIL_SMTP_USER` / `MAIL_SMTP_PASS` (API key or SMTP password). “Mail ready” in `/api/notify/health` only means host + from are set — a failed send usually means auth, firewall, or TLS mismatch.
+- **`MAIL_SMTP_FORCE_IPV4=1`** — If DNS returns IPv6 first but outbound IPv6 is flaky, connections can hang or fail; forcing IPv4 fixes many DigitalOcean cases (see `server/.env.example`).
+- **`MAIL_SMTP_REQUIRE_TLS=0`** — Only if your relay breaks with STARTTLS negotiation on 587 (rare).
+- **`MAIL_SHOW_SMTP_ERRORS=1`** — Temporarily on production so failed sends return a short SMTP error in JSON (admin test email / OTP paths). Turn off when fixed.
+- **`MAIL_SMTP_DEBUG=1`** — Logs SMTP conversation to the API process stdout (journal/pm2 logs).
+
+Operator UI **Email delivery** persists `server/data/smtp-settings.json` and overrides `MAIL_*` at process start and after save — ensure `server/.env` on the droplet is not fighting admin settings (restart pm2 after editing `.env`).
+
 ## 3. Same host vs split UI/API
 
 - **Same host (recommended for small deploys):** Leave `VITE_API_BASE` unset when you build. Run `npm start` with `NODE_ENV=production` — Express serves `dist/` and `/api` on one origin.

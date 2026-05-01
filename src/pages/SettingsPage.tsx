@@ -272,7 +272,7 @@ export function SettingsPage() {
           ) : null}
           {emailVerificationPending ? (
             <div
-              className="rounded-lg border border-bw-blue-200 bg-bw-sky-50/80 px-4 py-3 text-sm text-bw-navy-900"
+              className="rounded-lg border border-bw-sand-200 bg-bw-sand-100/90 px-4 py-3 text-sm text-bw-navy-900"
               role="status"
             >
               <p className="font-medium">Check your new inbox</p>

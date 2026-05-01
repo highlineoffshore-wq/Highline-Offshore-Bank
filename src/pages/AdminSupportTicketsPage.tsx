@@ -43,7 +43,7 @@ function statusPill(status: SupportTicketStatus) {
   const base =
     'inline-flex rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide'
   if (status === 'open')
-    return `${base} bg-sky-500/15 text-sky-200 ring-1 ring-sky-500/30`
+    return `${base} bg-bw-blue-500/15 text-bw-blue-700 ring-1 ring-bw-blue-500/30`
   if (status === 'pending')
     return `${base} bg-amber-500/15 text-amber-200 ring-1 ring-amber-500/30`
   return `${base} bg-slate-500/20 text-slate-300 ring-1 ring-slate-500/25`

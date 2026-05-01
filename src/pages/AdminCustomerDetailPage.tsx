@@ -185,11 +185,11 @@ export function AdminCustomerDetailPage() {
         </div>
       ) : detail ? (
         <div className="space-y-6">
-          <section className="rounded-xl border border-sky-500/35 bg-sky-950/30 p-6">
-            <h2 className="font-display text-lg font-semibold text-sky-100">
+          <section className="rounded-xl border border-bw-sand-200 bg-bw-sand-100/70 p-6">
+            <h2 className="font-display text-lg font-semibold text-bw-navy-950">
               Sign in as customer
             </h2>
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-sky-100/85">
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-bw-muted">
               Issues a real customer session for this browser (same tokens as
               password sign-in). Use only for authorized support or testing. To
               return here, sign out from Online Banking and open the operator
@@ -235,7 +235,7 @@ export function AdminCustomerDetailPage() {
                     }
                   })()
                 }}
-                className="rounded-lg bg-sky-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-45"
+                className="rounded-lg bg-bw-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-bw-blue-500 disabled:cursor-not-allowed disabled:opacity-45"
               >
                 {impersonateBusy ? 'Opening…' : 'Sign in as this customer'}
               </button>

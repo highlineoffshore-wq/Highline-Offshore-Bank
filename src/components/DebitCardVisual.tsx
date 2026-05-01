@@ -112,7 +112,7 @@ export function DebitCardVisual({
             </div>
             <div className="flex shrink-0 flex-col items-end gap-2">
               {virtualBadge ? (
-                <span className="rounded-md bg-sky-400/20 px-2 py-1 text-[9px] font-bold uppercase tracking-widest text-sky-100 ring-1 ring-sky-300/40">
+                <span className="rounded-md bg-bw-blue-500/25 px-2 py-1 text-[9px] font-bold uppercase tracking-widest text-white ring-1 ring-white/25">
                   Virtual
                 </span>
               ) : null}

@@ -50,9 +50,11 @@ function statusPill(status: ApprovalStatus) {
 function kindPill(kind: EngineKind) {
   const base =
     'inline-flex rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide'
-  if (kind === 'deposit') return `${base} bg-sky-500/15 text-sky-200`
+  if (kind === 'deposit')
+    return `${base} bg-bw-blue-500/15 text-bw-blue-700 ring-1 ring-bw-blue-500/25`
   if (kind === 'withdrawal') return `${base} bg-orange-500/15 text-orange-100`
-  if (kind === 'transfer') return `${base} bg-violet-500/15 text-violet-100`
+  if (kind === 'transfer')
+    return `${base} bg-stone-500/15 text-stone-800 ring-1 ring-stone-400/25`
   return `${base} bg-slate-600/30 text-slate-300`
 }
 
@@ -286,7 +288,7 @@ export function AdminTransactionsPage() {
           ))}
         </div>
         {view === 'live' ? (
-          <p className="rounded-lg border border-sky-500/20 bg-sky-950/20 px-3 py-2 text-xs text-sky-100/90">
+          <p className="rounded-lg border border-bw-sand-200 bg-bw-sand-100/90 px-3 py-2 text-xs text-bw-navy-900">
             <strong>Live queue</strong> lists every pending item. Date, amount, and
             engine filters below apply to <strong>History</strong> and{' '}
             <strong>All</strong> only (switching here clears those filters so wires

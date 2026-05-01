@@ -589,7 +589,7 @@ export function AdminBankSettingsPage() {
   const headerAside = draft ? (
     <span className="inline-flex items-center rounded-full border border-bw-sand-200 bg-bw-sky-100 px-3 py-1.5 text-xs font-medium text-bw-navy-900">
       <span
-        className="mr-2 h-1.5 w-1.5 shrink-0 rounded-full bg-bw-blue-500 shadow-[0_0_8px_rgba(99,102,241,0.65)]"
+        className="mr-2 h-1.5 w-1.5 shrink-0 rounded-full bg-bw-blue-500 shadow-[0_0_8px_rgba(251,191,36,0.65)]"
         aria-hidden
       />
       Save, then refresh the public site to preview

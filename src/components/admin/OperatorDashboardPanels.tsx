@@ -237,7 +237,7 @@ export function OperatorDashboardPanels({
             label="Open support tickets"
             value={v.openSupportTicketsCount.toLocaleString()}
             sub="Open + pending (not resolved) — Service → Support tickets"
-            iconWrapClass="bg-violet-500/15 text-violet-200"
+            iconWrapClass="bg-bw-blue-500/15 text-bw-blue-700"
           >
             <IconChat />
           </StatCard>

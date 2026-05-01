@@ -271,7 +271,7 @@ export function AdminCardsPage() {
                     type="button"
                     disabled={busyId === selected.userId}
                     onClick={() => void issue(selected.userId, 'virtual')}
-                    className="rounded-lg bg-sky-600 px-3 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-sky-500 disabled:opacity-50"
+                    className="rounded-lg bg-bw-blue-600 px-3 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-bw-blue-500 disabled:opacity-50"
                   >
                     Issue virtual
                   </button>

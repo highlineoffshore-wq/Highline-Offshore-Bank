@@ -60,7 +60,7 @@ function resolveOperatorLedgerBookedAt(raw: string): {
 }
 
 const inpProfile =
-  'mt-1 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2 text-sm text-slate-100 outline-none ring-bw-blue-600/40 placeholder:text-slate-600 focus:border-bw-blue-600/55 focus:ring-2'
+  'mt-1 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2 text-sm text-bw-navy-950 outline-none ring-bw-blue-600/40 placeholder:text-bw-muted focus:border-bw-blue-600/55 focus:ring-2'
 
 export function AdminCustomerDetailPage() {
   const { userId } = useParams<{ userId: string }>()
@@ -504,7 +504,7 @@ export function AdminCustomerDetailPage() {
                 value={accessReason}
                 onChange={(e) => setAccessReason(e.target.value)}
                 placeholder="e.g. We froze online sign-in pending a security review. Email support@… for help."
-                className="mt-1.5 w-full max-w-xl rounded-lg border border-amber-700/40 bg-white px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 disabled:cursor-not-allowed disabled:opacity-40"
+                className="mt-1.5 w-full max-w-xl rounded-lg border border-amber-700/40 bg-white px-3 py-2 text-sm text-bw-navy-950 placeholder:text-bw-muted focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 disabled:cursor-not-allowed disabled:opacity-40"
               />
             </div>
             <button
@@ -793,7 +793,7 @@ export function AdminCustomerDetailPage() {
                 </label>
                 <select
                   id="adm-ledger-acct"
-                  className="mt-1 w-full rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-slate-100 outline-none focus:border-bw-blue-600/50"
+                  className="mt-1 w-full rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-bw-navy-950 outline-none focus:border-bw-blue-600/50"
                   value={ledgerAccountId}
                   disabled={ledgerBusy || !detail.accounts.length}
                   onChange={(e) => setLedgerAccountId(e.target.value)}
@@ -818,7 +818,7 @@ export function AdminCustomerDetailPage() {
                   inputMode="decimal"
                   placeholder="e.g. 250 or 99.50"
                   disabled={ledgerBusy}
-                  className="mt-1 w-full rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/50"
+                  className="mt-1 w-full rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-bw-navy-950 outline-none placeholder:text-bw-muted focus:border-bw-blue-600/50"
                   value={ledgerAmount}
                   onChange={(e) => {
                     setLedgerErr('')
@@ -846,7 +846,7 @@ export function AdminCustomerDetailPage() {
                 })()}
                 step={1}
                 disabled={ledgerBusy}
-                className="mt-1 w-full max-w-md rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-slate-100 outline-none focus:border-bw-blue-600/50"
+                className="mt-1 w-full max-w-md rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-bw-navy-950 outline-none focus:border-bw-blue-600/50"
                 value={ledgerBookedAtLocal}
                 onChange={(e) => {
                   setLedgerErr('')
@@ -872,7 +872,7 @@ export function AdminCustomerDetailPage() {
                 maxLength={240}
                 disabled={ledgerBusy}
                 placeholder="Shown on customer activity"
-                className="mt-1 w-full rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/50"
+                className="mt-1 w-full rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-bw-navy-950 outline-none placeholder:text-bw-muted focus:border-bw-blue-600/50"
                 value={ledgerMemo}
                 onChange={(e) => {
                   setLedgerErr('')

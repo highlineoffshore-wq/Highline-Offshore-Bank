@@ -5,7 +5,7 @@ import type { BankConfig } from '../../types/bankConfig'
 const lbl =
   'text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500'
 const inp =
-  'mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3.5 py-2.5 text-sm text-white shadow-inner shadow-stone-900/10 outline-none transition placeholder:text-white/25 focus:border-bw-blue-600/55 focus:ring-2 focus:ring-bw-blue-600/20'
+  'mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3.5 py-2.5 text-sm text-bw-navy-950 shadow-inner shadow-stone-900/10 outline-none transition placeholder:text-bw-muted focus:border-bw-blue-600/55 focus:ring-2 focus:ring-bw-blue-600/20'
 
 function IconBanknote({ className = 'h-6 w-6' }: { className?: string }) {
   return (

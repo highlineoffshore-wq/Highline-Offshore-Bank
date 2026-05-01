@@ -47,6 +47,22 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/*
+ * Typed characters must stay legible on light fields. Some screens still carried
+ * dark-theme utilities (e.g. text-slate-100 / text-white) onto inputs — force ink.
+ */
+@layer base {
+  input:not([type='checkbox']):not([type='radio']):not([type='range']):not(
+      [type='file']
+    ):not([type='hidden']):not([type='submit']):not([type='button']):not(
+      [type='reset']
+    ):not([type='image']),
+  textarea,
+  select {
+    color: var(--color-bw-navy-950) !important;
+  }
+}
+
 #root {
   min-height: 100dvh;
 }

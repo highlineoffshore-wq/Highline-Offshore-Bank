@@ -4,26 +4,26 @@
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
 
-  --color-bw-navy-950: #061428;
-  --color-bw-navy-900: #0a2342;
-  --color-bw-navy-800: #0f3460;
-  --color-bw-blue-600: #1a5f9e;
-  --color-bw-blue-500: #2b7fd0;
-  --color-bw-sky-100: #e8f2fb;
+  --color-bw-navy-950: #1c1917;
+  --color-bw-navy-900: #292524;
+  --color-bw-navy-800: #b45309;
+  --color-bw-blue-600: #d97706;
+  --color-bw-blue-500: #fbbf24;
+  --color-bw-sky-100: #fef3c7;
 
-  --color-bw-red-800: #7a1216;
-  --color-bw-red-700: #9b1c21;
-  --color-bw-red-600: #b82228;
+  --color-bw-red-800: #991b1b;
+  --color-bw-red-700: #b91c1c;
+  --color-bw-red-600: #dc2626;
 
-  --color-bw-sand-100: #f6f3ee;
-  --color-bw-sand-200: #ebe6dd;
-  --color-bw-muted: #5c6570;
+  --color-bw-sand-100: #fffbeb;
+  --color-bw-sand-200: #fde68a;
+  --color-bw-muted: #78716c;
 
-  /* Elevation — use as shadow-bw-soft, shadow-bw-card, shadow-bw-glow */
-  --shadow-bw-soft: 0 4px 24px -6px rgb(10 35 66 / 0.08);
-  --shadow-bw-card: 0 16px 48px -20px rgb(10 35 66 / 0.14);
-  --shadow-bw-glow: 0 0 0 1px rgb(255 255 255 / 0.08) inset,
-    0 24px 64px -24px rgb(10 35 66 / 0.35);
+  /* Elevation — warm ink shadows */
+  --shadow-bw-soft: 0 4px 24px -6px rgb(28 25 23 / 0.08);
+  --shadow-bw-card: 0 16px 48px -20px rgb(28 25 23 / 0.12);
+  --shadow-bw-glow: 0 0 0 1px rgb(255 255 255 / 0.6) inset,
+    0 24px 64px -24px rgb(180 83 9 / 0.12);
 }
 
 html {

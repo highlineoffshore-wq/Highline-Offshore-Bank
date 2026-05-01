@@ -7,9 +7,9 @@ import { OperatorDashboardPanels } from '../components/admin/OperatorDashboardPa
 function LoadingSkeleton() {
   return (
     <div className="animate-pulse space-y-6">
-      <div className="h-24 rounded-xl bg-[#1c1f26]" />
-      <div className="h-72 rounded-xl bg-[#1c1f26]" />
-      <div className="h-56 rounded-xl bg-[#1c1f26]" />
+      <div className="h-24 rounded-xl bg-white" />
+      <div className="h-72 rounded-xl bg-white" />
+      <div className="h-56 rounded-xl bg-white" />
     </div>
   )
 }

@@ -97,7 +97,7 @@ export function KycUploadPage() {
       {status?.status === 'approved' ? (
         <div
           role="status"
-          className="rounded-xl border border-emerald-500/30 bg-emerald-50/90 px-5 py-4 text-sm text-emerald-950"
+          className="rounded-xl border border-bw-blue-500/30 bg-bw-sky-100/90 px-5 py-4 text-sm text-bw-navy-950"
         >
           Your latest verification is <strong>approved</strong>. You may submit
           a new package if we have asked for updated documents.

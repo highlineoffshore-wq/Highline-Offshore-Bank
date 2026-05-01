@@ -113,7 +113,7 @@ export function DebitCardPage() {
           role="status"
           className={
             actionMsg.type === 'success'
-              ? 'rounded-xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-sm text-emerald-900'
+              ? 'rounded-xl border border-bw-blue-500/20 bg-bw-sky-100 px-5 py-4 text-sm text-bw-navy-900'
               : 'rounded-xl border border-bw-red-600/30 bg-red-50 px-5 py-4 text-sm text-bw-red-800'
           }
         >
@@ -213,7 +213,7 @@ export function DebitCardPage() {
                       ? 'bg-amber-600/15 text-amber-900'
                       : debitCard.locked
                         ? 'bg-bw-red-700/10 text-bw-red-800'
-                        : 'bg-emerald-700/10 text-emerald-800'
+                        : 'bg-bw-blue-600/10 text-bw-blue-700'
                 }`}
               >
                 {debitCard.stolenBlocked

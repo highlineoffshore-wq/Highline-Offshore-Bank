@@ -28,7 +28,7 @@ function interestSummaryLines(slugs: string[], cfg: BankConfig): string[] {
       case 'business':
         return 'Small business banking'
       case 'not_sure':
-        return 'Not sure yet — we will help you choose'
+        return 'Still deciding — we will narrow it together'
       default:
         return s
     }
@@ -257,7 +257,7 @@ export function SignUpPage() {
                       className={[
                         'flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold',
                         done
-                          ? 'bg-emerald-600 text-white'
+                          ? 'bg-bw-blue-600 text-white'
                           : active
                             ? 'bg-bw-navy-900 text-white'
                             : 'bg-bw-sand-200 text-bw-muted',
@@ -280,7 +280,7 @@ export function SignUpPage() {
                       aria-hidden
                       className={[
                         'mx-1 h-px w-6 shrink-0 sm:w-10',
-                        displayStep > n ? 'bg-emerald-500' : 'bg-bw-sand-200',
+                        displayStep > n ? 'bg-bw-blue-500' : 'bg-bw-sand-200',
                       ].join(' ')}
                     />
                   ) : null}
@@ -386,12 +386,12 @@ export function SignUpPage() {
                         },
                         {
                           slug: 'business' as const,
-                          title: 'Business banking',
+                          title: 'Commercial relationship',
                           hint: 'Adds a short business profile step before ID upload',
                         },
                         {
                           slug: 'not_sure' as const,
-                          title: 'Not sure yet',
+                          title: 'Still deciding',
                           hint: 'We will help you choose after signup',
                         },
                       ] as const

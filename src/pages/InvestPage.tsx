@@ -128,7 +128,7 @@ export function InvestPage() {
           </p>
           <p
             className={`mt-2 text-sm font-semibold tabular-nums ${
-              dayChange >= 0 ? 'text-emerald-700' : 'text-bw-red-700'
+              dayChange >= 0 ? 'text-bw-blue-600' : 'text-bw-red-700'
             }`}
           >
             {dayChange >= 0 ? '+' : ''}
@@ -141,7 +141,7 @@ export function InvestPage() {
           <p className="text-xs font-semibold uppercase tracking-wide text-bw-muted">
             YTD return
           </p>
-          <p className="mt-1 font-display text-3xl font-semibold tabular-nums text-emerald-700">
+          <p className="mt-1 font-display text-3xl font-semibold tabular-nums text-bw-blue-600">
             +6.2%
           </p>
           <p className="mt-2 text-xs text-bw-muted">
@@ -227,7 +227,7 @@ export function InvestPage() {
                         <td
                           className={`px-5 py-3 text-right font-semibold tabular-nums ${
                             h.dayChangeCents > 0
-                              ? 'text-emerald-700'
+                              ? 'text-bw-blue-600'
                               : h.dayChangeCents < 0
                                 ? 'text-bw-red-700'
                                 : 'text-bw-muted'

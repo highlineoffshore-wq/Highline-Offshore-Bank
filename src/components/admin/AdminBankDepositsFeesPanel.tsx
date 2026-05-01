@@ -5,7 +5,7 @@ import type { BankConfig } from '../../types/bankConfig'
 const lbl =
   'text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500'
 const inp =
-  'mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3.5 py-2.5 text-sm text-white shadow-inner shadow-black/20 outline-none transition placeholder:text-white/25 focus:border-[#3b82f6]/55 focus:ring-2 focus:ring-[#3b82f6]/20'
+  'mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3.5 py-2.5 text-sm text-white shadow-inner shadow-stone-900/10 outline-none transition placeholder:text-white/25 focus:border-bw-blue-600/55 focus:ring-2 focus:ring-bw-blue-600/20'
 
 function IconBanknote({ className = 'h-6 w-6' }: { className?: string }) {
   return (
@@ -36,9 +36,9 @@ function AdminFieldGroup({
   children: ReactNode
 }) {
   return (
-    <div className="rounded-xl border border-[#2a2f3a] bg-[#161a20] p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)]">
-      <div className="border-b border-[#2a2f3a] pb-3">
-        <h3 className="text-sm font-semibold text-white">{title}</h3>
+    <div className="rounded-xl border border-bw-sand-200 bg-white p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)]">
+      <div className="border-b border-bw-sand-200 pb-3">
+        <h3 className="text-sm font-semibold text-bw-navy-950">{title}</h3>
         {hint ? (
           <p className="mt-1 text-xs leading-relaxed text-slate-500">{hint}</p>
         ) : null}
@@ -66,20 +66,20 @@ function AdminSection({
   return (
     <section
       id={id}
-      className="scroll-mt-44 rounded-xl border border-[#2a2f3a] bg-[#1c1f26] shadow-lg shadow-black/25 sm:scroll-mt-40 lg:scroll-mt-28"
+      className="scroll-mt-44 rounded-xl border border-bw-sand-200 bg-white shadow-lg shadow-black/25 sm:scroll-mt-40 lg:scroll-mt-28"
     >
-      <div className="flex flex-col gap-4 border-b border-[#2a2f3a] px-6 py-6 sm:flex-row sm:items-start sm:gap-5 md:px-8">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#3b82f6]/15 text-[#60a5fa] ring-1 ring-[#3b82f6]/25">
+      <div className="flex flex-col gap-4 border-b border-bw-sand-200 px-6 py-6 sm:flex-row sm:items-start sm:gap-5 md:px-8">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-bw-blue-600/15 text-bw-blue-500 ring-1 ring-bw-blue-600/25">
           {icon}
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2.5 gap-y-1">
             {step ? (
-              <span className="rounded-md border border-[#3b82f6]/30 bg-[#3b82f6]/10 px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums tracking-tight text-[#93c5fd]">
+              <span className="rounded-md border border-bw-blue-600/30 bg-bw-blue-600/10 px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums tracking-tight text-bw-blue-500">
                 {step}
               </span>
             ) : null}
-            <h2 className="font-display text-xl font-semibold tracking-tight text-white md:text-[1.35rem]">
+            <h2 className="font-display text-xl font-semibold tracking-tight text-bw-navy-950 md:text-[1.35rem]">
               {title}
             </h2>
           </div>
@@ -115,10 +115,10 @@ export function AdminBankDepositsFeesPanel({
           title="Incoming money control"
           hint="Mobile check deposits always create an approval record. When manual approval is off, the demo server credits the account immediately after a successful submit."
         >
-          <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-[#2a2f3a] bg-[#121417]/60 px-4 py-3">
+          <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-bw-sand-200 bg-white/80 px-4 py-3">
             <input
               type="checkbox"
-              className="mt-1 h-4 w-4 shrink-0 rounded border-[#2a2f3a] bg-[#121417] text-[#3b82f6] focus:ring-[#3b82f6]/40"
+              className="mt-1 h-4 w-4 shrink-0 rounded border-bw-sand-200 bg-bw-sand-100 text-bw-blue-600 focus:ring-bw-blue-600/40"
               checked={draft.depositsAndFees.manualDepositApprovalRequired}
               onChange={(e) =>
                 setDraft({
@@ -131,7 +131,7 @@ export function AdminBankDepositsFeesPanel({
               }
             />
             <span>
-              <span className="block text-sm font-semibold text-white">
+              <span className="block text-sm font-semibold text-bw-navy-950">
                 Require manual operator approval for incoming deposits
               </span>
               <span className="mt-1 block text-xs leading-relaxed text-slate-500">
@@ -139,7 +139,7 @@ export function AdminBankDepositsFeesPanel({
                 approves them in{' '}
                 <Link
                   to="/admin/transactions"
-                  className="font-semibold text-[#93c5fd] hover:underline"
+                  className="font-semibold text-bw-blue-500 hover:underline"
                 >
                   Transactions
                 </Link>
@@ -171,12 +171,12 @@ export function AdminBankDepositsFeesPanel({
             ).map(([key, titleText, sub]) => (
               <label
                 key={key}
-                className="flex cursor-pointer flex-col gap-2 rounded-lg border border-[#2a2f3a] bg-[#121417]/60 px-4 py-3"
+                className="flex cursor-pointer flex-col gap-2 rounded-lg border border-bw-sand-200 bg-white/80 px-4 py-3"
               >
                 <span className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    className="h-4 w-4 rounded border-[#2a2f3a] bg-[#121417] text-[#3b82f6] focus:ring-[#3b82f6]/40"
+                    className="h-4 w-4 rounded border-bw-sand-200 bg-bw-sand-100 text-bw-blue-600 focus:ring-bw-blue-600/40"
                     checked={draft.depositsAndFees.depositMethods[key]}
                     onChange={(e) =>
                       setDraft({
@@ -191,7 +191,7 @@ export function AdminBankDepositsFeesPanel({
                       })
                     }
                   />
-                  <span className="text-sm font-semibold text-white">
+                  <span className="text-sm font-semibold text-bw-navy-950">
                     {titleText}
                   </span>
                 </span>
@@ -225,8 +225,8 @@ export function AdminBankDepositsFeesPanel({
                     className={[
                       'rounded-lg px-4 py-2 text-xs font-bold uppercase tracking-wide transition',
                       draft.depositsAndFees.transactionFeesMode === mode
-                        ? 'bg-[#3b82f6] text-white shadow-sm'
-                        : 'border border-[#2a2f3a] bg-[#121417] text-slate-400 hover:border-[#3b82f6]/40 hover:text-slate-200',
+                        ? 'bg-bw-blue-600 text-white shadow-sm'
+                        : 'border border-bw-sand-200 bg-bw-sand-100 text-slate-400 hover:border-bw-blue-600/40 hover:text-slate-200',
                     ].join(' ')}
                   >
                     {mode === 'auto' ? 'Auto (schedule)' : 'Manual'}
@@ -258,8 +258,8 @@ export function AdminBankDepositsFeesPanel({
                     className={[
                       'rounded-lg px-4 py-2 text-xs font-bold uppercase tracking-wide transition',
                       draft.depositsAndFees.maintenanceFeesMode === mode
-                        ? 'bg-[#3b82f6] text-white shadow-sm'
-                        : 'border border-[#2a2f3a] bg-[#121417] text-slate-400 hover:border-[#3b82f6]/40 hover:text-slate-200',
+                        ? 'bg-bw-blue-600 text-white shadow-sm'
+                        : 'border border-bw-sand-200 bg-bw-sand-100 text-slate-400 hover:border-bw-blue-600/40 hover:text-slate-200',
                     ].join(' ')}
                   >
                     {mode === 'auto' ? 'Auto (schedule)' : 'Manual'}

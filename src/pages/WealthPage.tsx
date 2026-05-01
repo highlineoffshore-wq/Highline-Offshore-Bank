@@ -19,10 +19,10 @@ export function WealthPage() {
   return (
     <>
       <SegmentHero
-        eyebrow="Wealth"
-        headline="Grow, protect, and pass it on—with a plan that fits."
-        subtext={`Wealth is not a single product—it is coordination: investments, tax-aware planning, credit for opportunities, trust administration, and conversations your family actually understands. ${cfg.bankNameShort} Wealth brings advisors, portfolio strategists, and private bankers onto one team with shared notes—not siloed handoffs.`}
-        gradientClass="from-[#0a1628] via-bw-navy-900 to-[#1a3d52]"
+        eyebrow="Balance-sheet life"
+        headline="Compound, shelter, and hand it forward—deliberately."
+        subtext={`“Wealth” is less a SKU than choreography: market exposure, tax-framed planning, opportunistic credit, trust execution, and family dialogues people follow. ${cfg.bankNameShort} Wealth lines up advisors, strategists, and private bankers on one play sheet—no musical-chair handoffs.`}
+        gradientClass="from-bw-navy-950 via-bw-navy-900 to-bw-blue-600"
         stats={[
           { value: '$1M+', label: 'Typical private tier threshold' },
           { value: 'CFP®', label: '& CFA® charterholders on model teams' },
@@ -35,24 +35,24 @@ export function WealthPage() {
             className="font-medium text-white underline-offset-4 hover:underline"
             to="/"
           >
-            ← Back to home
+            ← Return home
           </Link>
         </p>
       </SegmentHero>
 
       <SegmentProseBand
-        title="A single plan—not a stack of statements"
+        title="One narrative across siloed statements"
         paragraphs={[
-          `Most clients arrive with accounts scattered across institutions: an old 401(k), a brokerage from a bonus year, rental real estate, and ${cfg.products.savingsName.toLowerCase()} at ${cfg.bankNameShort}. The first job is clarity: what you own, where risk is concentrated, and whether your cash buffer matches your spending and tax obligations.`,
-          `From there we align portfolios to goals with different time horizons—education in eight years, retirement in twenty, philanthropy ongoing. ${cfg.investBrandName} provides model portfolios and tax-loss harvesting discipline where appropriate; your advisor explains trade-offs in dollars and scenarios, not just pie charts.`,
-          'Trust and estate partners help titling, beneficiary designations, and distribution language match your intent. When life changes—sale of a business, divorce settlement, inheritance—we revisit the whole picture, not just the account that moved.',
+          `Most families land with assets flung about: a vestigial 401(k), a brokerage opened the year the bonus hit, rent-bearing real estate, and ${cfg.products.savingsName.toLowerCase()} parked at ${cfg.bankNameShort}. First we draw the map—what you own, where risk piles, and whether cash buffers cover spend plus tax reality.`,
+          `Next we map capital to horizon—tuition in eight years, financial independence in two decades, giving that never really stops. ${cfg.investBrandName} supplies model architecture and tax-aware trading habits; your lead talks trade-offs in cash flows and stress tests, not just pie pieces.`,
+          'Trust + estate partners align titling, beneficiary language, and distribution cadence with intent. Business sales, separations, windfalls? We refresh the whole canvas, not the one account that moved.',
         ]}
-        footnote="Investments involve risk, including loss of principal. Advisory and brokerage services are offered through agreements that describe fees, conflicts, and regulatory standards. Not all products are suitable for all investors."
+        footnote="Markets involve risk, including loss of principal. Advisory and brokerage relationships run through agreements that spell out costs, conflicts, and regulations. Not every vehicle suits every client."
       />
 
       <SegmentFeatureGrid
-        heading={`${cfg.investBrandName} and the broader wealth platform`}
-        intro="From first taxable brokerage account to concentrated stock strategies, we scale sophistication with documentation—not jargon."
+        heading={`${cfg.investBrandName} on the larger wealth stage`}
+        intro="From a starter brokerage account to a single-stock overhang, we add sophistication with paperwork you can read—not buzzwords to duck."
         features={[
           {
             title: 'Guided & strategic investing',
@@ -305,17 +305,19 @@ export function WealthPage() {
           {
             label: 'Personal',
             to: '/personal',
-            description: 'Core banking when wealth starts with steady savings and smart borrowing.',
+            description:
+              'Day-to-day banking before the balance sheet gets orchestral.',
           },
           {
             label: 'Small business',
             to: '/small-business',
-            description: 'Protect and extract value from the business you built.',
+            description:
+              'Harvest enterprise value without starving operating fuel.',
           },
           {
             label: 'Home',
             to: '/',
-            description: `Overview of everything ${cfg.bankNameShort} offers.`,
+            description: `Where ${cfg.bankNameShort} introduces every storyline.`,
           },
         ]}
       />

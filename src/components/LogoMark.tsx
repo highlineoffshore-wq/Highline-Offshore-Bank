@@ -28,7 +28,7 @@ export function LogoMark({
     )
   }
 
-  const fill = variant === 'light' ? '#E8DCC8' : '#0a2342'
+  const fill = variant === 'light' ? '#fffbeb' : '#b45309'
   return (
     <svg
       className={className}
@@ -40,7 +40,7 @@ export function LogoMark({
         width="40"
         height="40"
         rx="8"
-        fill={variant === 'light' ? '#0a2342' : '#e8f2fb'}
+        fill={variant === 'light' ? '#d97706' : '#fffbeb'}
       />
       <path
         fill={fill}

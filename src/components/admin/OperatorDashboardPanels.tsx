@@ -3,7 +3,7 @@ import { formatCurrency } from '../../lib/money'
 import type { AdminOverview } from '../../lib/adminApi'
 
 const card =
-  'rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-5 shadow-sm transition hover:border-[#3b82f6]/25'
+  'rounded-xl border border-bw-sand-200 bg-white p-5 shadow-sm transition hover:border-bw-blue-600/25'
 
 function fmtWhen(iso: string) {
   try {
@@ -38,7 +38,7 @@ function StatCard({
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
             {label}
           </p>
-          <p className="mt-2 font-display text-2xl font-semibold tabular-nums tracking-tight text-white">
+          <p className="mt-2 font-display text-2xl font-semibold tabular-nums tracking-tight text-bw-navy-950">
             {value}
           </p>
           {sub ? (
@@ -220,7 +220,7 @@ export function OperatorDashboardPanels({
           label="Total users"
           value={v.customerCount.toLocaleString()}
           sub="Registered online banking profiles"
-          iconWrapClass="bg-[#3b82f6]/15 text-[#60a5fa]"
+          iconWrapClass="bg-bw-blue-600/15 text-bw-blue-500"
         >
           <IconUsers />
         </StatCard>
@@ -265,7 +265,7 @@ export function OperatorDashboardPanels({
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
             Total balance
           </p>
-          <p className="mt-3 font-display text-3xl font-semibold tabular-nums text-white">
+          <p className="mt-3 font-display text-3xl font-semibold tabular-nums text-bw-navy-950">
             {formatCurrency(v.totalBalanceCents)}
           </p>
           <p className="mt-2 text-xs text-slate-500">
@@ -276,7 +276,7 @@ export function OperatorDashboardPanels({
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
             Operator net (audit)
           </p>
-          <p className="mt-3 font-display text-3xl font-semibold tabular-nums text-white">
+          <p className="mt-3 font-display text-3xl font-semibold tabular-nums text-bw-navy-950">
             {formatCurrency(v.adminNetOperatorCents)}
           </p>
           <p className="mt-2 text-xs text-slate-500">
@@ -287,12 +287,12 @@ export function OperatorDashboardPanels({
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
             Approvals pending
           </p>
-          <p className="mt-3 font-display text-3xl font-semibold tabular-nums text-white">
+          <p className="mt-3 font-display text-3xl font-semibold tabular-nums text-bw-navy-950">
             {v.approvalsPending.toLocaleString()}
           </p>
           <Link
             to="/admin/transactions"
-            className="mt-4 inline-flex items-center justify-center rounded-lg bg-[#3b82f6] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#2563eb]"
+            className="mt-4 inline-flex items-center justify-center rounded-lg bg-bw-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-bw-navy-800"
           >
             Review queue
           </Link>
@@ -302,13 +302,13 @@ export function OperatorDashboardPanels({
       <div className="grid min-w-0 grid-cols-1 gap-6 xl:grid-cols-3 xl:items-start">
         <div className="min-w-0 space-y-6 xl:col-span-2">
           <div className={card}>
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#2a2f3a] pb-4">
-              <h2 className="text-sm font-semibold text-white">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-bw-sand-200 pb-4">
+              <h2 className="text-sm font-semibold text-bw-navy-950">
                 Recent approved activity
               </h2>
               <Link
                 to="/admin/transactions"
-                className="text-xs font-semibold text-[#60a5fa] hover:underline"
+                className="text-xs font-semibold text-bw-blue-500 hover:underline"
               >
                 View all
               </Link>
@@ -316,13 +316,13 @@ export function OperatorDashboardPanels({
             <div className="mt-4 w-full min-w-0 overflow-x-auto">
               <table className="min-w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-[#2a2f3a] text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                  <tr className="border-b border-bw-sand-200 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
                     <th className="pb-2 pr-4 font-medium">When</th>
                     <th className="pb-2 pr-4 font-medium">Type</th>
                     <th className="pb-2 font-medium">Summary</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#2a2f3a]">
+                <tbody className="divide-y divide-bw-sand-200">
                   {v.recentApprovedApprovals.length === 0 ? (
                     <tr>
                       <td
@@ -353,7 +353,7 @@ export function OperatorDashboardPanels({
           </div>
 
           <div className={card}>
-            <h2 className="border-b border-[#2a2f3a] pb-4 text-sm font-semibold text-white">
+            <h2 className="border-b border-bw-sand-200 pb-4 text-sm font-semibold text-bw-navy-950">
               Admin notifications
             </h2>
             <ul className="mt-4 space-y-3">
@@ -363,7 +363,7 @@ export function OperatorDashboardPanels({
                 v.recentActivity.map((e, i) => (
                   <li
                     key={`${e.ts}-${i}`}
-                    className="rounded-lg border border-[#2a2f3a]/80 bg-[#121417]/80 px-3 py-2.5 text-sm text-slate-300"
+                    className="rounded-lg border border-bw-sand-200/80 bg-white/90 px-3 py-2.5 text-sm text-slate-300"
                   >
                     <span className="text-xs text-slate-500">{fmtWhen(e.ts)}</span>
                     <span className="mt-1 block font-medium text-slate-200">
@@ -383,7 +383,7 @@ export function OperatorDashboardPanels({
 
         <div className="min-w-0 space-y-6">
           <div className={card}>
-            <h2 className="border-b border-[#2a2f3a] pb-4 text-sm font-semibold text-white">
+            <h2 className="border-b border-bw-sand-200 pb-4 text-sm font-semibold text-bw-navy-950">
               User statistics
             </h2>
             <div className="mt-4 grid min-w-0 grid-cols-2 gap-3">
@@ -397,12 +397,12 @@ export function OperatorDashboardPanels({
               ).map(([k, val]) => (
                 <div
                   key={k}
-                  className="min-w-0 rounded-lg border border-[#2a2f3a] bg-[#121417]/60 px-3 py-3"
+                  className="min-w-0 rounded-lg border border-bw-sand-200 bg-white/80 px-3 py-3"
                 >
                   <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">
                     {k}
                   </p>
-                  <p className="mt-1 font-display text-xl font-semibold tabular-nums text-white">
+                  <p className="mt-1 font-display text-xl font-semibold tabular-nums text-bw-navy-950">
                     {val}
                   </p>
                 </div>
@@ -411,13 +411,13 @@ export function OperatorDashboardPanels({
           </div>
 
           <div className={card}>
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#2a2f3a] pb-4">
-              <h2 className="text-sm font-semibold text-white">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-bw-sand-200 pb-4">
+              <h2 className="text-sm font-semibold text-bw-navy-950">
                 Pending requests
               </h2>
               <Link
                 to="/admin/transactions"
-                className="rounded-lg bg-[#3b82f6] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#2563eb]"
+                className="rounded-lg bg-bw-blue-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-bw-navy-800"
               >
                 Manage
               </Link>
@@ -425,12 +425,12 @@ export function OperatorDashboardPanels({
             <div className="mt-4 w-full min-w-0 overflow-x-auto">
               <table className="min-w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-[#2a2f3a] text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                  <tr className="border-b border-bw-sand-200 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
                     <th className="pb-2 pr-3 font-medium">Request</th>
                     <th className="pb-2 font-medium">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#2a2f3a]">
+                <tbody className="divide-y divide-bw-sand-200">
                   {v.pendingApprovalsPreview.length === 0 ? (
                     <tr>
                       <td
@@ -461,8 +461,8 @@ export function OperatorDashboardPanels({
           </div>
 
           <div className={card}>
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#2a2f3a] pb-4">
-              <h2 className="text-sm font-semibold text-white">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-bw-sand-200 pb-4">
+              <h2 className="text-sm font-semibold text-bw-navy-950">
                 Ledger balances
               </h2>
               <span className="text-[10px] text-slate-500">Top by balance</span>
@@ -470,12 +470,12 @@ export function OperatorDashboardPanels({
             <div className="mt-4 w-full min-w-0 overflow-x-auto">
               <table className="min-w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-[#2a2f3a] text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                  <tr className="border-b border-bw-sand-200 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
                     <th className="pb-2 pr-3 font-medium">User</th>
                     <th className="pb-2 font-medium text-right">Balance</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#2a2f3a]">
+                <tbody className="divide-y divide-bw-sand-200">
                   {v.topCustomersByBalance.length === 0 ? (
                     <tr>
                       <td
@@ -491,7 +491,7 @@ export function OperatorDashboardPanels({
                         <td className="py-3 pr-3 align-top">
                           <Link
                             to={`/admin/users/${encodeURIComponent(row.id)}`}
-                            className="font-medium text-[#93c5fd] hover:underline"
+                            className="font-medium text-bw-blue-500 hover:underline"
                           >
                             {row.displayName}
                           </Link>
@@ -504,7 +504,7 @@ export function OperatorDashboardPanels({
                             </p>
                           ) : null}
                         </td>
-                        <td className="py-3 text-right font-semibold tabular-nums text-white">
+                        <td className="py-3 text-right font-semibold tabular-nums text-bw-navy-950">
                           {formatCurrency(row.totalBalanceCents)}
                         </td>
                       </tr>

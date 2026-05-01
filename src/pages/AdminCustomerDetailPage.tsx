@@ -31,7 +31,7 @@ function formatWhen(iso: string) {
 
 function approvalStatusClass(s: ApprovalItem['status']) {
   if (s === 'pending') return 'text-amber-200'
-  if (s === 'approved') return 'text-emerald-200'
+  if (s === 'approved') return 'text-bw-sky-100'
   return 'text-red-200'
 }
 
@@ -60,7 +60,7 @@ function resolveOperatorLedgerBookedAt(raw: string): {
 }
 
 const inpProfile =
-  'mt-1 w-full rounded-lg border border-[#2a2f3a] bg-[#151820] px-3 py-2 text-sm text-slate-100 outline-none ring-[#3b82f6]/40 placeholder:text-slate-600 focus:border-[#3b82f6]/55 focus:ring-2'
+  'mt-1 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2 text-sm text-slate-100 outline-none ring-bw-blue-600/40 placeholder:text-slate-600 focus:border-bw-blue-600/55 focus:ring-2'
 
 export function AdminCustomerDetailPage() {
   const { userId } = useParams<{ userId: string }>()
@@ -159,7 +159,7 @@ export function AdminCustomerDetailPage() {
       headerAside={
         <Link
           to="/admin/users"
-          className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-[#3b82f6]/40 hover:text-white"
+          className="rounded-lg border border-bw-sand-200 bg-white px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-bw-blue-600/40 hover:text-bw-navy-950"
         >
           ← All users
         </Link>
@@ -167,8 +167,8 @@ export function AdminCustomerDetailPage() {
     >
       {loading ? (
         <div className="animate-pulse space-y-4">
-          <div className="h-24 rounded-xl bg-[#1c1f26]" />
-          <div className="h-48 rounded-xl bg-[#1c1f26]" />
+          <div className="h-24 rounded-xl bg-white" />
+          <div className="h-48 rounded-xl bg-white" />
         </div>
       ) : loadErr ? (
         <div className="max-w-xl rounded-2xl border border-red-500/25 bg-red-950/30 p-6">
@@ -247,8 +247,8 @@ export function AdminCustomerDetailPage() {
             </div>
           </section>
 
-          <section className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-6">
-            <h2 className="font-display text-lg font-semibold text-white">
+          <section className="rounded-xl border border-bw-sand-200 bg-white p-6">
+            <h2 className="font-display text-lg font-semibold text-bw-navy-950">
               Profile &amp; sign-in
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-400">
@@ -267,7 +267,7 @@ export function AdminCustomerDetailPage() {
             {profileOk ? (
               <p
                 role="status"
-                className="mt-4 rounded-lg border border-emerald-500/25 bg-emerald-950/30 px-4 py-3 text-sm text-emerald-100"
+                className="mt-4 rounded-lg border border-bw-blue-500/25 bg-bw-navy-900/40 px-4 py-3 text-sm text-bw-sky-100"
               >
                 {profileOk}
               </p>
@@ -357,12 +357,12 @@ export function AdminCustomerDetailPage() {
               <label className="flex cursor-pointer gap-3 text-sm text-slate-200">
                 <input
                   type="checkbox"
-                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-500 bg-[#151820] text-[#3b82f6] focus:ring-[#3b82f6]/50"
+                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-500 bg-bw-sand-100 text-bw-blue-600 focus:ring-bw-blue-600/50"
                   checked={editEmailOtp}
                   onChange={(e) => setEditEmailOtp(e.target.checked)}
                 />
                 <span className="min-w-0">
-                  <span className="block font-medium text-white">
+                  <span className="block font-medium text-bw-navy-950">
                     Email sign-in verification (OTP)
                   </span>
                   <span className="mt-1 block text-xs text-slate-500">
@@ -371,7 +371,7 @@ export function AdminCustomerDetailPage() {
                   </span>
                 </span>
               </label>
-              <div className="rounded-lg border border-[#2a2f3a] bg-[#151820]/80 p-4">
+              <div className="rounded-lg border border-bw-sand-200 bg-bw-sand-100/80 p-4">
                 <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
                   Optional — reset password
                 </p>
@@ -417,12 +417,12 @@ export function AdminCustomerDetailPage() {
               <button
                 type="submit"
                 disabled={profileBusy}
-                className="rounded-lg bg-[#3b82f6] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#2563eb] disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-lg bg-bw-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-bw-navy-800 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {profileBusy ? 'Saving…' : 'Save profile'}
               </button>
             </form>
-            <dl className="mt-8 grid gap-3 border-t border-[#2a2f3a] pt-6 text-sm sm:grid-cols-2">
+            <dl className="mt-8 grid gap-3 border-t border-bw-sand-200 pt-6 text-sm sm:grid-cols-2">
               <div>
                 <dt className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
                   Created
@@ -464,17 +464,17 @@ export function AdminCustomerDetailPage() {
             {accessOk ? (
               <p
                 role="status"
-                className="mt-4 rounded-lg border border-emerald-500/25 bg-emerald-950/30 px-4 py-3 text-sm text-emerald-100"
+                className="mt-4 rounded-lg border border-bw-blue-500/25 bg-bw-navy-900/40 px-4 py-3 text-sm text-bw-sky-100"
               >
                 {accessOk}
               </p>
             ) : null}
 
-            <div className="mt-6 rounded-lg border border-amber-700/35 bg-[#151820]/90 p-4">
+            <div className="mt-6 rounded-lg border border-amber-700/35 bg-bw-sand-100/90 p-4">
               <label className="flex cursor-pointer gap-3 text-sm text-amber-50">
                 <input
                   type="checkbox"
-                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-amber-400/50 bg-[#1c1f26] text-amber-500 focus:ring-amber-400"
+                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-amber-400/50 bg-white text-amber-500 focus:ring-amber-400"
                   checked={accessRestricted}
                   onChange={(e) => setAccessRestricted(e.target.checked)}
                 />
@@ -504,7 +504,7 @@ export function AdminCustomerDetailPage() {
                 value={accessReason}
                 onChange={(e) => setAccessReason(e.target.value)}
                 placeholder="e.g. We froze online sign-in pending a security review. Email support@… for help."
-                className="mt-1.5 w-full max-w-xl rounded-lg border border-amber-700/40 bg-[#1c1f26] px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 disabled:cursor-not-allowed disabled:opacity-40"
+                className="mt-1.5 w-full max-w-xl rounded-lg border border-amber-700/40 bg-white px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 disabled:cursor-not-allowed disabled:opacity-40"
               />
             </div>
             <button
@@ -589,8 +589,8 @@ export function AdminCustomerDetailPage() {
             </button>
           </section>
 
-          <section className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-6">
-            <h2 className="font-display text-lg font-semibold text-white">
+          <section className="rounded-xl border border-bw-sand-200 bg-white p-6">
+            <h2 className="font-display text-lg font-semibold text-bw-navy-950">
               Enrollment & onboarding
             </h2>
             <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
@@ -635,13 +635,13 @@ export function AdminCustomerDetailPage() {
             </dl>
           </section>
 
-          <section className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-6">
-            <h2 className="font-display text-lg font-semibold text-white">
+          <section className="rounded-xl border border-bw-sand-200 bg-white p-6">
+            <h2 className="font-display text-lg font-semibold text-bw-navy-950">
               Balances & products
             </h2>
             <p className="mt-1 text-sm text-slate-500">
               Total across accounts:{' '}
-              <span className="font-semibold text-white tabular-nums">
+              <span className="font-semibold text-bw-navy-950 tabular-nums">
                 {formatCurrency(detail.totalBalanceCents)}
               </span>
             </p>
@@ -713,24 +713,24 @@ export function AdminCustomerDetailPage() {
             </dl>
           </section>
 
-          <section className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-6">
-            <h2 className="font-display text-lg font-semibold text-white">
+          <section className="rounded-xl border border-bw-sand-200 bg-white p-6">
+            <h2 className="font-display text-lg font-semibold text-bw-navy-950">
               Accounts
             </h2>
             <div className="mt-4 overflow-x-auto">
               <table className="min-w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-[#2a2f3a] text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                  <tr className="border-b border-bw-sand-200 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
                     <th className="pb-2 pr-4">Name</th>
                     <th className="pb-2 pr-4">Type</th>
                     <th className="pb-2 pr-4">Mask</th>
                     <th className="pb-2 text-right">Balance</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#2a2f3a]">
+                <tbody className="divide-y divide-bw-sand-200">
                   {detail.accounts.map((a) => (
                     <tr key={a.id} className="text-slate-300">
-                      <td className="py-2.5 pr-4 font-medium text-white">
+                      <td className="py-2.5 pr-4 font-medium text-bw-navy-950">
                         {a.name}
                       </td>
                       <td className="py-2.5 pr-4">{a.type}</td>
@@ -745,8 +745,8 @@ export function AdminCustomerDetailPage() {
             </div>
           </section>
 
-          <section className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-6">
-            <h2 className="font-display text-lg font-semibold text-white">
+          <section className="rounded-xl border border-bw-sand-200 bg-white p-6">
+            <h2 className="font-display text-lg font-semibold text-bw-navy-950">
               Operator ledger
             </h2>
             <p className="mt-1 text-sm text-slate-500">
@@ -760,7 +760,7 @@ export function AdminCustomerDetailPage() {
               credits and debits also appear under{' '}
               <Link
                 to="/admin/transactions?view=history"
-                className="font-semibold text-[#93c5fd] hover:underline"
+                className="font-semibold text-bw-blue-500 hover:underline"
               >
                 Transactions
               </Link>{' '}
@@ -777,7 +777,7 @@ export function AdminCustomerDetailPage() {
             ) : null}
             {ledgerOk ? (
               <p
-                className="mt-3 rounded-lg border border-emerald-500/25 bg-emerald-950/30 px-3 py-2 text-sm text-emerald-100"
+                className="mt-3 rounded-lg border border-bw-blue-500/25 bg-bw-navy-900/40 px-3 py-2 text-sm text-bw-sky-100"
                 role="status"
               >
                 {ledgerOk}
@@ -793,7 +793,7 @@ export function AdminCustomerDetailPage() {
                 </label>
                 <select
                   id="adm-ledger-acct"
-                  className="mt-1 w-full rounded-lg border border-[#2a2f3a] bg-[#111318] px-3 py-2.5 text-sm text-slate-100 outline-none focus:border-[#3b82f6]/50"
+                  className="mt-1 w-full rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-slate-100 outline-none focus:border-bw-blue-600/50"
                   value={ledgerAccountId}
                   disabled={ledgerBusy || !detail.accounts.length}
                   onChange={(e) => setLedgerAccountId(e.target.value)}
@@ -818,7 +818,7 @@ export function AdminCustomerDetailPage() {
                   inputMode="decimal"
                   placeholder="e.g. 250 or 99.50"
                   disabled={ledgerBusy}
-                  className="mt-1 w-full rounded-lg border border-[#2a2f3a] bg-[#111318] px-3 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-[#3b82f6]/50"
+                  className="mt-1 w-full rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/50"
                   value={ledgerAmount}
                   onChange={(e) => {
                     setLedgerErr('')
@@ -846,7 +846,7 @@ export function AdminCustomerDetailPage() {
                 })()}
                 step={1}
                 disabled={ledgerBusy}
-                className="mt-1 w-full max-w-md rounded-lg border border-[#2a2f3a] bg-[#111318] px-3 py-2.5 text-sm text-slate-100 outline-none focus:border-[#3b82f6]/50"
+                className="mt-1 w-full max-w-md rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-slate-100 outline-none focus:border-bw-blue-600/50"
                 value={ledgerBookedAtLocal}
                 onChange={(e) => {
                   setLedgerErr('')
@@ -872,7 +872,7 @@ export function AdminCustomerDetailPage() {
                 maxLength={240}
                 disabled={ledgerBusy}
                 placeholder="Shown on customer activity"
-                className="mt-1 w-full rounded-lg border border-[#2a2f3a] bg-[#111318] px-3 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-[#3b82f6]/50"
+                className="mt-1 w-full rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-slate-100 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/50"
                 value={ledgerMemo}
                 onChange={(e) => {
                   setLedgerErr('')
@@ -931,7 +931,7 @@ export function AdminCustomerDetailPage() {
                     }
                   })()
                 }}
-                className="rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-600 disabled:opacity-50"
+                className="rounded-lg bg-bw-blue-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-bw-blue-600 disabled:opacity-50"
               >
                 {ledgerBusy ? 'Posting…' : 'Post deposit (credit)'}
               </button>
@@ -984,15 +984,15 @@ export function AdminCustomerDetailPage() {
                     }
                   })()
                 }}
-                className="rounded-lg bg-orange-800 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-700 disabled:opacity-50"
+                className="rounded-lg bg-orange-800 px-4 py-2.5 text-sm font-semibold text-bw-navy-950 transition hover:bg-orange-700 disabled:opacity-50"
               >
                 {ledgerBusy ? 'Posting…' : 'Post withdrawal (debit)'}
               </button>
             </div>
           </section>
 
-          <section className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-6">
-            <h2 className="font-display text-lg font-semibold text-white">
+          <section className="rounded-xl border border-bw-sand-200 bg-white p-6">
+            <h2 className="font-display text-lg font-semibold text-bw-navy-950">
               Recent approvals
             </h2>
             <p className="mt-1 text-sm text-slate-500">
@@ -1001,14 +1001,14 @@ export function AdminCustomerDetailPage() {
             <div className="mt-4 overflow-x-auto">
               <table className="min-w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-[#2a2f3a] text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                  <tr className="border-b border-bw-sand-200 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
                     <th className="pb-2 pr-4">When</th>
                     <th className="pb-2 pr-4">Title</th>
                     <th className="pb-2 pr-4">Type</th>
                     <th className="pb-2">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#2a2f3a]">
+                <tbody className="divide-y divide-bw-sand-200">
                   {detail.recentApprovals.length === 0 ? (
                     <tr>
                       <td
@@ -1024,7 +1024,7 @@ export function AdminCustomerDetailPage() {
                         <td className="py-2.5 pr-4 text-xs text-slate-400">
                           {formatWhen(row.createdAt)}
                         </td>
-                        <td className="max-w-[14rem] truncate py-2.5 pr-4 text-white">
+                        <td className="max-w-[14rem] truncate py-2.5 pr-4 text-bw-navy-950">
                           {row.title}
                         </td>
                         <td className="py-2.5 pr-4 font-mono text-xs text-slate-400">
@@ -1046,14 +1046,14 @@ export function AdminCustomerDetailPage() {
           <p className="text-xs text-slate-500">
             <Link
               to="/admin/transactions"
-              className="font-semibold text-[#93c5fd] hover:text-white"
+              className="font-semibold text-bw-blue-500 hover:text-bw-navy-950"
             >
               Open full transactions console
             </Link>
             <span className="mx-2 text-slate-600">·</span>
             <Link
               to="/admin/users"
-              className="font-semibold text-[#93c5fd] hover:text-white"
+              className="font-semibold text-bw-blue-500 hover:text-bw-navy-950"
             >
               Back to directory
             </Link>

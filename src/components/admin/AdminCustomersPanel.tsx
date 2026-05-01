@@ -3,10 +3,10 @@ import type { AdminCustomerRow } from '../../lib/adminApi'
 
 export function AdminCustomersPanel({ rows }: { rows: AdminCustomerRow[] }) {
   return (
-    <section className="w-full min-w-0 rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-6 shadow-sm">
-      <div className="flex flex-wrap items-end justify-between gap-3 border-b border-[#2a2f3a] pb-4">
+    <section className="w-full min-w-0 rounded-xl border border-bw-sand-200 bg-white p-6 shadow-sm">
+      <div className="flex flex-wrap items-end justify-between gap-3 border-b border-bw-sand-200 pb-4">
         <div>
-          <h2 className="font-display text-lg font-semibold text-white">
+          <h2 className="font-display text-lg font-semibold text-bw-navy-950">
             Customer directory
           </h2>
           <p className="mt-1 text-sm text-slate-500">
@@ -17,7 +17,7 @@ export function AdminCustomersPanel({ rows }: { rows: AdminCustomerRow[] }) {
       <div className="mt-4 w-full min-w-0 overflow-x-auto">
         <table className="min-w-full text-left text-sm">
           <thead>
-            <tr className="border-b border-[#2a2f3a] text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+            <tr className="border-b border-bw-sand-200 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
               <th className="pb-2 pr-4 font-medium">Name</th>
               <th className="pb-2 pr-4 font-medium">Email</th>
               <th className="pb-2 pr-4 font-medium">Internet ID</th>
@@ -27,7 +27,7 @@ export function AdminCustomersPanel({ rows }: { rows: AdminCustomerRow[] }) {
               <th className="pb-2 text-right font-medium">Profile</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#2a2f3a]">
+          <tbody className="divide-y divide-bw-sand-200">
             {rows.length === 0 ? (
               <tr>
                 <td colSpan={7} className="py-8 text-center text-slate-500">
@@ -37,7 +37,7 @@ export function AdminCustomersPanel({ rows }: { rows: AdminCustomerRow[] }) {
             ) : (
               rows.map((r) => (
                 <tr key={r.id} className="text-slate-300">
-                  <td className="min-w-0 max-w-[10rem] break-words py-3 pr-4 font-medium text-white sm:max-w-none">
+                  <td className="min-w-0 max-w-[10rem] break-words py-3 pr-4 font-medium text-bw-navy-950 sm:max-w-none">
                     {r.displayName}
                   </td>
                   <td className="min-w-0 max-w-[12rem] break-words py-3 pr-4 text-slate-400 sm:max-w-none">
@@ -71,7 +71,7 @@ export function AdminCustomersPanel({ rows }: { rows: AdminCustomerRow[] }) {
                   <td className="py-3 text-right">
                     <Link
                       to={`/admin/users/${encodeURIComponent(r.id)}`}
-                      className="text-xs font-semibold text-[#93c5fd] hover:text-white"
+                      className="text-xs font-semibold text-bw-blue-500 hover:text-bw-navy-950"
                     >
                       View
                     </Link>

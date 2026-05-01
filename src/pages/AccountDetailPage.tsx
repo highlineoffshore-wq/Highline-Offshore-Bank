@@ -267,7 +267,7 @@ export function AccountDetailPage() {
                       ? 'text-bw-muted'
                       : row.amountCents < 0
                         ? 'text-bw-red-700'
-                        : 'text-emerald-700'
+                        : 'text-bw-blue-600'
                   }`}
                 >
                   {row.amountCents === 0

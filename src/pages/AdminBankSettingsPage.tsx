@@ -57,7 +57,7 @@ const THEME_TOKEN_COUNT = THEME_KEYS.length
 const lbl =
   'text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500'
 const inp =
-  'mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3.5 py-2.5 text-sm text-white shadow-inner shadow-black/20 outline-none transition placeholder:text-white/25 focus:border-[#3b82f6]/55 focus:ring-2 focus:ring-[#3b82f6]/20'
+  'mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-white px-3.5 py-2.5 text-sm text-bw-navy-950 shadow-inner shadow-stone-900/5 outline-none transition placeholder:text-bw-muted focus:border-bw-blue-600/55 focus:ring-2 focus:ring-bw-blue-600/20'
 
 function bankMediaPreviewUrl(src: string): string {
   const s = src.trim()
@@ -197,9 +197,9 @@ function AdminFieldGroup({
   children: ReactNode
 }) {
   return (
-    <div className="rounded-xl border border-[#2a2f3a] bg-[#161a20] p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)]">
-      <div className="border-b border-[#2a2f3a] pb-3">
-        <h3 className="text-sm font-semibold text-white">{title}</h3>
+    <div className="rounded-xl border border-bw-sand-200 bg-white p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)]">
+      <div className="border-b border-bw-sand-200 pb-3">
+        <h3 className="text-sm font-semibold text-bw-navy-950">{title}</h3>
         {hint ? (
           <p className="mt-1 text-xs leading-relaxed text-slate-500">{hint}</p>
         ) : null}
@@ -227,20 +227,20 @@ function AdminSection({
   return (
     <section
       id={id}
-      className="scroll-mt-44 rounded-xl border border-[#2a2f3a] bg-[#1c1f26] shadow-lg shadow-black/25 sm:scroll-mt-40 lg:scroll-mt-28"
+      className="scroll-mt-44 rounded-xl border border-bw-sand-200 bg-white shadow-lg shadow-black/25 sm:scroll-mt-40 lg:scroll-mt-28"
     >
-      <div className="flex flex-col gap-4 border-b border-[#2a2f3a] px-6 py-6 sm:flex-row sm:items-start sm:gap-5 md:px-8">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#3b82f6]/15 text-[#60a5fa] ring-1 ring-[#3b82f6]/25">
+      <div className="flex flex-col gap-4 border-b border-bw-sand-200 px-6 py-6 sm:flex-row sm:items-start sm:gap-5 md:px-8">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-bw-blue-600/15 text-bw-blue-500 ring-1 ring-bw-blue-600/25">
           {icon}
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2.5 gap-y-1">
             {step ? (
-              <span className="rounded-md border border-[#3b82f6]/30 bg-[#3b82f6]/10 px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums tracking-tight text-[#93c5fd]">
+              <span className="rounded-md border border-bw-blue-600/30 bg-bw-blue-600/10 px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums tracking-tight text-bw-blue-500">
                 {step}
               </span>
             ) : null}
-            <h2 className="font-display text-xl font-semibold tracking-tight text-white md:text-[1.35rem]">
+            <h2 className="font-display text-xl font-semibold tracking-tight text-bw-navy-950 md:text-[1.35rem]">
               {title}
             </h2>
           </div>
@@ -306,12 +306,12 @@ function ConfigOverview({
         {kpi.map((row) => (
           <div
             key={row.label}
-            className="rounded-xl border border-[#2a2f3a] bg-[#121417]/70 px-4 py-4 shadow-inner shadow-black/20"
+            className="rounded-xl border border-bw-sand-200 bg-white/85 px-4 py-4 shadow-inner shadow-stone-900/10"
           >
             <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">
               {row.label}
             </p>
-            <p className="mt-2 font-display text-2xl font-semibold tabular-nums tracking-tight text-white">
+            <p className="mt-2 font-display text-2xl font-semibold tabular-nums tracking-tight text-bw-navy-950">
               {row.value}
             </p>
             <p className="mt-1 text-xs leading-snug text-slate-500">{row.hint}</p>
@@ -319,9 +319,9 @@ function ConfigOverview({
         ))}
       </div>
 
-      <div className="flex flex-col gap-4 rounded-xl border border-[#2a2f3a] bg-[#121417]/80 px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 rounded-xl border border-bw-sand-200 bg-white/90 px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
-          <p className="text-sm font-semibold text-white">Persistence targets</p>
+          <p className="text-sm font-semibold text-bw-navy-950">Persistence targets</p>
           <p className="mt-1 text-xs leading-relaxed text-slate-500">
             Copy paths into runbooks or tickets. Live values are written to the
             first file on save.
@@ -333,10 +333,10 @@ function ConfigOverview({
               key={p.key}
               type="button"
               onClick={() => onCopyPath(p.path, p.key)}
-              className="inline-flex items-center justify-center rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-4 py-2.5 text-xs font-semibold text-slate-200 transition hover:border-[#3b82f6]/35 hover:bg-[#252a33] hover:text-white"
+              className="inline-flex items-center justify-center rounded-lg border border-bw-sand-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-200 transition hover:border-bw-blue-600/35 hover:bg-bw-sand-200 hover:text-bw-navy-950"
             >
               {copiedKey === p.key ? (
-                <span className="text-emerald-300">Copied</span>
+                <span className="text-bw-sky-100">Copied</span>
               ) : (
                 <>
                   Copy <span className="mx-1 text-slate-500">·</span> {p.label}
@@ -347,7 +347,7 @@ function ConfigOverview({
         </div>
       </div>
 
-      <div className="rounded-lg border border-[#2a2f3a] bg-[#121417]/60 px-4 py-3 text-xs text-slate-500">
+      <div className="rounded-lg border border-bw-sand-200 bg-white/80 px-4 py-3 text-xs text-slate-500">
         Active institution:{' '}
         <span className="font-semibold text-slate-200">{bankName}</span>
       </div>
@@ -358,9 +358,9 @@ function ConfigOverview({
 function LoadingSkeleton() {
   return (
     <div className="animate-pulse space-y-6">
-      <div className="h-24 rounded-xl bg-[#1c1f26]" />
-      <div className="h-72 rounded-xl bg-[#1c1f26]" />
-      <div className="h-56 rounded-xl bg-[#1c1f26]" />
+      <div className="h-24 rounded-xl bg-white" />
+      <div className="h-72 rounded-xl bg-white" />
+      <div className="h-56 rounded-xl bg-white" />
     </div>
   )
 }
@@ -585,9 +585,9 @@ export function AdminBankSettingsPage() {
   }
 
   const headerAside = draft ? (
-    <span className="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-950/35 px-3 py-1.5 text-xs font-medium text-emerald-200/95">
+    <span className="inline-flex items-center rounded-full border border-bw-sand-200 bg-bw-sky-100 px-3 py-1.5 text-xs font-medium text-bw-navy-900">
       <span
-        className="mr-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]"
+        className="mr-2 h-1.5 w-1.5 shrink-0 rounded-full bg-bw-blue-500 shadow-[0_0_8px_rgba(99,102,241,0.65)]"
         aria-hidden
       />
       Save, then refresh the public site to preview
@@ -615,7 +615,7 @@ export function AdminBankSettingsPage() {
         draft ? (
           <div
             className={[
-              'fixed inset-x-0 bottom-0 z-50 border-t border-[#2a2f3a] bg-[#121417]/95 px-4 pt-4 shadow-[0_-20px_56px_rgba(0,0,0,0.5)] backdrop-blur-xl sm:px-8 sm:pt-4',
+              'fixed inset-x-0 bottom-0 z-50 border-t border-bw-sand-200 bg-white/95 px-4 pt-4 shadow-bw-card backdrop-blur-xl sm:px-8 sm:pt-4',
               ADMIN_CONSOLE_SIDEBAR_LEFT_CLASS,
             ].join(' ')}
             style={{
@@ -625,7 +625,7 @@ export function AdminBankSettingsPage() {
             <div className="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="text-xs text-slate-500">
                 {saveOk ? (
-                  <span className="font-medium text-emerald-400/95">
+                  <span className="font-medium text-bw-sky-100/95">
                     Saved successfully. Refresh the public site to pull changes.
                   </span>
                 ) : saveErr ? (
@@ -640,7 +640,7 @@ export function AdminBankSettingsPage() {
               <button
                 type="submit"
                 form="admin-bank-config-form"
-                className="rounded-lg bg-[#3b82f6] px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-lg shadow-[#1e3a8a]/35 transition hover:bg-[#2563eb]"
+                className="rounded-lg bg-bw-blue-600 px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-lg shadow-amber-900/12 transition hover:bg-bw-navy-800"
               >
                 Save all changes
               </button>
@@ -698,8 +698,8 @@ export function AdminBankSettingsPage() {
                   className={[
                     'rounded-full px-3.5 py-1.5 text-xs font-semibold transition',
                     activeSection === item.id
-                      ? 'bg-[#3b82f6]/20 text-white ring-1 ring-[#3b82f6]/35'
-                      : 'bg-[#1c1f26] text-slate-400 hover:bg-[#252a33] hover:text-white',
+                      ? 'bg-bw-blue-600/20 text-bw-navy-950 ring-1 ring-bw-blue-600/35'
+                      : 'bg-white text-slate-400 hover:bg-bw-sand-200 hover:text-bw-navy-950',
                   ].join(' ')}
                 >
                   <span className="mr-1.5 font-mono text-[10px] text-slate-500">
@@ -722,19 +722,19 @@ export function AdminBankSettingsPage() {
                 <div className="space-y-8">
                   <p className="max-w-3xl text-sm leading-relaxed text-slate-400">
                     Save settings below to write{' '}
-                    <code className="rounded bg-[#121417] px-1.5 py-0.5 font-mono text-xs text-slate-300">
+                    <code className="rounded bg-bw-sand-100 px-1.5 py-0.5 font-mono text-xs text-slate-300">
                       server/data/smtp-settings.json
                     </code>{' '}
                     and apply them immediately for this API process. You can
                     still use{' '}
-                    <code className="rounded bg-[#121417] px-1.5 py-0.5 font-mono text-xs text-slate-300">
+                    <code className="rounded bg-bw-sand-100 px-1.5 py-0.5 font-mono text-xs text-slate-300">
                       server/.env
                     </code>{' '}
                     as a fallback when no saved file exists; saved settings override
                     env for SMTP when the file is present.
                   </p>
 
-                  <div className="rounded-lg border border-[#2a2f3a] bg-[#121417]/60 px-4 py-3 text-sm text-slate-300">
+                  <div className="rounded-lg border border-bw-sand-200 bg-white/80 px-4 py-3 text-sm text-slate-300">
                     {mailHealthLoading ? (
                       <p className="text-slate-500">Checking mail service…</p>
                     ) : mailHealthErr ? (
@@ -743,14 +743,14 @@ export function AdminBankSettingsPage() {
                         <button
                           type="button"
                           onClick={() => refreshMailHealth()}
-                          className="text-xs font-semibold text-[#93c5fd] hover:underline"
+                          className="text-xs font-semibold text-bw-blue-500 hover:underline"
                         >
                           Retry
                         </button>
                       </div>
                     ) : mailHealth?.ready ? (
                       <p>
-                        <span className="font-semibold text-emerald-300">
+                        <span className="font-semibold text-bw-sky-100">
                           Ready.
                         </span>{' '}
                         Outbound mail will send from{' '}
@@ -867,10 +867,10 @@ export function AdminBankSettingsPage() {
                       </label>
                     </div>
 
-                    <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-[#2a2f3a] bg-[#121417]/60 px-4 py-3">
+                    <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-bw-sand-200 bg-white/80 px-4 py-3">
                       <input
                         type="checkbox"
-                        className="h-4 w-4 shrink-0 rounded border-[#2a2f3a] bg-[#121417] text-[#3b82f6] focus:ring-[#3b82f6]/40"
+                        className="h-4 w-4 shrink-0 rounded border-bw-sand-200 bg-bw-sand-100 text-bw-blue-600 focus:ring-bw-blue-600/40"
                         checked={smtpForm.secure}
                         onChange={(e) =>
                           setSmtpForm((f) => ({
@@ -983,7 +983,7 @@ export function AdminBankSettingsPage() {
                       <p className="text-sm text-red-300">{smtpSaveErr}</p>
                     ) : null}
                     {smtpSaveOk ? (
-                      <p className="text-sm font-medium text-emerald-300">
+                      <p className="text-sm font-medium text-bw-sky-100">
                         SMTP settings saved. They are active for this server
                         process now.
                       </p>
@@ -993,7 +993,7 @@ export function AdminBankSettingsPage() {
                       <button
                         type="submit"
                         disabled={smtpLoading || smtpSaveBusy}
-                        className="rounded-lg bg-[#3b82f6] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#2563eb] disabled:cursor-not-allowed disabled:opacity-50"
+                        className="rounded-lg bg-bw-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-bw-navy-800 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         {smtpSaveBusy ? 'Saving…' : 'Save SMTP settings'}
                       </button>
@@ -1001,15 +1001,15 @@ export function AdminBankSettingsPage() {
                         type="button"
                         onClick={() => loadSmtpForm()}
                         disabled={smtpLoading || smtpSaveBusy}
-                        className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-[#3b82f6]/35 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                        className="rounded-lg border border-bw-sand-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-bw-blue-600/35 hover:text-bw-navy-950 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         Reload from server
                       </button>
                     </div>
                   </form>
 
-                  <div className="max-w-3xl border-t border-[#2a2f3a] pt-8">
-                    <h3 className="text-sm font-semibold text-white">
+                  <div className="max-w-3xl border-t border-bw-sand-200 pt-8">
+                    <h3 className="text-sm font-semibold text-bw-navy-950">
                       Test delivery
                     </h3>
                     <p className="mt-1 text-sm text-slate-500">
@@ -1070,7 +1070,7 @@ export function AdminBankSettingsPage() {
                           !!mailHealthErr ||
                           !mailHealth?.ready
                         }
-                          className="rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-50"
+                          className="rounded-lg bg-bw-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-bw-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                           {testBusy ? 'Sending…' : 'Send test email'}
                       </button>
@@ -1078,7 +1078,7 @@ export function AdminBankSettingsPage() {
                         <span
                           className={
                             testFeedback.type === 'ok'
-                              ? 'text-sm font-medium text-emerald-300'
+                              ? 'text-sm font-medium text-bw-sky-100'
                               : 'text-sm font-medium text-red-300'
                           }
                         >
@@ -1172,14 +1172,14 @@ export function AdminBankSettingsPage() {
                       />
                       <label
                         htmlFor="admin-bank-logo-file"
-                        className="inline-flex cursor-pointer rounded-lg border border-[#3b82f6]/50 bg-[#1e3a8a]/30 px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-[#3b82f6] hover:bg-[#1e3a8a]/50"
+                        className="inline-flex cursor-pointer rounded-lg border border-bw-blue-600/50 bg-amber-900/10 px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-bw-blue-600 hover:bg-amber-900/15"
                       >
                         Choose logo…
                       </label>
                       <button
                         type="button"
                         disabled={logoUploadBusy}
-                        className="rounded-lg bg-[#3b82f6] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#2563eb] disabled:cursor-not-allowed disabled:opacity-50"
+                        className="rounded-lg bg-bw-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-bw-navy-800 disabled:cursor-not-allowed disabled:opacity-50"
                         onClick={() => {
                           const el = document.getElementById(
                             'admin-bank-logo-file',
@@ -1255,7 +1255,7 @@ export function AdminBankSettingsPage() {
                     </div>
                     <div className="mt-5">
                       <p className={lbl}>Preview</p>
-                      <div className="mt-2 flex flex-wrap items-center gap-6 rounded-xl border border-[#2a2f3a] bg-[#0d0f12] px-6 py-8">
+                      <div className="mt-2 flex flex-wrap items-center gap-6 rounded-xl border border-bw-sand-200 bg-bw-sand-100 px-6 py-8">
                         {draft.bankLogoSrc?.trim() ? (
                           <>
                             <div className="rounded-xl bg-white/10 p-1 ring-1 ring-white/15">
@@ -1375,14 +1375,14 @@ export function AdminBankSettingsPage() {
                       />
                       <label
                         htmlFor="admin-home-hero-file"
-                        className="inline-flex cursor-pointer rounded-lg border border-[#3b82f6]/50 bg-[#1e3a8a]/30 px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-[#3b82f6] hover:bg-[#1e3a8a]/50"
+                        className="inline-flex cursor-pointer rounded-lg border border-bw-blue-600/50 bg-amber-900/10 px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-bw-blue-600 hover:bg-amber-900/15"
                       >
                         Choose image…
                       </label>
                       <button
                         type="button"
                         disabled={heroUploadBusy}
-                        className="rounded-lg bg-[#3b82f6] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#2563eb] disabled:cursor-not-allowed disabled:opacity-50"
+                        className="rounded-lg bg-bw-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-bw-navy-800 disabled:cursor-not-allowed disabled:opacity-50"
                         onClick={() => {
                           const el = document.getElementById(
                             'admin-home-hero-file',
@@ -1424,7 +1424,7 @@ export function AdminBankSettingsPage() {
                     </div>
                     <div className="mt-5">
                       <p className={lbl}>Preview</p>
-                      <div className="mt-2 overflow-hidden rounded-xl border border-[#2a2f3a] bg-[#0d0f12]">
+                      <div className="mt-2 overflow-hidden rounded-xl border border-bw-sand-200 bg-bw-sand-100">
                         {draft.homeHeroImageSrc.trim() ? (
                           <img
                             key={`${draft.homeHeroImageSrc}-${heroPreviewKey}`}
@@ -1634,11 +1634,11 @@ export function AdminBankSettingsPage() {
                 description="Design tokens as hex. Each maps to a CSS variable consumed by the public Tailwind theme (#RRGGBB)."
                 icon={<IconPalette />}
               >
-                <div className="overflow-hidden rounded-xl border border-[#2a2f3a]">
+                <div className="overflow-hidden rounded-xl border border-bw-sand-200">
                   <div className="overflow-x-auto">
                     <table className="min-w-full text-left text-sm">
                       <thead>
-                        <tr className="border-b border-[#2a2f3a] bg-[#121417]/80 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500">
+                        <tr className="border-b border-bw-sand-200 bg-white/90 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500">
                           <th className="whitespace-nowrap px-4 py-3.5">
                             Token key
                           </th>
@@ -1650,7 +1650,7 @@ export function AdminBankSettingsPage() {
                           <th className="w-24 px-4 py-3.5" />
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-[#2a2f3a]">
+                      <tbody className="divide-y divide-bw-sand-200">
                         {THEME_KEYS.map(([key, label]) => {
                           const hex = draft.theme[key]
                           const safe =
@@ -1659,7 +1659,7 @@ export function AdminBankSettingsPage() {
                           return (
                             <tr
                               key={key}
-                              className="transition hover:bg-[#121417]/60"
+                              className="transition hover:bg-white/80"
                             >
                               <td className="whitespace-nowrap px-4 py-3 font-mono text-xs text-slate-400">
                                 {key}
@@ -1669,7 +1669,7 @@ export function AdminBankSettingsPage() {
                               </td>
                               <td className="px-4 py-3">
                                 <span
-                                  className="inline-block h-9 w-9 rounded-lg border border-[#2a2f3a] shadow-inner ring-1 ring-black/50"
+                                  className="inline-block h-9 w-9 rounded-lg border border-bw-sand-200 shadow-inner ring-1 ring-stone-300"
                                   style={{ backgroundColor: safe }}
                                   title={hex}
                                 />
@@ -1694,10 +1694,10 @@ export function AdminBankSettingsPage() {
                                 <button
                                   type="button"
                                   onClick={() => copyFeedback(hex, copyId)}
-                                  className="rounded-md border border-[#2a2f3a] bg-[#121417] px-2.5 py-1.5 text-[11px] font-semibold text-slate-300 transition hover:border-[#3b82f6]/40 hover:text-white"
+                                  className="rounded-md border border-bw-sand-200 bg-bw-sand-100 px-2.5 py-1.5 text-[11px] font-semibold text-slate-300 transition hover:border-bw-blue-600/40 hover:text-bw-navy-950"
                                 >
                                   {copiedKey === copyId ? (
-                                    <span className="text-emerald-300">
+                                    <span className="text-bw-sky-100">
                                       Copied
                                     </span>
                                   ) : (
@@ -1724,7 +1724,7 @@ export function AdminBankSettingsPage() {
                 <div className="space-y-10">
                   <p className="max-w-3xl text-sm leading-relaxed text-slate-400">
                     Use{' '}
-                    <code className="rounded bg-[#121417] px-1.5 py-0.5 font-mono text-xs text-slate-300">
+                    <code className="rounded bg-bw-sand-100 px-1.5 py-0.5 font-mono text-xs text-slate-300">
                       {'{{placeholders}}'}
                     </code>{' '}
                     in subjects and bodies; dynamic values are escaped for HTML.
@@ -1763,7 +1763,7 @@ export function AdminBankSettingsPage() {
                     title="Sign-in verification (OTP)"
                     hint="Sent when a customer uses email sign-in verification. Plain text is required for mail clients that do not render HTML."
                   >
-                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-[#2a2f3a]/80 pb-4">
+                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-bw-sand-200/80 pb-4">
                       <p className="text-xs text-slate-500">
                         Sample code &amp; greeting · full branded HTML
                       </p>
@@ -1771,7 +1771,7 @@ export function AdminBankSettingsPage() {
                         type="button"
                         disabled={letterPreviewBusy || !draft}
                         onClick={() => void openLetterPreview('otp')}
-                        className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-3 py-2 text-xs font-semibold text-slate-200 transition hover:border-[#3b82f6]/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-45"
+                        className="rounded-lg border border-bw-sand-200 bg-white px-3 py-2 text-xs font-semibold text-slate-200 transition hover:border-bw-blue-600/40 hover:text-bw-navy-950 disabled:cursor-not-allowed disabled:opacity-45"
                       >
                         {letterPreviewBusy ? 'Rendering…' : 'Preview letter'}
                       </button>
@@ -1848,7 +1848,7 @@ export function AdminBankSettingsPage() {
                     title="Wire transfer authorization (OTP)"
                     hint="Sent when a customer submits a domestic or international wire in Pay & transfer — before the approval queue. Uses the same placeholders as sign-in OTP plus wire-specific copy in your templates."
                   >
-                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-[#2a2f3a]/80 pb-4">
+                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-bw-sand-200/80 pb-4">
                       <p className="text-xs text-slate-500">
                         Sample code &amp; greeting · full branded HTML
                       </p>
@@ -1856,7 +1856,7 @@ export function AdminBankSettingsPage() {
                         type="button"
                         disabled={letterPreviewBusy || !draft}
                         onClick={() => void openLetterPreview('wire_transfer')}
-                        className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-3 py-2 text-xs font-semibold text-slate-200 transition hover:border-[#3b82f6]/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-45"
+                        className="rounded-lg border border-bw-sand-200 bg-white px-3 py-2 text-xs font-semibold text-slate-200 transition hover:border-bw-blue-600/40 hover:text-bw-navy-950 disabled:cursor-not-allowed disabled:opacity-45"
                       >
                         {letterPreviewBusy ? 'Rendering…' : 'Preview letter'}
                       </button>
@@ -1933,7 +1933,7 @@ export function AdminBankSettingsPage() {
                     title="Email address change (OTP)"
                     hint="Sent to the customer’s new email when they request an address change in Settings. Plain text is required for mail clients that do not render HTML."
                   >
-                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-[#2a2f3a]/80 pb-4">
+                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-bw-sand-200/80 pb-4">
                       <p className="text-xs text-slate-500">
                         Sample code &amp; greeting · full branded HTML
                       </p>
@@ -1941,7 +1941,7 @@ export function AdminBankSettingsPage() {
                         type="button"
                         disabled={letterPreviewBusy || !draft}
                         onClick={() => void openLetterPreview('email_change')}
-                        className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-3 py-2 text-xs font-semibold text-slate-200 transition hover:border-[#3b82f6]/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-45"
+                        className="rounded-lg border border-bw-sand-200 bg-white px-3 py-2 text-xs font-semibold text-slate-200 transition hover:border-bw-blue-600/40 hover:text-bw-navy-950 disabled:cursor-not-allowed disabled:opacity-45"
                       >
                         {letterPreviewBusy ? 'Rendering…' : 'Preview letter'}
                       </button>
@@ -2018,7 +2018,7 @@ export function AdminBankSettingsPage() {
                     title="KYC — operator notification"
                     hint="Sent to KYC_NOTIFY_EMAIL in server/.env when a customer submits documents."
                   >
-                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-[#2a2f3a]/80 pb-4">
+                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-bw-sand-200/80 pb-4">
                       <p className="text-xs text-slate-500">
                         Sample submission ID · full branded HTML
                       </p>
@@ -2026,7 +2026,7 @@ export function AdminBankSettingsPage() {
                         type="button"
                         disabled={letterPreviewBusy || !draft}
                         onClick={() => void openLetterPreview('kyc')}
-                        className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-3 py-2 text-xs font-semibold text-slate-200 transition hover:border-[#3b82f6]/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-45"
+                        className="rounded-lg border border-bw-sand-200 bg-white px-3 py-2 text-xs font-semibold text-slate-200 transition hover:border-bw-blue-600/40 hover:text-bw-navy-950 disabled:cursor-not-allowed disabled:opacity-45"
                       >
                         {letterPreviewBusy ? 'Rendering…' : 'Preview letter'}
                       </button>
@@ -2101,7 +2101,7 @@ export function AdminBankSettingsPage() {
                     title="SMTP test email"
                     hint="Used when you send a test from Email delivery (SMTP)."
                   >
-                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-[#2a2f3a]/80 pb-4">
+                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-bw-sand-200/80 pb-4">
                       <p className="text-xs text-slate-500">
                         Sample greeting · matches SMTP test send
                       </p>
@@ -2109,7 +2109,7 @@ export function AdminBankSettingsPage() {
                         type="button"
                         disabled={letterPreviewBusy || !draft}
                         onClick={() => void openLetterPreview('test')}
-                        className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-3 py-2 text-xs font-semibold text-slate-200 transition hover:border-[#3b82f6]/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-45"
+                        className="rounded-lg border border-bw-sand-200 bg-white px-3 py-2 text-xs font-semibold text-slate-200 transition hover:border-bw-blue-600/40 hover:text-bw-navy-950 disabled:cursor-not-allowed disabled:opacity-45"
                       >
                         {letterPreviewBusy ? 'Rendering…' : 'Preview letter'}
                       </button>
@@ -2296,14 +2296,14 @@ export function AdminBankSettingsPage() {
           }}
         >
           <div
-            className="flex max-h-[min(900px,92vh)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-[#2a2f3a] bg-[#0f1218] shadow-2xl shadow-black/60"
+            className="flex max-h-[min(900px,92vh)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-bw-sand-200 bg-white shadow-2xl shadow-stone-900/15"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex shrink-0 items-start justify-between gap-4 border-b border-[#2a2f3a] px-5 py-4">
+            <div className="flex shrink-0 items-start justify-between gap-4 border-b border-bw-sand-200 px-5 py-4">
               <div>
                 <h2
                   id="email-letter-preview-title"
-                  className="font-display text-lg font-semibold text-white"
+                  className="font-display text-lg font-semibold text-bw-navy-950"
                 >
                   {letterPreviewTitles[letterPreviewType]}
                 </h2>
@@ -2318,7 +2318,7 @@ export function AdminBankSettingsPage() {
                   setLetterPreviewOpen(false)
                   setLetterPreviewErr(null)
                 }}
-                className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-slate-500 hover:text-white"
+                className="rounded-lg border border-bw-sand-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-slate-500 hover:text-bw-navy-950"
               >
                 Close
               </button>
@@ -2326,13 +2326,13 @@ export function AdminBankSettingsPage() {
             <div className="min-h-0 shrink space-y-4 overflow-y-auto px-5 py-4">
               <div>
                 <span className={lbl}>Subject</span>
-                <p className="mt-1.5 rounded-lg border border-[#2a2f3a] bg-[#121417] px-3.5 py-2.5 font-mono text-sm text-slate-200">
+                <p className="mt-1.5 rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3.5 py-2.5 font-mono text-sm text-slate-200">
                   {letterPreviewSubject}
                 </p>
               </div>
               <div>
                 <span className={lbl}>HTML (branded)</span>
-                <div className="mt-1.5 overflow-hidden rounded-lg border border-[#2a2f3a] bg-white">
+                <div className="mt-1.5 overflow-hidden rounded-lg border border-bw-sand-200 bg-white">
                   <iframe
                     title="Email HTML preview"
                     sandbox=""
@@ -2343,7 +2343,7 @@ export function AdminBankSettingsPage() {
               </div>
               <div>
                 <span className={lbl}>Plain-text part</span>
-                <pre className="mt-1.5 max-h-48 overflow-auto whitespace-pre-wrap rounded-lg border border-[#2a2f3a] bg-[#121417] px-3.5 py-3 font-mono text-xs leading-relaxed text-slate-300">
+                <pre className="mt-1.5 max-h-48 overflow-auto whitespace-pre-wrap rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3.5 py-3 font-mono text-xs leading-relaxed text-slate-300">
                   {letterPreviewText}
                 </pre>
               </div>

@@ -12,88 +12,88 @@ export function PublicFooter() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
         <div>
           <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-bw-navy-900">
-            Accounts
+            Everyday money
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li>
               <Link className={linkClass} to="/personal">
-                Personal banking
+                Household banking hub
               </Link>
             </li>
             <li>
               <Link className={linkClass} to="/personal">
-                Checking & savings
+                Checking &amp; savings stacks
               </Link>
             </li>
             <li>
               <Link className={linkClass} to="/personal">
-                CDs &amp; money market
+                CDs &amp; money markets
               </Link>
             </li>
           </ul>
         </div>
         <div>
           <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-bw-navy-900">
-            Borrow
+            Borrow smarter
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li>
               <Link className={linkClass} to="/personal">
-                Credit cards
+                Cards &amp; lines
               </Link>
             </li>
             <li>
               <Link className={linkClass} to="/personal">
-                Mortgages
+                Home lending desk
               </Link>
             </li>
             <li>
               <Link className={linkClass} to="/personal">
-                Personal loans
+                Installment loans
               </Link>
             </li>
           </ul>
         </div>
         <div>
           <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-bw-navy-900">
-            Invest
+            Grow &amp; plan
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li>
               <Link className={linkClass} to="/wealth">
-                Planning &amp; advice
+                Advisory bench
               </Link>
             </li>
             <li>
               <Link className={linkClass} to="/wealth">
-                Retirement
+                Retirement runway
               </Link>
             </li>
             <li>
               <Link className={linkClass} to="/wealth">
-                Education savings
+                Education funding lab
               </Link>
             </li>
           </ul>
         </div>
         <div>
           <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-bw-navy-900">
-            Security
+            Stay safe
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li>
               <a className={linkClass} href="#">
-                Privacy center
+                Privacy &amp; data care
               </a>
             </li>
             <li>
               <a className={linkClass} href="#">
-                Fraud alerts
+                Fraud intelligence
               </a>
             </li>
             <li>
               <a className={linkClass} href="#">
-                Digital banking tips
+                Channel hygiene tips
               </a>
             </li>
           </ul>
@@ -112,9 +112,9 @@ export function PublicFooter() {
               to="/admin/login"
               className="font-semibold text-bw-navy-900/70 transition hover:text-bw-navy-900 hover:underline"
             >
-              Institution sign-in
+              Operator console
             </Link>{' '}
-            <span className="text-bw-muted">(authorized users)</span>
+            <span className="text-bw-muted">(credentials required)</span>
           </p>
         </div>
       </div>

@@ -49,61 +49,61 @@ function autoReply(
 const FAQ_ITEMS = [
   {
     id: '1',
-    q: 'How do I reset my online banking password?',
-    a: 'While signed in, use Settings → Security → Change password. If you cannot sign in, use Sign in → Forgot username/password on the public site, or call us—we can send a secure reset link after verifying your identity.',
+    q: 'How do I reset my digital banking password?',
+    a: 'Inside the app: Settings → Security → Change password. Locked out? Use the public Sign in screen → Forgot username/password, or phone us—we’ll validate you and email a reset link.',
     tags: 'password reset sign in login',
   },
   {
     id: '2',
-    q: 'When will my mobile deposit be available?',
-    a: 'Approved deposits generally follow our funds availability schedule. Holds may apply based on amount, account history, and risk review—timing appears on your deposit confirmation.',
+    q: 'When does money from a mobile deposit land?',
+    a: 'Released funds follow our availability policy; larger checks or newer relationships can earn holds. Your confirmation ticket spells out release timing.',
     tags: 'mobile deposit check funds hold',
   },
   {
     id: '3',
-    q: 'How do I report a lost or stolen card?',
-    a: 'Call the number on the back of your card 24/7, or open Debit card after you sign in to lock, replace, or adjust travel and tap settings.',
+    q: 'Card missing—what now?',
+    a: 'Dial the number molded on the plastic anytime, or—once signed in—visit Debit card to freeze, reorder, or tweak tap/travel preferences.',
     tags: 'card lost stolen lock debit credit',
   },
   {
     id: '4',
-    q: 'What is the wire transfer cutoff time?',
-    a: 'Domestic wires submitted before 4:00 PM ET on business days typically process same day. International wires may require additional compliance review.',
+    q: 'Same-day wire cutoff?',
+    a: 'Domestic wires filed before 4:00 PM ET usually depart that business day. Cross-border wires may pause for compliance seasoning.',
     tags: 'wire transfer international domestic cutoff',
   },
   {
     id: '5',
-    q: 'How do I dispute a transaction?',
-    a: 'Open the transaction in your account history and choose Dispute, or message us securely with the merchant name, date, and amount.',
+    q: 'How do I challenge a charge?',
+    a: 'Tap the ledger entry → Dispute, or ping us securely with merchant, date, and amount.',
     tags: 'dispute charge fraud transaction',
   },
   {
     id: '6',
-    q: 'Where can I find my tax documents?',
-    a: 'Tax forms appear under Documents each January. You can download PDF copies for the prior year once they are ready.',
+    q: 'Where do tax slips live?',
+    a: 'January brings PDFs under Documents for the prior calendar year—download when posted.',
     tags: 'tax 1099 ira form document',
   },
 ] as const
 
 const TOPICS = [
   {
-    title: 'Cards & ATM',
-    body: 'Lock a card, set travel notices, replace damaged cards, and ATM help.',
+    title: 'Plastic & cash machines',
+    body: 'Freeze spending power, schedule travel, swap damaged plastic, tame ATM quirks.',
     icon: '◆',
   },
   {
-    title: 'Online & mobile banking',
-    body: 'Bill pay, transfers, alerts, biometrics, and browser troubleshooting.',
+    title: 'Digital channels',
+    body: 'Payees, movement of funds, nudges, biometrics, stubborn browsers.',
     icon: '◇',
   },
   {
-    title: 'Loans & credit',
-    body: 'Mortgage, auto, personal loans, and line of credit questions.',
+    title: 'Borrowing desk',
+    body: 'Homes, autos, unsecured notes, line draws—anything with a coupon.',
     icon: '○',
   },
   {
-    title: 'Investing & planning',
-    body: 'IRA contributions, beneficiaries, statements, and advisor meetings.',
+    title: 'Investments & planning',
+    body: 'IRA flows, beneficiary hygiene, statements, advisor cadence.',
     icon: '◎',
   },
 ] as const
@@ -391,7 +391,7 @@ export function SupportPage() {
             </p>
             {messageSent && (
               <p
-                className="mt-3 rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-900"
+                className="mt-3 rounded-md border border-bw-blue-500/20 bg-bw-sky-100 px-3 py-2 text-sm text-bw-navy-900"
                 role="status"
               >
                 Message sent. A specialist typically replies within one business
@@ -424,7 +424,7 @@ export function SupportPage() {
             </p>
             {apptConfirmed && (
               <p
-                className="mt-3 rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-900"
+                className="mt-3 rounded-md border border-bw-blue-500/20 bg-bw-sky-100 px-3 py-2 text-sm text-bw-navy-900"
                 role="status"
               >
                 You are scheduled for {apptDate} at {apptTime}. We will call you

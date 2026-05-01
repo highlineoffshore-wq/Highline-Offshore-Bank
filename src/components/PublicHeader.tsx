@@ -6,43 +6,43 @@ const navClass = ({ isActive }: { isActive: boolean }) =>
   [
     'rounded-full px-3.5 py-2 text-sm font-semibold tracking-tight transition-all duration-200',
     isActive
-      ? 'bg-white text-bw-navy-900 shadow-sm'
-      : 'text-white/90 hover:bg-white/12 hover:text-white',
+      ? 'bg-bw-sky-100 text-bw-navy-900 shadow-sm ring-1 ring-bw-sand-200'
+      : 'text-bw-navy-900/90 hover:bg-bw-sand-100 hover:text-bw-navy-950',
   ].join(' ')
 
 export function PublicHeader() {
   const cfg = useBankConfig()
   return (
     <header className="sticky top-0 z-50">
-      <div className="border-b border-bw-navy-900/10 bg-bw-navy-950 text-white/75">
+      <div className="border-b border-bw-sand-200 bg-gradient-to-r from-bw-sand-100 to-white text-bw-muted">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-2.5 text-xs font-medium">
-          <span className="hidden text-white/50 sm:inline">
+          <span className="hidden sm:inline">
             {cfg.supportPhone ? `Questions? ${cfg.supportPhone}` : null}
           </span>
           <div className="flex flex-wrap items-center justify-end gap-x-5 gap-y-1 sm:justify-start">
             <a
-              className="transition hover:text-white"
+              className="transition hover:text-bw-navy-950"
               href="#"
               aria-label="Branch and ATM locator"
             >
               Locations
             </a>
-            <a className="transition hover:text-white" href="#">
+            <a className="transition hover:text-bw-navy-950" href="#">
               Support
             </a>
-            <a className="transition hover:text-white" href="#">
+            <a className="transition hover:text-bw-navy-950" href="#">
               Español
             </a>
           </div>
         </div>
       </div>
-      <div className="border-b border-white/10 bg-bw-navy-900 shadow-bw-soft">
+      <div className="border-b border-bw-sand-200 bg-white shadow-bw-soft">
         <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:py-4">
           <NavLink
             to="/"
-            className="group flex items-center gap-3.5 text-left text-white no-underline"
+            className="group flex items-center gap-3.5 text-left text-bw-navy-950 no-underline"
           >
-            <span className="rounded-xl bg-white/10 p-1 ring-1 ring-white/15 transition group-hover:bg-white/15">
+            <span className="rounded-xl bg-bw-sky-100 p-1 ring-1 ring-bw-sand-200 transition group-hover:bg-bw-sand-100">
               <LogoMark
                 className="h-10 w-10 shrink-0"
                 variant="light"
@@ -54,7 +54,7 @@ export function PublicHeader() {
               <span className="font-display text-xl font-semibold tracking-tight sm:text-[1.35rem]">
                 {cfg.bankName}
               </span>
-              <p className="mt-0.5 text-xs font-medium leading-snug text-bw-sky-100/85">
+              <p className="mt-0.5 text-xs font-medium leading-snug text-bw-muted">
                 {cfg.taglineHeader}
               </p>
             </div>
@@ -71,7 +71,7 @@ export function PublicHeader() {
             </NavLink>
             <NavLink
               to="/sign-in"
-              className="ml-0.5 inline-flex items-center justify-center rounded-full bg-bw-red-700 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-bw-red-900/25 ring-1 ring-white/10 transition hover:bg-bw-red-600 hover:shadow-lg sm:ml-1"
+              className="ml-0.5 inline-flex items-center justify-center rounded-full bg-bw-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-amber-900/15 ring-1 ring-bw-sand-200 transition hover:bg-bw-navy-800 hover:shadow-lg sm:ml-1"
             >
               Sign in
             </NavLink>

@@ -21,10 +21,10 @@ export function SmallBusinessPage() {
   return (
     <>
       <SegmentHero
-        eyebrow="Small business"
-        headline="Run your business—not your banking errands."
-        subtext={`From first invoice to fiftieth hire, you need visibility into cash, fast ways to get paid, and credit that shows up when payroll and inventory do not wait. ${cfg.bankNameShort} Business combines self-serve digital tools with a relationship manager who understands your industry—so you spend less time on transfers and more time on customers.`}
-        gradientClass="from-bw-navy-900 via-[#123a5c] to-bw-blue-600"
+        eyebrow="Growing companies"
+        headline="Stay inside the business—not inside banking tabs."
+        subtext={`Invoice one through valuation chatter, you need cash telemetry, faster settlement, and credit that lands when payroll or inventory refuses to pause. ${cfg.bankNameShort} Business blends operator-grade tooling with an RM who speaks your vertical—so treasury chores shrink and customer minutes expand.`}
+        gradientClass="from-bw-navy-900 via-bw-navy-800 to-bw-blue-600"
         stats={[
           { value: '1 RM', label: 'Dedicated contact (typical)' },
           { value: wireDom, label: 'Standard domestic wire (many accounts)' },
@@ -37,24 +37,24 @@ export function SmallBusinessPage() {
             className="font-medium text-white underline-offset-4 hover:underline"
             to="/"
           >
-            ← Back to home
+            ← Return home
           </Link>
         </p>
       </SegmentHero>
 
       <SegmentProseBand
-        title="Why small businesses outgrow retail banking—and what we do about it"
+        title="When retail banking stops fitting the P&amp;L"
         paragraphs={[
-          'Consumer apps optimize for one person’s balances. A business has operating cash, tax reserves, payroll float, and maybe an owner draw—all moving at different speeds. We separate those mentally and in software: sub-accounts, role-based access, and reporting that your bookkeeper can actually use.',
-          'Receivables matter as much as accounts. Merchant rates, chargeback workflows, and next-day funding windows are spelled out before you sign—not buried in a footnote. When you borrow, we align covenants to how you actually run: seasonal revenue, project-based income, or inventory cycles.',
-          'The sections below walk through checking tiers, lending, treasury controls, industries we often serve, and onboarding. Summaries are for discussion only; credit, treasury, and merchant agreements contain binding terms.',
+          'Personal apps obsess over one wallet. Your firm juggles operating cash, tax wallets, payroll buoyancy, maybe founder draws—each on its own cadence. We mirror that mess cleanly: sub-ledgers, role-aware users, exports your accountant loves.',
+          'Getting paid matters as much as where it sits. Processor pricing, dispute choreography, and funding windows hit the table before ink—not page-six mice type. Borrowing lines hug how you truly operate: seasonal lifts, milestone billing, inventory arcs.',
+          'Skim below for checking ladders, credit posture, treasury rails, industries we coach often, and onboarding tempo. Conversation starters only—merchant, treasury, and loan paperwork governs reality.',
         ]}
-        footnote={`${cfg.bankName} business products are subject to credit approval, eligibility, and documentation. Member FDIC.`}
+        footnote={`${cfg.bankName} commercial offerings need underwriting and paperwork. Member FDIC.`}
       />
 
       <SegmentFeatureGrid
-        heading="Built for owners and operators"
-        intro="Whether you are solo or scaling toward multiple locations, these capabilities are designed to reduce manual work and surprises."
+        heading="What operators actually touch"
+        intro="Solo desk or third location on the horizon—these levers exist to delete busywork, not add ceremony."
         features={[
           {
             title: 'Business checking',
@@ -311,17 +311,19 @@ export function SmallBusinessPage() {
           {
             label: 'Personal',
             to: '/personal',
-            description: 'Checking, savings, cards, and loans for individuals and families.',
+            description:
+              'Household deposits, plastic, installment debt, and digital rituals.',
           },
           {
             label: 'Wealth',
             to: '/wealth',
-            description: 'Investments and planning when the business is thriving.',
+            description:
+              'When surplus cash graduates from the operating account.',
           },
           {
             label: 'Home',
             to: '/',
-            description: `Overview of everything ${cfg.bankNameShort} offers.`,
+            description: `The panorama of ${cfg.bankNameShort} lanes and proof points.`,
           },
         ]}
       />

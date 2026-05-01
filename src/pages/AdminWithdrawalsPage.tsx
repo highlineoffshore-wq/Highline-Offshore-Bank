@@ -151,14 +151,14 @@ export function AdminWithdrawalsPage() {
         <div className="flex flex-wrap gap-2">
           <Link
             to="/admin/transactions"
-            className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-[#3b82f6]/35 hover:text-white"
+            className="rounded-lg border border-bw-sand-200 bg-white px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-bw-blue-600/35 hover:text-bw-navy-950"
           >
             All transactions
           </Link>
           <button
             type="button"
             onClick={() => void loadQueue()}
-            className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-4 py-2 text-sm font-semibold text-white transition hover:border-[#3b82f6]/35 hover:bg-[#252a33]"
+            className="rounded-lg border border-bw-sand-200 bg-white px-4 py-2 text-sm font-semibold text-bw-navy-950 transition hover:border-bw-blue-600/35 hover:bg-bw-sand-200"
           >
             Refresh queue
           </button>
@@ -177,9 +177,9 @@ export function AdminWithdrawalsPage() {
       {config && wd ? (
         <form
           onSubmit={onSavePolicy}
-          className="mb-10 rounded-xl border border-[#2a2f3a] bg-[#161a20] p-6"
+          className="mb-10 rounded-xl border border-bw-sand-200 bg-white p-6"
         >
-          <h2 className="font-display text-lg font-semibold text-white">
+          <h2 className="font-display text-lg font-semibold text-bw-navy-950">
             Institution withdrawal controls
           </h2>
           <p className="mt-1 text-sm text-slate-500">
@@ -187,10 +187,10 @@ export function AdminWithdrawalsPage() {
             customers submit withdrawal-class approvals.
           </p>
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
-            <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-[#2a2f3a] bg-[#121417]/60 p-4">
+            <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-bw-sand-200 bg-white/80 p-4">
               <input
                 type="checkbox"
-                className="mt-1 h-4 w-4 rounded border-[#2a2f3a] bg-[#1c1f26] text-[#3b82f6]"
+                className="mt-1 h-4 w-4 rounded border-bw-sand-200 bg-white text-bw-blue-600"
                 checked={wd.multiStepEnabled}
                 onChange={(e) =>
                   setConfig({
@@ -203,7 +203,7 @@ export function AdminWithdrawalsPage() {
                 }
               />
               <span>
-                <span className="block text-sm font-semibold text-white">
+                <span className="block text-sm font-semibold text-bw-navy-950">
                   Multi-level approval (two operators)
                 </span>
                 <span className="mt-1 block text-xs leading-relaxed text-slate-500">
@@ -220,7 +220,7 @@ export function AdminWithdrawalsPage() {
               <input
                 type="text"
                 inputMode="decimal"
-                className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2.5 text-sm text-white outline-none focus:border-[#3b82f6]/50"
+                className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2.5 text-sm text-bw-navy-950 outline-none focus:border-bw-blue-600/50"
                 value={centsFieldToDollars(wd.secondStepThresholdCents)}
                 onChange={(e) => {
                   const n = Number.parseFloat(e.target.value)
@@ -244,7 +244,7 @@ export function AdminWithdrawalsPage() {
                 type="text"
                 inputMode="decimal"
                 placeholder="No limit"
-                className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2.5 text-sm text-white outline-none placeholder:text-slate-600 focus:border-[#3b82f6]/50"
+                className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2.5 text-sm text-bw-navy-950 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/50"
                 value={
                   wd.maxSingleWithdrawalCents != null
                     ? centsFieldToDollars(wd.maxSingleWithdrawalCents)
@@ -280,7 +280,7 @@ export function AdminWithdrawalsPage() {
                 type="text"
                 inputMode="decimal"
                 placeholder="Policy placeholder"
-                className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2.5 text-sm text-white outline-none placeholder:text-slate-600 focus:border-[#3b82f6]/50"
+                className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2.5 text-sm text-bw-navy-950 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/50"
                 value={
                   wd.maxDailyWithdrawalPerCustomerCents != null
                     ? centsFieldToDollars(wd.maxDailyWithdrawalPerCustomerCents)
@@ -320,11 +320,11 @@ export function AdminWithdrawalsPage() {
             <p className="mt-4 text-sm text-red-300">{saveErr}</p>
           ) : null}
           {saveOk ? (
-            <p className="mt-4 text-sm text-emerald-300">Policy saved.</p>
+            <p className="mt-4 text-sm font-medium text-bw-navy-800">Policy saved.</p>
           ) : null}
           <button
             type="submit"
-            className="mt-6 rounded-lg bg-[#3b82f6] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#2563eb]"
+            className="mt-6 rounded-lg bg-bw-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-bw-navy-800"
           >
             Save withdrawal policy
           </button>
@@ -332,7 +332,7 @@ export function AdminWithdrawalsPage() {
       ) : null}
 
       <div className="mb-4 flex items-center justify-between gap-3">
-        <h2 className="font-display text-lg font-semibold text-white">
+        <h2 className="font-display text-lg font-semibold text-bw-navy-950">
           Withdrawal request queue
         </h2>
         <span className="rounded-full border border-amber-500/30 bg-amber-950/40 px-3 py-1 text-xs font-semibold text-amber-100">
@@ -340,11 +340,11 @@ export function AdminWithdrawalsPage() {
         </span>
       </div>
 
-      <div className="w-full min-w-0 overflow-hidden rounded-xl border border-[#2a2f3a] bg-[#1c1f26] shadow-lg shadow-black/20">
+      <div className="w-full min-w-0 overflow-hidden rounded-xl border border-bw-sand-200 bg-white shadow-bw-card">
         <div className="w-full min-w-0 overflow-x-auto">
           <table className="min-w-[56rem] text-left text-sm">
             <thead>
-              <tr className="border-b border-[#2a2f3a] bg-[#121417]/80 text-[11px] font-bold uppercase tracking-[0.08em] text-slate-500">
+              <tr className="border-b border-bw-sand-200 bg-white/90 text-[11px] font-bold uppercase tracking-[0.08em] text-slate-500">
                 <th className="px-4 py-3.5">Risk</th>
                 <th className="px-4 py-3.5">Co-appr.</th>
                 <th className="px-4 py-3.5">Amount</th>
@@ -355,7 +355,7 @@ export function AdminWithdrawalsPage() {
                 <th className="min-w-[18rem] px-4 py-3.5">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#2a2f3a]">
+            <tbody className="divide-y divide-bw-sand-200">
               {queue.length === 0 ? (
                 <tr>
                   <td
@@ -369,7 +369,7 @@ export function AdminWithdrawalsPage() {
                 queue.map((row) => (
                   <tr
                     key={row.id}
-                    className="align-top text-slate-200 hover:bg-[#121417]/40"
+                    className="align-top text-slate-200 hover:bg-bw-sand-100/40"
                   >
                     <td className="px-4 py-4">
                       {row.suspicious ? (
@@ -395,13 +395,13 @@ export function AdminWithdrawalsPage() {
                         <span className="text-slate-600">0</span>
                       )}
                     </td>
-                    <td className="px-4 py-4 font-mono text-sm tabular-nums text-white">
+                    <td className="px-4 py-4 font-mono text-sm tabular-nums text-bw-navy-950">
                       {formatMoney(row.amountCents)}
                     </td>
                     <td className="px-4 py-4 text-xs text-slate-400">
                       {formatWhen(row.createdAt)}
                     </td>
-                    <td className="px-4 py-4 text-xs font-medium text-white">
+                    <td className="px-4 py-4 text-xs font-medium text-bw-navy-950">
                       {row.submitterId}
                     </td>
                     <td className="px-4 py-4 font-mono text-[11px] text-slate-500">
@@ -422,7 +422,7 @@ export function AdminWithdrawalsPage() {
                               [row.id]: e.target.value,
                             }))
                           }
-                          className="w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2 text-xs text-white outline-none placeholder:text-white/25 focus:border-[#3b82f6]/50"
+                          className="w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2 text-xs text-bw-navy-950 outline-none placeholder:text-bw-navy-950/25 focus:border-bw-blue-600/50"
                         />
                         {!row.suspicious ? (
                           <>
@@ -436,7 +436,7 @@ export function AdminWithdrawalsPage() {
                                   [row.id]: e.target.value,
                                 }))
                               }
-                              className="w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2 text-xs text-white outline-none placeholder:text-slate-600 focus:border-amber-500/40"
+                              className="w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2 text-xs text-bw-navy-950 outline-none placeholder:text-slate-600 focus:border-amber-500/40"
                             />
                             <button
                               type="button"
@@ -452,7 +452,7 @@ export function AdminWithdrawalsPage() {
                             type="button"
                             disabled={busyId === row.id}
                             onClick={() => void toggleSuspicious(row, false)}
-                            className="w-fit rounded-lg border border-[#2a2f3a] px-3 py-2 text-xs font-semibold text-slate-300 hover:bg-[#252a33] disabled:opacity-50"
+                            className="w-fit rounded-lg border border-bw-sand-200 px-3 py-2 text-xs font-semibold text-slate-300 hover:bg-bw-sand-200 disabled:opacity-50"
                           >
                             Clear flag
                           </button>
@@ -462,7 +462,7 @@ export function AdminWithdrawalsPage() {
                             type="button"
                             disabled={busyId === row.id}
                             onClick={() => void decide(row.id, 'approved')}
-                            className="rounded-lg bg-emerald-600 px-3 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-emerald-500 disabled:opacity-50"
+                            className="rounded-lg bg-bw-blue-600 px-3 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-bw-blue-500 disabled:opacity-50"
                           >
                             Approve
                           </button>

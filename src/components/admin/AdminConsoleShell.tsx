@@ -19,8 +19,8 @@ const mobileNavClass = ({ isActive }: { isActive: boolean }) =>
   [
     'flex min-w-0 flex-1 basis-0 flex-col items-center gap-1 border-b-2 py-3 text-[10px] font-bold uppercase tracking-wide transition',
     isActive
-      ? 'border-[#3b82f6] text-white'
-      : 'border-transparent text-slate-500 hover:text-slate-300',
+      ? 'border-bw-blue-600 text-bw-navy-950'
+      : 'border-transparent text-bw-muted hover:text-bw-navy-900',
   ].join(' ')
 
 export function AdminConsoleShell({
@@ -72,9 +72,9 @@ export function AdminConsoleShell({
   const crumb = breadcrumb ?? title
 
   return (
-    <div className="min-h-screen min-h-dvh bg-[#121417] text-white antialiased">
+    <div className="min-h-screen min-h-dvh bg-bw-sand-100 text-bw-navy-950 antialiased">
       <div
-        className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.08),transparent_50%)]"
+        className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(217,119,6,0.09),transparent_50%)]"
         aria-hidden
       />
 
@@ -82,39 +82,39 @@ export function AdminConsoleShell({
         <AdminConsoleSidebar onSignOut={signOut} />
 
         <div className="flex min-h-screen min-h-dvh min-w-0 flex-1 flex-col">
-          <div className="border-b border-[#2a2f3a] bg-[#161a20] lg:hidden">
+          <div className="border-b border-bw-sand-200 bg-white lg:hidden">
             <div className="flex">
               <NavLink to="/admin" end className={mobileNavClass}>
-                <IconLayout className="h-5 w-5 text-[#3b82f6]" />
+                <IconLayout className="h-5 w-5 text-bw-blue-600" />
                 Home
               </NavLink>
               <NavLink to="/admin/transactions" className={mobileNavClass}>
-                <IconArrows className="h-5 w-5 text-[#3b82f6]" />
+                <IconArrows className="h-5 w-5 text-bw-blue-600" />
                 Queue
               </NavLink>
               <NavLink to="/admin/search" className={mobileNavClass}>
-                <IconSearch className="h-5 w-5 text-[#3b82f6]" />
+                <IconSearch className="h-5 w-5 text-bw-blue-600" />
                 Search
               </NavLink>
             </div>
-            <div className="flex items-center justify-end gap-4 border-t border-[#2a2f3a] px-4 py-2">
+            <div className="flex items-center justify-end gap-4 border-t border-bw-sand-200 px-4 py-2">
               <Link
                 to="/"
-                className="text-xs font-semibold text-slate-500 hover:text-white"
+                className="text-xs font-semibold text-bw-muted hover:text-bw-navy-950"
               >
                 Site
               </Link>
               <button
                 type="button"
                 onClick={signOut}
-                className="text-xs font-semibold text-slate-500 hover:text-white"
+                className="text-xs font-semibold text-bw-muted hover:text-bw-navy-950"
               >
                 Out
               </button>
             </div>
           </div>
 
-          <header className="border-b border-[#2a2f3a] bg-[#121417]/95 px-4 py-5 backdrop-blur-md sm:px-8">
+          <header className="border-b border-bw-sand-200 bg-white/95 px-4 py-5 shadow-bw-soft backdrop-blur-md sm:px-8">
             <div
               className={['mx-auto w-full min-w-0 space-y-4', mainMaxClass].join(
                 ' ',
@@ -122,14 +122,14 @@ export function AdminConsoleShell({
             >
               <div className="flex min-w-0 flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-6">
                 <div className="min-w-0 max-w-full md:max-w-2xl">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-bw-muted">
                     {crumb}
                   </p>
-                  <h1 className="mt-1 break-words font-display text-2xl font-semibold tracking-tight text-white sm:text-[1.75rem]">
+                  <h1 className="mt-1 break-words font-display text-2xl font-semibold tracking-tight text-bw-navy-950 sm:text-[1.75rem]">
                     {title}
                   </h1>
                   {subtitle ? (
-                    <div className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-400">
+                    <div className="mt-2 max-w-3xl text-sm leading-relaxed text-bw-muted">
                       {subtitle}
                     </div>
                   ) : null}
@@ -147,7 +147,7 @@ export function AdminConsoleShell({
                   className="flex min-w-0 w-full flex-1 flex-col gap-2 sm:flex-row sm:items-center"
                 >
                   <div className="relative min-w-0 w-full sm:flex-1">
-                    <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">
+                    <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-bw-muted">
                       <IconSearch className="h-4 w-4" />
                     </span>
                     <input
@@ -157,13 +157,13 @@ export function AdminConsoleShell({
                       onChange={(e) => setGlobalSearch(e.target.value)}
                       placeholder="Search customers & approvals…"
                       autoComplete="off"
-                      className="box-border min-h-[2.5rem] w-full min-w-0 rounded-lg border border-[#2a2f3a] bg-[#1c1f26] py-2.5 pl-10 pr-3 text-sm text-white outline-none placeholder:text-slate-600 focus:border-[#3b82f6]/50 focus:ring-2 focus:ring-[#3b82f6]/20"
+                      className="box-border min-h-[2.5rem] w-full min-w-0 rounded-lg border border-bw-sand-200 bg-white py-2.5 pl-10 pr-3 text-sm text-bw-navy-950 outline-none placeholder:text-bw-muted focus:border-bw-blue-600/50 focus:ring-2 focus:ring-bw-blue-600/20"
                       aria-label="Search customers and approvals"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="h-[2.5rem] w-full shrink-0 rounded-lg bg-[#3b82f6] px-4 text-sm font-semibold text-white hover:bg-[#2563eb] sm:h-auto sm:w-auto sm:self-center sm:py-2.5"
+                    className="h-[2.5rem] w-full shrink-0 rounded-lg bg-bw-blue-600 px-4 text-sm font-semibold text-white hover:bg-bw-navy-800 sm:h-auto sm:w-auto sm:self-center sm:py-2.5"
                   >
                     Search
                   </button>
@@ -171,20 +171,20 @@ export function AdminConsoleShell({
                 <div className="flex shrink-0 items-center justify-end gap-2 self-stretch sm:self-center">
                   <Link
                     to="/admin/support"
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#2a2f3a] bg-[#1c1f26] text-slate-400 transition hover:border-[#3b82f6]/40 hover:text-white"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-bw-sand-200 bg-white text-bw-muted transition hover:border-bw-blue-600/40 hover:text-bw-navy-950"
                     aria-label="Support and alerts"
                   >
                     <IconBell />
                   </Link>
-                  <div className="flex h-10 items-center gap-2 rounded-lg border border-[#2a2f3a] bg-[#1c1f26] py-1.5 pl-2 pr-3">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#3b82f6]/25 text-xs font-bold text-[#93c5fd]">
+                  <div className="flex h-10 items-center gap-2 rounded-lg border border-bw-sand-200 bg-white py-1.5 pl-2 pr-3 shadow-bw-soft">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-bw-sky-100 text-xs font-bold text-bw-blue-600 ring-1 ring-bw-sand-200">
                       OP
                     </div>
                     <div className="hidden min-w-0 text-left sm:block">
-                      <p className="truncate text-xs font-semibold text-white">
+                      <p className="truncate text-xs font-semibold text-bw-navy-950">
                         Operator
                       </p>
-                      <p className="truncate text-[10px] text-slate-500">
+                      <p className="truncate text-[10px] text-bw-muted">
                         Admin session
                       </p>
                     </div>

@@ -631,7 +631,7 @@ export function SettingsPage() {
           ) : null}
           {pwOk ? (
             <p
-              className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-900"
+              className="rounded-lg border border-bw-blue-500/20 bg-bw-sky-100 px-4 py-3 text-sm font-medium text-bw-navy-900"
               role="status"
             >
               Password updated. Use your new password the next time you sign in.
@@ -755,7 +755,7 @@ export function SettingsPage() {
               password.
             </p>
             {user?.hasTransactionPin ? (
-              <p className="mt-2 text-sm font-medium text-emerald-800">
+              <p className="mt-2 text-sm font-medium text-bw-blue-700">
                 A transaction PIN is on your account. You can replace it below.
               </p>
             ) : (
@@ -770,7 +770,7 @@ export function SettingsPage() {
               </p>
             ) : null}
             {txPinOk ? (
-              <p className="mt-3 text-sm font-medium text-emerald-700">
+              <p className="mt-3 text-sm font-medium text-bw-blue-600">
                 Transaction PIN saved.
               </p>
             ) : null}

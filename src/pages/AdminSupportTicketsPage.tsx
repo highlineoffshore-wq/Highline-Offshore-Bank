@@ -194,7 +194,7 @@ export function AdminSupportTicketsPage() {
           type="button"
           disabled={busy}
           onClick={() => void load()}
-          className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-4 py-2 text-sm font-semibold text-white transition hover:border-[#3b82f6]/35 hover:bg-[#252a33] disabled:opacity-50"
+          className="rounded-lg border border-bw-sand-200 bg-white px-4 py-2 text-sm font-semibold text-bw-navy-950 transition hover:border-bw-blue-600/35 hover:bg-bw-sand-200 disabled:opacity-50"
         >
           Refresh
         </button>
@@ -220,8 +220,8 @@ export function AdminSupportTicketsPage() {
             className={[
               'rounded-lg px-4 py-2 text-xs font-bold uppercase tracking-wide transition',
               statusFilter === id
-                ? 'bg-[#3b82f6] text-white shadow-sm'
-                : 'border border-[#2a2f3a] bg-[#121417] text-slate-400 hover:border-[#3b82f6]/40 hover:text-slate-200',
+                ? 'bg-bw-blue-600 text-white shadow-sm'
+                : 'border border-bw-sand-200 bg-bw-sand-100 text-slate-400 hover:border-bw-blue-600/40 hover:text-slate-200',
             ].join(' ')}
           >
             {label}
@@ -237,7 +237,7 @@ export function AdminSupportTicketsPage() {
           <select
             value={assignFilter}
             onChange={(e) => setAssignFilter(e.target.value)}
-            className="rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2 text-sm text-white outline-none focus:border-[#3b82f6]/55"
+            className="rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2 text-sm text-bw-navy-950 outline-none focus:border-bw-blue-600/55"
           >
             <option value="">All</option>
             <option value="__unassigned__">Unassigned</option>
@@ -251,13 +251,13 @@ export function AdminSupportTicketsPage() {
       </div>
 
       <div className="grid min-w-0 gap-6 lg:grid-cols-5">
-        <div className="min-w-0 overflow-hidden rounded-xl border border-[#2a2f3a] bg-[#1c1f26] lg:col-span-2">
-          <div className="border-b border-[#2a2f3a] px-4 py-3">
+        <div className="min-w-0 overflow-hidden rounded-xl border border-bw-sand-200 bg-white lg:col-span-2">
+          <div className="border-b border-bw-sand-200 px-4 py-3">
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
               Inbox ({items.length})
             </p>
           </div>
-          <ul className="max-h-[min(72vh,560px)] divide-y divide-[#2a2f3a] overflow-y-auto overscroll-contain">
+          <ul className="max-h-[min(72vh,560px)] divide-y divide-bw-sand-200 overflow-y-auto overscroll-contain">
             {items.length === 0 ? (
               <li className="px-4 py-8 text-center text-sm text-slate-500">
                 No tickets for this filter.
@@ -274,11 +274,11 @@ export function AdminSupportTicketsPage() {
                     className={[
                       'flex w-full flex-col gap-1 px-4 py-3 text-left transition',
                       selectedId === row.id
-                        ? 'bg-[#3b82f6]/12 ring-1 ring-inset ring-[#3b82f6]/35'
+                        ? 'bg-bw-blue-600/12 ring-1 ring-inset ring-bw-blue-600/35'
                         : 'hover:bg-white/[0.03]',
                     ].join(' ')}
                   >
-                    <span className="truncate text-sm font-semibold text-white">
+                    <span className="truncate text-sm font-semibold text-bw-navy-950">
                       {row.subject}
                     </span>
                     <span className="truncate text-xs text-slate-500">
@@ -303,18 +303,18 @@ export function AdminSupportTicketsPage() {
 
         <div className="min-w-0 space-y-4 lg:col-span-3">
           {!selected || !detail ? (
-            <div className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-8 text-center text-sm text-slate-500">
+            <div className="rounded-xl border border-bw-sand-200 bg-white p-8 text-center text-sm text-slate-500">
               Select a ticket from the inbox.
             </div>
           ) : (
             <>
-              <div className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-5 sm:p-6">
+              <div className="rounded-xl border border-bw-sand-200 bg-white p-5 sm:p-6">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div className="min-w-0">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
                       Ticket
                     </p>
-                    <h2 className="mt-1 font-display text-xl font-semibold text-white">
+                    <h2 className="mt-1 font-display text-xl font-semibold text-bw-navy-950">
                       {detail.subject}
                     </h2>
                     <p className="mt-1 font-mono text-xs text-slate-500">{detail.id}</p>
@@ -331,7 +331,7 @@ export function AdminSupportTicketsPage() {
                     <dd className="mt-2">
                       <Link
                         to={`/admin/users/${encodeURIComponent(detail.userId)}`}
-                        className="text-xs font-semibold text-[#93c5fd] hover:underline"
+                        className="text-xs font-semibold text-bw-blue-500 hover:underline"
                       >
                         Open customer profile
                       </Link>
@@ -349,7 +349,7 @@ export function AdminSupportTicketsPage() {
                   </div>
                 </dl>
 
-                <div className="mt-6 grid gap-4 border-t border-[#2a2f3a] pt-5 sm:grid-cols-2">
+                <div className="mt-6 grid gap-4 border-t border-bw-sand-200 pt-5 sm:grid-cols-2">
                   <label className="block">
                     <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                       Status
@@ -362,7 +362,7 @@ export function AdminSupportTicketsPage() {
                           status: e.target.value as SupportTicketStatus,
                         })
                       }
-                      className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2.5 text-sm text-white outline-none focus:border-[#3b82f6]/55"
+                      className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2.5 text-sm text-bw-navy-950 outline-none focus:border-bw-blue-600/55"
                     >
                       <option value="open">Open</option>
                       <option value="pending">Pending</option>
@@ -382,7 +382,7 @@ export function AdminSupportTicketsPage() {
                           assignedTo: v === '' ? null : v,
                         })
                       }}
-                      className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2.5 text-sm text-white outline-none focus:border-[#3b82f6]/55"
+                      className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2.5 text-sm text-bw-navy-950 outline-none focus:border-bw-blue-600/55"
                     >
                       <option value="">Unassigned</option>
                       {SUPPORT_STAFF_OPTIONS.map((s) => (
@@ -395,7 +395,7 @@ export function AdminSupportTicketsPage() {
                 </div>
 
                 {customer && customer.accounts.length > 0 ? (
-                  <div className="mt-6 border-t border-[#2a2f3a] pt-5">
+                  <div className="mt-6 border-t border-bw-sand-200 pt-5">
                     <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                       Linked accounts
                     </p>
@@ -414,7 +414,7 @@ export function AdminSupportTicketsPage() {
                               onChange={() =>
                                 setLinkedDraft((d) => ({ ...d, [a.id]: !d[a.id] }))
                               }
-                              className="rounded border-[#2a2f3a] bg-[#121417]"
+                              className="rounded border-bw-sand-200 bg-bw-sand-100"
                             />
                             <span>
                               {a.name}{' '}
@@ -428,7 +428,7 @@ export function AdminSupportTicketsPage() {
                       type="button"
                       disabled={busy}
                       onClick={() => void saveLinkedAccounts()}
-                      className="mt-3 rounded-lg border border-[#2a2f3a] bg-[#121417] px-4 py-2 text-xs font-semibold text-slate-200 hover:border-[#3b82f6]/35"
+                      className="mt-3 rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-4 py-2 text-xs font-semibold text-slate-200 hover:border-bw-blue-600/35"
                     >
                       Save linked accounts
                     </button>
@@ -436,16 +436,16 @@ export function AdminSupportTicketsPage() {
                 ) : null}
               </div>
 
-              <div className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-5 sm:p-6">
-                <h3 className="text-sm font-semibold text-white">Conversation</h3>
-                <div className="mt-4 max-h-[min(48vh,400px)] space-y-3 overflow-y-auto rounded-lg border border-[#2a2f3a] bg-[#121417]/50 p-4">
+              <div className="rounded-xl border border-bw-sand-200 bg-white p-5 sm:p-6">
+                <h3 className="text-sm font-semibold text-bw-navy-950">Conversation</h3>
+                <div className="mt-4 max-h-[min(48vh,400px)] space-y-3 overflow-y-auto rounded-lg border border-bw-sand-200 bg-bw-sand-100/90 p-4">
                   {detail.messages.map((m) => (
                     <div
                       key={m.id}
                       className={
                         m.authorType === 'staff'
-                          ? 'ml-4 rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-3 py-2.5 text-sm text-slate-200 sm:ml-10'
-                          : 'mr-4 rounded-lg bg-[#3b82f6]/12 px-3 py-2.5 text-sm text-slate-100 sm:mr-10'
+                          ? 'ml-4 rounded-lg border border-bw-sand-200 bg-white px-3 py-2.5 text-sm text-slate-200 sm:ml-10'
+                          : 'mr-4 rounded-lg bg-bw-blue-600/12 px-3 py-2.5 text-sm text-slate-100 sm:mr-10'
                       }
                     >
                       <p className="text-[10px] font-bold uppercase tracking-wide text-slate-500">
@@ -465,7 +465,7 @@ export function AdminSupportTicketsPage() {
                       value={staffLabel}
                       onChange={(e) => setStaffLabel(e.target.value)}
                       disabled={busy}
-                      className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2.5 text-sm text-white outline-none focus:border-[#3b82f6]/55 sm:max-w-xs"
+                      className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2.5 text-sm text-bw-navy-950 outline-none focus:border-bw-blue-600/55 sm:max-w-xs"
                     >
                       {SUPPORT_STAFF_OPTIONS.map((s) => (
                         <option key={s} value={s}>
@@ -480,12 +480,12 @@ export function AdminSupportTicketsPage() {
                     disabled={busy}
                     rows={4}
                     placeholder="Staff reply to customer…"
-                    className="w-full resize-y rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2.5 text-sm text-white outline-none placeholder:text-slate-600 focus:border-[#3b82f6]/55"
+                    className="w-full resize-y rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2.5 text-sm text-bw-navy-950 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/55"
                   />
                   <button
                     type="submit"
                     disabled={busy || !reply.trim()}
-                    className="rounded-lg bg-[#3b82f6] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#2563eb] disabled:opacity-50"
+                    className="rounded-lg bg-bw-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-bw-navy-800 disabled:opacity-50"
                   >
                     Send reply
                   </button>

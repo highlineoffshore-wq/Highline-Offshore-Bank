@@ -22,9 +22,9 @@ export function PersonalPage() {
   return (
     <>
       <SegmentHero
-        eyebrow="Personal banking"
-        headline="Everyday money, made simpler."
-        subtext="Spend, save, and borrow on your terms—with clear rates, smart tools in the app, and specialists when life gets complicated. Whether you are consolidating accounts after a move, refinancing, or teaching a teen to budget, we structure the experience so you always know the next step."
+        eyebrow="Individual banking"
+        headline="Cash flow without the clutter."
+        subtext="Route paychecks, choreograph borrowing, and stack goals behind one login—rates articulated where you tap, and humans who recall why you consolidated after a move or refinanced during a hectic spring."
         gradientClass="from-bw-navy-900 via-bw-navy-800 to-bw-blue-600"
         stats={[
           { value: '8am–10pm ET', label: 'Specialist support hours' },
@@ -38,24 +38,24 @@ export function PersonalPage() {
             className="font-medium text-white underline-offset-4 hover:underline"
             to="/"
           >
-            ← Back to home
+            ← Return home
           </Link>
         </p>
       </SegmentHero>
 
       <SegmentProseBand
-        title="Banking that fits real life—not a one-size brochure"
+        title="Built around households—not glossy brochures"
         paragraphs={[
-          `Most people do not wake up thinking about APY—they think about rent, daycare, a car payment, or saving for a trip. ${cfg.bankNameShort} Personal is organized around those rhythms: money in, money out, money set aside, and money working for later.`,
-          'You get one sign-in for checking, savings, cards, and loans, with permissions you control for partners or family. Alerts can fire on low balance, large purchases, or deposits so surprises are rare. When something does not look right, you can lock a card, dispute from the timeline, or reach a human without re-explaining your whole story.',
-          'Below is a deeper look at accounts, borrowing, digital tools, and how onboarding works. Summaries on this page are for orientation only; rates, fees, and terms in your account agreement, Truth in Savings disclosure, and loan documents control.',
+          `Few mornings begin with “what’s my APY?” Most begin with tuition, rent hikes, or finally booking that renovation. ${cfg.bankNameShort} Personal mirrors those beats—cash landing, cash leaving, cushions stashed, long bets funded.`,
+          'Single credentials stitch checking, savings, plastic, and installment debt together; you decide who else sees what. Alerts fan out on razor-thin balances, chunky purchases, or inbound ACH so drama stays rare. Odd charge? Freeze the plastic, challenge from the ledger, or ping a banker who already skimmed your notes.',
+          'What follows unpacks accounts, credit, digital habits, and onboarding cadence. Anything here is orientation—the Truth in Savings packet, loan agreements, and fee schedules you sign still win.',
         ]}
-        footnote={`${cfg.bankName} is a Member FDIC institution. Deposits are insured up to applicable limits. Credit is subject to approval.`}
+        footnote={`${cfg.bankName} is Member FDIC. Insurance caps apply. Credit decisions hinge on underwriting.`}
       />
 
       <SegmentFeatureGrid
-        heading={`What you can do with ${cfg.bankNameShort} Personal`}
-        intro="From your first paycheck to your next big purchase, we keep the essentials straightforward—with optional detail when you want to drill in."
+        heading={`Inside ${cfg.bankNameShort} Personal`}
+        intro="From debut paycheck to “we’re finally remodeling,” the fundamentals stay legible—dig deeper only when curiosity kicks in."
         features={[
           {
             title: 'Checking & savings',
@@ -312,17 +312,19 @@ export function PersonalPage() {
           {
             label: 'Small business',
             to: '/small-business',
-            description: 'Checking, lending, and cash management for growing teams.',
+            description:
+              'Liquidity rails, credit posture, and treasury muscle for scaling crews.',
           },
           {
             label: 'Wealth',
             to: '/wealth',
-            description: 'Planning, investing, and private banking in one relationship.',
+            description:
+              'Investments, scenario planning, and private banking under one roof.',
           },
           {
             label: 'Home',
             to: '/',
-            description: `Overview of everything ${cfg.bankNameShort} offers.`,
+            description: `The full ${cfg.bankNameShort} map—segments, stories, entry points.`,
           },
         ]}
       />

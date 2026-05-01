@@ -168,14 +168,14 @@ export function AdminCardsPage() {
         <div className="flex flex-wrap gap-2">
           <Link
             to="/admin/transactions"
-            className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-[#3b82f6]/35 hover:text-white"
+            className="rounded-lg border border-bw-sand-200 bg-white px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-bw-blue-600/35 hover:text-bw-navy-950"
           >
             Approval queue
           </Link>
           <button
             type="button"
             onClick={() => void load()}
-            className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-4 py-2 text-sm font-semibold text-white transition hover:border-[#3b82f6]/35 hover:bg-[#252a33]"
+            className="rounded-lg border border-bw-sand-200 bg-white px-4 py-2 text-sm font-semibold text-bw-navy-950 transition hover:border-bw-blue-600/35 hover:bg-bw-sand-200"
           >
             Refresh
           </button>
@@ -192,16 +192,16 @@ export function AdminCardsPage() {
       ) : null}
 
       <div className="grid gap-8 xl:grid-cols-[1fr_minmax(20rem,26rem)]">
-        <div className="w-full min-w-0 overflow-hidden rounded-xl border border-[#2a2f3a] bg-[#1c1f26] shadow-lg shadow-black/20">
-          <div className="border-b border-[#2a2f3a] px-4 py-3">
-            <h2 className="text-sm font-semibold text-white">Customers</h2>
+        <div className="w-full min-w-0 overflow-hidden rounded-xl border border-bw-sand-200 bg-white shadow-bw-card">
+          <div className="border-b border-bw-sand-200 px-4 py-3">
+            <h2 className="text-sm font-semibold text-bw-navy-950">Customers</h2>
             <p className="text-xs text-slate-500">
               Select a row to open issuance and controls.
             </p>
           </div>
           <div className="max-h-[32rem] overflow-y-auto">
             <table className="min-w-full text-left text-sm">
-              <thead className="sticky top-0 bg-[#121417] text-[11px] font-bold uppercase tracking-wide text-slate-500">
+              <thead className="sticky top-0 bg-bw-sand-100 text-[11px] font-bold uppercase tracking-wide text-slate-500">
                 <tr>
                   <th className="px-3 py-2">Customer</th>
                   <th className="px-3 py-2">Card</th>
@@ -209,7 +209,7 @@ export function AdminCardsPage() {
                   <th className="px-3 py-2" />
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#2a2f3a]">
+              <tbody className="divide-y divide-bw-sand-200">
                 {rows.map((r) => {
                   const d = r.debitCard
                   const state = d.stolenBlocked
@@ -224,12 +224,12 @@ export function AdminCardsPage() {
                       key={r.userId}
                       className={
                         selectedId === r.userId
-                          ? 'bg-[#3b82f6]/10'
-                          : 'hover:bg-[#121417]/50'
+                          ? 'bg-bw-blue-600/10'
+                          : 'hover:bg-bw-sand-100/90'
                       }
                     >
                       <td className="px-3 py-3">
-                        <p className="font-medium text-white">{r.displayName}</p>
+                        <p className="font-medium text-bw-navy-950">{r.displayName}</p>
                         <p className="text-xs text-slate-500">{r.email}</p>
                       </td>
                       <td className="px-3 py-3 font-mono text-xs text-slate-300">
@@ -243,7 +243,7 @@ export function AdminCardsPage() {
                         <button
                           type="button"
                           onClick={() => setSelectedId(r.userId)}
-                          className="rounded-md border border-[#2a2f3a] px-2 py-1 text-xs font-semibold text-slate-200 hover:border-[#3b82f6]/40 hover:text-white"
+                          className="rounded-md border border-bw-sand-200 px-2 py-1 text-xs font-semibold text-slate-200 hover:border-bw-blue-600/40 hover:text-bw-navy-950"
                         >
                           Manage
                         </button>
@@ -259,8 +259,8 @@ export function AdminCardsPage() {
         <div className="min-w-0 space-y-4">
           {selected ? (
             <>
-              <div className="rounded-xl border border-[#2a2f3a] bg-[#161a20] p-5">
-                <h3 className="font-display text-base font-semibold text-white">
+              <div className="rounded-xl border border-bw-sand-200 bg-white p-5">
+                <h3 className="font-display text-base font-semibold text-bw-navy-950">
                   {selected.displayName}
                 </h3>
                 <p className="mt-1 font-mono text-xs text-slate-500">
@@ -279,7 +279,7 @@ export function AdminCardsPage() {
                     type="button"
                     disabled={busyId === selected.userId}
                     onClick={() => void issue(selected.userId, 'physical')}
-                    className="rounded-lg bg-[#3b82f6] px-3 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-[#2563eb] disabled:opacity-50"
+                    className="rounded-lg bg-bw-blue-600 px-3 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-bw-navy-800 disabled:opacity-50"
                   >
                     Issue physical
                   </button>
@@ -290,7 +290,7 @@ export function AdminCardsPage() {
                 </p>
               </div>
 
-              <div className="rounded-xl border border-[#2a2f3a] bg-[#161a20] p-5">
+              <div className="rounded-xl border border-bw-sand-200 bg-white p-5">
                 <h4 className="text-xs font-bold uppercase tracking-wide text-slate-500">
                   Freeze &amp; fraud
                 </h4>
@@ -304,7 +304,7 @@ export function AdminCardsPage() {
                         !selected.debitCard.adminFrozen,
                       )
                     }
-                    className="rounded-lg border border-[#2a2f3a] px-3 py-2 text-xs font-semibold text-slate-200 hover:bg-[#1c1f26] disabled:opacity-50"
+                    className="rounded-lg border border-bw-sand-200 px-3 py-2 text-xs font-semibold text-slate-200 hover:bg-white disabled:opacity-50"
                   >
                     {selected.debitCard.adminFrozen
                       ? 'Unfreeze (bank)'
@@ -323,7 +323,7 @@ export function AdminCardsPage() {
                       type="button"
                       disabled={busyId === selected.userId}
                       onClick={() => void setStolen(selected.userId, false)}
-                      className="rounded-lg border border-emerald-500/40 px-3 py-2 text-xs font-semibold text-emerald-100 hover:bg-emerald-950/40 disabled:opacity-50"
+                      className="rounded-lg border border-bw-blue-500/40 px-3 py-2 text-xs font-semibold text-bw-sky-100 hover:bg-bw-navy-900/40 disabled:opacity-50"
                     >
                       Clear stolen block
                     </button>
@@ -331,7 +331,7 @@ export function AdminCardsPage() {
                 </div>
               </div>
 
-              <div className="rounded-xl border border-[#2a2f3a] bg-[#161a20] p-5">
+              <div className="rounded-xl border border-bw-sand-200 bg-white p-5">
                 <h4 className="text-xs font-bold uppercase tracking-wide text-slate-500">
                   Spend limits (USD)
                 </h4>
@@ -342,7 +342,7 @@ export function AdminCardsPage() {
                       value={limitSingle}
                       onChange={(e) => setLimitSingle(e.target.value)}
                       placeholder="Empty = none"
-                      className="mt-1 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-2 py-2 text-sm text-white"
+                      className="mt-1 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-2 py-2 text-sm text-bw-navy-950"
                     />
                   </label>
                   <label className="block text-xs">
@@ -351,7 +351,7 @@ export function AdminCardsPage() {
                       value={limitDaily}
                       onChange={(e) => setLimitDaily(e.target.value)}
                       placeholder="Empty = none"
-                      className="mt-1 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-2 py-2 text-sm text-white"
+                      className="mt-1 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-2 py-2 text-sm text-bw-navy-950"
                     />
                   </label>
                 </div>
@@ -359,13 +359,13 @@ export function AdminCardsPage() {
                   type="button"
                   disabled={busyId === selected.userId}
                   onClick={() => void saveLimits(selected.userId)}
-                  className="mt-3 rounded-lg bg-[#3b82f6] px-4 py-2 text-xs font-semibold text-white hover:bg-[#2563eb] disabled:opacity-50"
+                  className="mt-3 rounded-lg bg-bw-blue-600 px-4 py-2 text-xs font-semibold text-white hover:bg-bw-navy-800 disabled:opacity-50"
                 >
                   Save limits
                 </button>
               </div>
 
-              <div className="rounded-xl border border-[#2a2f3a] bg-[#161a20] p-5">
+              <div className="rounded-xl border border-bw-sand-200 bg-white p-5">
                 <h4 className="text-xs font-bold uppercase tracking-wide text-slate-500">
                   Track authorizations (demo)
                 </h4>
@@ -373,13 +373,13 @@ export function AdminCardsPage() {
                   <input
                     value={demoMerchant}
                     onChange={(e) => setDemoMerchant(e.target.value)}
-                    className="rounded-lg border border-[#2a2f3a] bg-[#121417] px-2 py-2 text-sm text-white"
+                    className="rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-2 py-2 text-sm text-bw-navy-950"
                     placeholder="Merchant"
                   />
                   <input
                     value={demoAmount}
                     onChange={(e) => setDemoAmount(e.target.value)}
-                    className="rounded-lg border border-[#2a2f3a] bg-[#121417] px-2 py-2 text-sm text-white"
+                    className="rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-2 py-2 text-sm text-bw-navy-950"
                     placeholder="-00.00"
                   />
                   <select
@@ -387,7 +387,7 @@ export function AdminCardsPage() {
                     onChange={(e) =>
                       setDemoStatus(e.target.value as typeof demoStatus)
                     }
-                    className="rounded-lg border border-[#2a2f3a] bg-[#121417] px-2 py-2 text-sm text-white sm:col-span-2"
+                    className="rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-2 py-2 text-sm text-bw-navy-950 sm:col-span-2"
                   >
                     <option value="posted">Posted</option>
                     <option value="pending">Pending</option>
@@ -398,13 +398,13 @@ export function AdminCardsPage() {
                   type="button"
                   disabled={busyId === selected.userId}
                   onClick={() => void appendDemoTxn(selected.userId)}
-                  className="mt-3 rounded-lg border border-[#2a2f3a] px-4 py-2 text-xs font-semibold text-slate-200 hover:bg-[#1c1f26] disabled:opacity-50"
+                  className="mt-3 rounded-lg border border-bw-sand-200 px-4 py-2 text-xs font-semibold text-slate-200 hover:bg-white disabled:opacity-50"
                 >
                   Append row
                 </button>
               </div>
 
-              <div className="rounded-xl border border-[#2a2f3a] bg-[#161a20] p-5">
+              <div className="rounded-xl border border-bw-sand-200 bg-white p-5">
                 <h4 className="text-xs font-bold uppercase tracking-wide text-slate-500">
                   Card transactions
                 </h4>
@@ -416,7 +416,7 @@ export function AdminCardsPage() {
                       (tx: DebitCardTransaction) => (
                         <li
                           key={tx.id}
-                          className="flex justify-between gap-2 rounded-md border border-[#2a2f3a]/80 bg-[#121417]/80 px-2 py-2"
+                          className="flex justify-between gap-2 rounded-md border border-bw-sand-200/80 bg-white/90 px-2 py-2"
                         >
                           <div>
                             <p className="font-medium text-slate-200">
@@ -443,7 +443,7 @@ export function AdminCardsPage() {
               </div>
             </>
           ) : (
-            <div className="rounded-xl border border-dashed border-[#2a2f3a] bg-[#161a20]/50 p-8 text-center text-sm text-slate-500">
+            <div className="rounded-xl border border-dashed border-bw-sand-200 bg-white/50 p-8 text-center text-sm text-slate-500">
               Choose a customer on the left to issue or control their card.
             </div>
           )}

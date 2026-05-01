@@ -43,7 +43,7 @@ export function SegmentHero({
             to="/sign-up"
             className="inline-flex items-center justify-center rounded-md bg-bw-red-700 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-bw-red-600"
           >
-            Get started
+            Start an application
           </Link>
           <Link
             to="/sign-in"
@@ -110,7 +110,7 @@ export function SegmentFeatureGrid({
               <ul className="mt-4 space-y-2 border-t border-bw-sand-200/80 pt-4 text-sm text-bw-navy-900">
                 {card.bullets.map((b) => (
                   <li key={b} className="flex gap-2">
-                    <span className="mt-0.5 shrink-0 font-semibold text-emerald-700">
+                    <span className="mt-0.5 shrink-0 font-semibold text-bw-blue-600">
                       ✓
                     </span>
                     <span className="text-bw-muted">{b}</span>
@@ -333,7 +333,7 @@ export function SegmentCheckColumns({
                 {col.items.map((item) => (
                   <li key={item} className="flex gap-2">
                     <span
-                      className="mt-0.5 shrink-0 text-emerald-700"
+                      className="mt-0.5 shrink-0 text-bw-blue-600"
                       aria-hidden
                     >
                       ✓
@@ -399,7 +399,7 @@ export function SegmentCrossLinks({
     <section className="border-y border-bw-sand-200 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-14">
         <h2 className="font-display text-xl font-semibold text-bw-navy-900">
-          Explore other ways to bank with us
+          Other paths through our house
         </h2>
         <ul className="mt-6 grid gap-4 sm:grid-cols-3">
           {items.map((item) => (
@@ -427,11 +427,11 @@ export function SegmentBottomCta({ cfg }: { cfg: BankConfig }) {
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-14 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="font-display text-2xl font-semibold text-bw-navy-900">
-            Prefer to talk it through?
+            Want the human version?
           </h2>
           <p className="mt-2 text-bw-muted">
-            A specialist can walk through options, answer questions, and outline
-            next steps at no obligation.
+            A teammate can translate jargon, pressure-test assumptions, and sketch
+            sensible moves—even if you are only collecting intel today.
           </p>
         </div>
         <span className="inline-flex shrink-0 items-center justify-center rounded-md bg-bw-navy-900 px-6 py-3 text-sm font-semibold text-white">

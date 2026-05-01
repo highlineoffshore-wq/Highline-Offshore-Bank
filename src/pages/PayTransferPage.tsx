@@ -222,7 +222,7 @@ export function PayTransferPage() {
           role="status"
           className={
             banner.type === 'success'
-              ? 'rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900'
+              ? 'rounded-lg border border-bw-blue-500/20 bg-bw-sky-100 px-4 py-3 text-sm text-bw-navy-900'
               : 'rounded-lg border border-bw-red-600/30 bg-red-50 px-4 py-3 text-sm text-bw-red-800'
           }
         >
@@ -564,7 +564,7 @@ function BetweenAccountsForm({
   const stepIndex = stepOrder.indexOf(step)
   const crumbClass = (i: number) => {
     if (i < stepIndex)
-      return 'font-medium text-emerald-800'
+      return 'font-medium text-bw-blue-700'
     if (i === stepIndex)
       return 'font-semibold text-bw-navy-900'
     return 'text-bw-muted'
@@ -791,7 +791,7 @@ function BetweenAccountsForm({
           toAccount && (
             <div className="mx-auto max-w-lg text-center">
               <div
-                className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"
+                className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-bw-sky-100 text-bw-blue-600"
                 aria-hidden
               >
                 <svg
@@ -1349,7 +1349,7 @@ function BillPayForm({
           {cancelModalPhase === 'done' && (
             <div className="flex flex-col items-center py-6 text-center">
               <div
-                className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"
+                className="flex h-16 w-16 items-center justify-center rounded-full bg-bw-sky-100 text-bw-blue-600"
                 style={{
                   animation: 'bw-cancel-pop 0.5s ease-out forwards',
                 }}
@@ -2134,7 +2134,7 @@ function WireTransferForm({
       {step === 'success' && (
         <div className="mt-8 text-center sm:mx-auto sm:max-w-lg">
           <div
-            className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"
+            className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-bw-sky-100 text-bw-blue-600"
             aria-hidden
           >
             <svg
@@ -2425,7 +2425,7 @@ function RailsIncomingDepositForm({
       {step === 'success' && creditedCents !== null && (
         <div className="mt-8 text-center sm:max-w-lg">
           <div
-            className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"
+            className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-bw-sky-100 text-bw-blue-600"
             aria-hidden
           >
             <svg
@@ -2691,7 +2691,7 @@ function MobileDepositForm({
         {step === 'success' && creditedCents !== null && (
           <div className="mt-8 text-center sm:max-w-lg">
             <div
-              className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"
+              className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-bw-sky-100 text-bw-blue-600"
               aria-hidden
             >
               <svg

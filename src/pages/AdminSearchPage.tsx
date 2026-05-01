@@ -107,14 +107,14 @@ export function AdminSearchPage() {
         <p className="text-sm text-slate-500">Loading directory…</p>
       ) : (
         <div className="grid gap-8 lg:grid-cols-2">
-          <section className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-6">
-            <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#2a2f3a] pb-4">
-              <h2 className="text-sm font-semibold text-white">Customers</h2>
+          <section className="rounded-xl border border-bw-sand-200 bg-white p-6">
+            <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-bw-sand-200 pb-4">
+              <h2 className="text-sm font-semibold text-bw-navy-950">Customers</h2>
               <span className="text-xs text-slate-500">
                 {customerRows.length} shown
               </span>
             </div>
-            <ul className="mt-4 divide-y divide-[#2a2f3a]">
+            <ul className="mt-4 divide-y divide-bw-sand-200">
               {customerRows.length === 0 ? (
                 <li className="py-6 text-center text-sm text-slate-500">
                   No matches.
@@ -123,10 +123,10 @@ export function AdminSearchPage() {
                 customerRows.map((c) => (
                   <li key={c.id} className="py-3">
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <p className="font-medium text-white">{c.displayName}</p>
+                      <p className="font-medium text-bw-navy-950">{c.displayName}</p>
                       <Link
                         to={`/admin/users/${encodeURIComponent(c.id)}`}
-                        className="text-xs font-semibold text-[#60a5fa] hover:underline"
+                        className="text-xs font-semibold text-bw-blue-500 hover:underline"
                       >
                         Profile →
                       </Link>
@@ -144,20 +144,20 @@ export function AdminSearchPage() {
             </ul>
             <Link
               to="/admin/users"
-              className="mt-4 inline-block text-xs font-semibold text-[#60a5fa] hover:underline"
+              className="mt-4 inline-block text-xs font-semibold text-bw-blue-500 hover:underline"
             >
               Open full user table →
             </Link>
           </section>
 
-          <section className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-6">
-            <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#2a2f3a] pb-4">
-              <h2 className="text-sm font-semibold text-white">Approvals</h2>
+          <section className="rounded-xl border border-bw-sand-200 bg-white p-6">
+            <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-bw-sand-200 pb-4">
+              <h2 className="text-sm font-semibold text-bw-navy-950">Approvals</h2>
               <span className="text-xs text-slate-500">
                 {approvalRows.length} shown
               </span>
             </div>
-            <ul className="mt-4 divide-y divide-[#2a2f3a]">
+            <ul className="mt-4 divide-y divide-bw-sand-200">
               {approvalRows.length === 0 ? (
                 <li className="py-6 text-center text-sm text-slate-500">
                   No matches.
@@ -178,7 +178,7 @@ export function AdminSearchPage() {
             </ul>
             <Link
               to="/admin/transactions"
-              className="mt-4 inline-block text-xs font-semibold text-[#60a5fa] hover:underline"
+              className="mt-4 inline-block text-xs font-semibold text-bw-blue-500 hover:underline"
             >
               Open approval queue →
             </Link>

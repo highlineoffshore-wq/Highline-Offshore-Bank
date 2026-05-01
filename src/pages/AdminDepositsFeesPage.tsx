@@ -57,7 +57,7 @@ export function AdminDepositsFeesPage() {
       headerAside={
         <Link
           to="/admin"
-          className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-[#3b82f6]/35 hover:text-white"
+          className="rounded-lg border border-bw-sand-200 bg-white px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-bw-blue-600/35 hover:text-bw-navy-950"
         >
           Full bank config
         </Link>
@@ -66,7 +66,7 @@ export function AdminDepositsFeesPage() {
         draft ? (
           <div
             className={[
-              'fixed inset-x-0 bottom-0 z-50 border-t border-[#2a2f3a] bg-[#121417]/95 px-4 pt-4 shadow-[0_-20px_56px_rgba(0,0,0,0.5)] backdrop-blur-xl sm:px-8 sm:pt-4',
+              'fixed inset-x-0 bottom-0 z-50 border-t border-bw-sand-200 bg-white/95 px-4 pt-4 shadow-bw-card backdrop-blur-xl sm:px-8 sm:pt-4',
               ADMIN_CONSOLE_SIDEBAR_LEFT_CLASS,
             ].join(' ')}
             style={{
@@ -76,7 +76,7 @@ export function AdminDepositsFeesPage() {
             <div className="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="text-xs text-slate-500">
                 {saveOk ? (
-                  <span className="font-medium text-emerald-400/95">
+                  <span className="font-medium text-bw-sky-100/95">
                     Saved successfully. Refresh the public site to pull changes.
                   </span>
                 ) : saveErr ? (
@@ -91,7 +91,7 @@ export function AdminDepositsFeesPage() {
               <button
                 type="submit"
                 form="admin-deposits-fees-form"
-                className="rounded-lg bg-[#3b82f6] px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-lg shadow-[#1e3a8a]/35 transition hover:bg-[#2563eb]"
+                className="rounded-lg bg-bw-blue-600 px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-lg shadow-amber-900/12 transition hover:bg-bw-navy-800"
               >
                 Save changes
               </button>
@@ -102,8 +102,8 @@ export function AdminDepositsFeesPage() {
     >
       {loading ? (
         <div className="animate-pulse space-y-6">
-          <div className="h-24 rounded-xl bg-[#1c1f26]" />
-          <div className="h-72 rounded-xl bg-[#1c1f26]" />
+          <div className="h-24 rounded-xl bg-white" />
+          <div className="h-72 rounded-xl bg-white" />
         </div>
       ) : loadErr ? (
         <div className="max-w-xl rounded-2xl border border-red-500/25 bg-red-950/30 p-6">

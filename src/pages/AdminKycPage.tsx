@@ -86,7 +86,7 @@ function statusPill(status: KycStatus) {
   if (status === 'pending')
     return `${base} bg-amber-500/15 text-amber-200 ring-1 ring-amber-500/30`
   if (status === 'approved')
-    return `${base} bg-emerald-500/15 text-emerald-200 ring-1 ring-emerald-500/30`
+    return `${base} bg-bw-blue-500/15 text-bw-sky-100 ring-1 ring-bw-blue-500/30`
   return `${base} bg-red-500/15 text-red-200 ring-1 ring-red-500/30`
 }
 
@@ -94,7 +94,7 @@ function riskPill(risk: KycRiskLevel) {
   const base =
     'inline-flex rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide'
   if (risk === 'low') return `${base} bg-slate-500/20 text-slate-200`
-  if (risk === 'standard') return `${base} bg-[#3b82f6]/15 text-[#93c5fd]`
+  if (risk === 'standard') return `${base} bg-bw-blue-600/15 text-bw-blue-500`
   if (risk === 'elevated') return `${base} bg-orange-500/15 text-orange-200`
   return `${base} bg-red-600/20 text-red-200`
 }
@@ -251,13 +251,13 @@ export function AdminKycPage() {
             type="button"
             disabled={busy}
             onClick={() => void load()}
-            className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-4 py-2 text-sm font-semibold text-white transition hover:border-[#3b82f6]/35 hover:bg-[#252a33] disabled:opacity-50"
+            className="rounded-lg border border-bw-sand-200 bg-white px-4 py-2 text-sm font-semibold text-bw-navy-950 transition hover:border-bw-blue-600/35 hover:bg-bw-sand-200 disabled:opacity-50"
           >
             Refresh
           </button>
           <Link
             to="/admin/users"
-            className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-[#3b82f6]/35 hover:text-white"
+            className="rounded-lg border border-bw-sand-200 bg-white px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-bw-blue-600/35 hover:text-bw-navy-950"
           >
             User directory
           </Link>
@@ -284,8 +284,8 @@ export function AdminKycPage() {
             className={[
               'rounded-lg px-4 py-2 text-xs font-bold uppercase tracking-wide transition',
               filter === id
-                ? 'bg-[#3b82f6] text-white shadow-sm'
-                : 'border border-[#2a2f3a] bg-[#121417] text-slate-400 hover:border-[#3b82f6]/40 hover:text-slate-200',
+                ? 'bg-bw-blue-600 text-white shadow-sm'
+                : 'border border-bw-sand-200 bg-bw-sand-100 text-slate-400 hover:border-bw-blue-600/40 hover:text-slate-200',
             ].join(' ')}
           >
             {label}
@@ -294,13 +294,13 @@ export function AdminKycPage() {
       </div>
 
       <div className="grid min-w-0 gap-6 lg:grid-cols-5">
-        <div className="min-w-0 overflow-hidden rounded-xl border border-[#2a2f3a] bg-[#1c1f26] lg:col-span-2">
-          <div className="border-b border-[#2a2f3a] px-4 py-3">
+        <div className="min-w-0 overflow-hidden rounded-xl border border-bw-sand-200 bg-white lg:col-span-2">
+          <div className="border-b border-bw-sand-200 px-4 py-3">
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
               Queue ({items.length})
             </p>
           </div>
-          <ul className="max-h-[min(70vh,520px)] divide-y divide-[#2a2f3a] overflow-y-auto overscroll-contain">
+          <ul className="max-h-[min(70vh,520px)] divide-y divide-bw-sand-200 overflow-y-auto overscroll-contain">
             {items.length === 0 ? (
               <li className="px-4 py-8 text-center text-sm text-slate-500">
                 No submissions for this filter.
@@ -320,11 +320,11 @@ export function AdminKycPage() {
                       className={[
                         'flex w-full flex-col gap-1 px-4 py-3 text-left transition',
                         selectedId === row.id
-                          ? 'bg-[#3b82f6]/12 ring-1 ring-inset ring-[#3b82f6]/35'
+                          ? 'bg-bw-blue-600/12 ring-1 ring-inset ring-bw-blue-600/35'
                           : 'hover:bg-white/[0.03]',
                       ].join(' ')}
                     >
-                      <span className="truncate text-sm font-semibold text-white">
+                      <span className="truncate text-sm font-semibold text-bw-navy-950">
                         {row.customerDisplayName}
                       </span>
                       <span className="truncate text-xs text-slate-500">
@@ -358,18 +358,18 @@ export function AdminKycPage() {
 
         <div className="min-w-0 space-y-6 lg:col-span-3">
           {!selected ? (
-            <div className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-8 text-center text-sm text-slate-500">
+            <div className="rounded-xl border border-bw-sand-200 bg-white p-8 text-center text-sm text-slate-500">
               Select a submission from the queue.
             </div>
           ) : (
             <>
-              <div className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-5 sm:p-6">
+              <div className="rounded-xl border border-bw-sand-200 bg-white p-5 sm:p-6">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div className="min-w-0">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
                       Customer
                     </p>
-                    <p className="mt-1 font-display text-lg font-semibold text-white">
+                    <p className="mt-1 font-display text-lg font-semibold text-bw-navy-950">
                       {selected.customerDisplayName}
                     </p>
                     <p className="mt-0.5 text-sm text-slate-400">
@@ -385,13 +385,13 @@ export function AdminKycPage() {
                     </span>
                     <Link
                       to={`/admin/users/${encodeURIComponent(selected.userId)}`}
-                      className="text-xs font-semibold text-[#93c5fd] hover:underline"
+                      className="text-xs font-semibold text-bw-blue-500 hover:underline"
                     >
                       Open customer profile
                     </Link>
                   </div>
                 </div>
-                <dl className="mt-5 grid gap-3 border-t border-[#2a2f3a] pt-5 text-sm sm:grid-cols-2">
+                <dl className="mt-5 grid gap-3 border-t border-bw-sand-200 pt-5 text-sm sm:grid-cols-2">
                   <div>
                     <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                       Submitted
@@ -417,8 +417,8 @@ export function AdminKycPage() {
                 </dl>
               </div>
 
-              <div className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-5 sm:p-6">
-                <h3 className="text-sm font-semibold text-white">Uploaded documents</h3>
+              <div className="rounded-xl border border-bw-sand-200 bg-white p-5 sm:p-6">
+                <h3 className="text-sm font-semibold text-bw-navy-950">Uploaded documents</h3>
                 <p className="mt-1 text-xs text-slate-500">
                   Customer uploads are stored on this demo server under{' '}
                   <span className="font-mono text-slate-400">server/data/kyc-uploads/</span>.
@@ -431,7 +431,7 @@ export function AdminKycPage() {
                     selected.documents.map((d) => (
                       <li
                         key={d.id}
-                        className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-[#2a2f3a] bg-[#121417]/60 px-3 py-2.5"
+                        className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-bw-sand-200 bg-white/80 px-3 py-2.5"
                       >
                         <div className="min-w-0">
                           <p className="truncate text-sm font-medium text-slate-100">
@@ -448,7 +448,7 @@ export function AdminKycPage() {
                             setDocModal(d)
                             setDocPreviewErr('')
                           }}
-                          className="shrink-0 rounded-md border border-[#2a2f3a] bg-[#1c1f26] px-3 py-1.5 text-xs font-semibold text-[#93c5fd] transition hover:border-[#3b82f6]/40"
+                          className="shrink-0 rounded-md border border-bw-sand-200 bg-white px-3 py-1.5 text-xs font-semibold text-bw-blue-500 transition hover:border-bw-blue-600/40"
                         >
                           View
                         </button>
@@ -461,9 +461,9 @@ export function AdminKycPage() {
               <form
                 key={`review-${selected.id}-${selected.riskLevel}-${selected.documentExpiresAt ?? ''}-${selected.complianceNotes.length}-${selected.status}`}
                 onSubmit={saveReviewFields}
-                className="space-y-5 rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-5 sm:p-6"
+                className="space-y-5 rounded-xl border border-bw-sand-200 bg-white p-5 sm:p-6"
               >
-                <h3 className="text-sm font-semibold text-white">
+                <h3 className="text-sm font-semibold text-bw-navy-950">
                   Risk, expiry &amp; compliance notes
                 </h3>
                 {selected.status !== 'pending' ? (
@@ -480,7 +480,7 @@ export function AdminKycPage() {
                       name="riskLevel"
                       defaultValue={selected.riskLevel}
                       disabled={selected.status !== 'pending' || busy}
-                      className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2.5 text-sm text-white outline-none focus:border-[#3b82f6]/55 focus:ring-2 focus:ring-[#3b82f6]/20 disabled:opacity-50"
+                      className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2.5 text-sm text-bw-navy-950 outline-none focus:border-bw-blue-600/55 focus:ring-2 focus:ring-bw-blue-600/20 disabled:opacity-50"
                     >
                       {RISK_OPTIONS.map((r) => (
                         <option key={r} value={r}>
@@ -498,7 +498,7 @@ export function AdminKycPage() {
                       name="documentExpiresAt"
                       defaultValue={selected.documentExpiresAt ?? ''}
                       disabled={selected.status !== 'pending' || busy}
-                      className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2.5 text-sm text-white outline-none focus:border-[#3b82f6]/55 focus:ring-2 focus:ring-[#3b82f6]/20 disabled:opacity-50"
+                      className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2.5 text-sm text-bw-navy-950 outline-none focus:border-bw-blue-600/55 focus:ring-2 focus:ring-bw-blue-600/20 disabled:opacity-50"
                     />
                   </label>
                   <label className="block sm:col-span-2">
@@ -511,7 +511,7 @@ export function AdminKycPage() {
                       defaultValue={selected.complianceNotes}
                       disabled={selected.status !== 'pending' || busy}
                       placeholder="Internal narrative: PEP hits, address verification, escalations…"
-                      className="mt-1.5 w-full resize-y rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2.5 text-sm text-white outline-none placeholder:text-slate-600 focus:border-[#3b82f6]/55 focus:ring-2 focus:ring-[#3b82f6]/20 disabled:opacity-50"
+                      className="mt-1.5 w-full resize-y rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2.5 text-sm text-bw-navy-950 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/55 focus:ring-2 focus:ring-bw-blue-600/20 disabled:opacity-50"
                     />
                   </label>
                 </div>
@@ -519,7 +519,7 @@ export function AdminKycPage() {
                   <button
                     type="submit"
                     disabled={busy}
-                    className="rounded-lg bg-[#1c1f26] px-4 py-2.5 text-sm font-semibold text-white ring-1 ring-[#2a2f3a] transition hover:ring-[#3b82f6]/40 disabled:opacity-50"
+                    className="rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-bw-navy-950 ring-1 ring-[#2a2f3a] transition hover:ring-bw-blue-600/40 disabled:opacity-50"
                   >
                     Save review fields
                   </button>
@@ -527,8 +527,8 @@ export function AdminKycPage() {
               </form>
 
               {selected.status === 'pending' ? (
-                <div className="rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-5 sm:p-6">
-                  <h3 className="text-sm font-semibold text-white">Decision</h3>
+                <div className="rounded-xl border border-bw-sand-200 bg-white p-5 sm:p-6">
+                  <h3 className="text-sm font-semibold text-bw-navy-950">Decision</h3>
                   <label className="mt-3 block">
                     <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                       Decision note (required to reject)
@@ -539,7 +539,7 @@ export function AdminKycPage() {
                       rows={3}
                       disabled={busy}
                       placeholder="Summarize what the customer was told or why the case was declined."
-                      className="mt-1.5 w-full resize-y rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2.5 text-sm text-white outline-none placeholder:text-slate-600 focus:border-[#3b82f6]/55 focus:ring-2 focus:ring-[#3b82f6]/20 disabled:opacity-50"
+                      className="mt-1.5 w-full resize-y rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2.5 text-sm text-bw-navy-950 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/55 focus:ring-2 focus:ring-bw-blue-600/20 disabled:opacity-50"
                     />
                   </label>
                   <div className="mt-4 flex flex-wrap gap-3">
@@ -547,7 +547,7 @@ export function AdminKycPage() {
                       type="button"
                       disabled={busy}
                       onClick={() => void decide('approve')}
-                      className="rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50"
+                      className="rounded-lg bg-bw-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-bw-blue-500 disabled:opacity-50"
                     >
                       Approve KYC
                     </button>
@@ -580,8 +580,8 @@ export function AdminKycPage() {
           aria-modal
           aria-labelledby="kyc-doc-title"
         >
-          <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl border border-[#2a2f3a] bg-[#1c1f26] p-6 shadow-2xl">
-            <h2 id="kyc-doc-title" className="font-display text-lg font-semibold text-white">
+          <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl border border-bw-sand-200 bg-white p-6 shadow-2xl">
+            <h2 id="kyc-doc-title" className="font-display text-lg font-semibold text-bw-navy-950">
               Document preview
             </h2>
             <p className="mt-2 text-sm text-slate-400">{docModal.fileName}</p>
@@ -604,7 +604,7 @@ export function AdminKycPage() {
               </div>
             </dl>
             {docModal.storagePath ? (
-              <div className="mt-4 min-h-[200px] rounded-lg border border-[#2a2f3a] bg-black/30">
+              <div className="mt-4 min-h-[200px] rounded-lg border border-bw-sand-200 bg-black/30">
                 {docPreviewLoading ? (
                   <p className="p-6 text-center text-sm text-slate-400">
                     Loading file…
@@ -642,7 +642,7 @@ export function AdminKycPage() {
             )}
             <button
               type="button"
-              className="mt-6 w-full rounded-lg bg-[#3b82f6] py-2.5 text-sm font-semibold text-white hover:bg-[#2563eb]"
+              className="mt-6 w-full rounded-lg bg-bw-blue-600 py-2.5 text-sm font-semibold text-white hover:bg-bw-navy-800"
               onClick={() => {
                 setDocModal(null)
               }}

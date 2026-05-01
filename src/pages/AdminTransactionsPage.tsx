@@ -43,7 +43,7 @@ function statusPill(status: ApprovalStatus) {
   if (status === 'pending')
     return `${base} bg-amber-500/15 text-amber-200 ring-1 ring-amber-400/30`
   if (status === 'approved')
-    return `${base} bg-emerald-500/15 text-emerald-200 ring-1 ring-emerald-400/25`
+    return `${base} bg-bw-blue-500/15 text-bw-sky-100 ring-1 ring-bw-blue-500/25`
   return `${base} bg-red-500/15 text-red-200 ring-1 ring-red-400/25`
 }
 
@@ -60,16 +60,16 @@ const tabBtn = (active: boolean) =>
   [
     'rounded-lg px-4 py-2.5 text-sm font-semibold transition',
     active
-      ? 'bg-[#3b82f6] text-white shadow-md shadow-[#1e3a8a]/40'
-      : 'border border-[#2a2f3a] bg-[#1c1f26] text-slate-300 hover:border-[#3b82f6]/30 hover:bg-[#252a33]',
+      ? 'bg-bw-blue-600 text-white shadow-md shadow-amber-900/15'
+      : 'border border-bw-sand-200 bg-white text-slate-300 hover:border-bw-blue-600/30 hover:bg-bw-sand-200',
   ].join(' ')
 
 const chip = (active: boolean) =>
   [
     'rounded-full px-3 py-1.5 text-xs font-semibold transition',
     active
-      ? 'bg-[#3b82f6]/25 text-white ring-1 ring-[#3b82f6]/40'
-      : 'bg-[#1c1f26] text-slate-400 hover:bg-[#252a33] hover:text-white',
+      ? 'bg-bw-blue-600/25 text-white ring-1 ring-bw-blue-600/40'
+      : 'bg-white text-slate-400 hover:bg-bw-sand-200 hover:text-bw-navy-950',
   ].join(' ')
 
 function IconSearch({ className = 'h-4 w-4' }: { className?: string }) {
@@ -249,7 +249,7 @@ export function AdminTransactionsPage() {
       subtitle="Live queue shows pending items only. History includes pending (in-flight) plus approved and rejected, so you can review the full timeline and act on open requests. Filters cover date, customer, amount, and engine class. Operator ledger lines from customer profiles still merge into History and All. Reverse remains available for supported posted types."
       headerAside={
         <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded-full border border-[#2a2f3a] bg-[#1c1f26] px-3 py-1.5 text-xs font-medium text-slate-300">
+          <span className="rounded-full border border-bw-sand-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-300">
             {filteredRows.length}
             {query.trim() ? ' match search' : ' in view'}
             {query.trim() && rows.length !== filteredRows.length
@@ -259,7 +259,7 @@ export function AdminTransactionsPage() {
           <button
             type="button"
             onClick={() => void load()}
-            className="rounded-lg border border-[#2a2f3a] bg-[#1c1f26] px-4 py-2 text-sm font-semibold text-white transition hover:border-[#3b82f6]/35 hover:bg-[#252a33]"
+            className="rounded-lg border border-bw-sand-200 bg-white px-4 py-2 text-sm font-semibold text-bw-navy-950 transition hover:border-bw-blue-600/35 hover:bg-bw-sand-200"
           >
             Refresh
           </button>
@@ -294,7 +294,7 @@ export function AdminTransactionsPage() {
           </p>
         ) : null}
 
-        <div className="rounded-xl border border-[#2a2f3a] bg-[#161a20]/80 p-4">
+        <div className="rounded-xl border border-bw-sand-200 bg-white/90 p-4">
           <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
             Engine type
           </p>
@@ -336,7 +336,7 @@ export function AdminTransactionsPage() {
               value={userId}
               onChange={(e) => setUserId(e.target.value)}
               placeholder="Email fragment or user id…"
-              className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2 text-sm text-white outline-none placeholder:text-slate-600 focus:border-[#3b82f6]/50"
+              className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2 text-sm text-bw-navy-950 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/50"
             />
           </label>
           <label className="block min-w-0">
@@ -347,7 +347,7 @@ export function AdminTransactionsPage() {
               type="date"
               value={dateFrom}
               onChange={(e) => setDateFrom(e.target.value)}
-              className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2 text-sm text-white outline-none focus:border-[#3b82f6]/50"
+              className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2 text-sm text-bw-navy-950 outline-none focus:border-bw-blue-600/50"
             />
           </label>
           <label className="block min-w-0">
@@ -358,7 +358,7 @@ export function AdminTransactionsPage() {
               type="date"
               value={dateTo}
               onChange={(e) => setDateTo(e.target.value)}
-              className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2 text-sm text-white outline-none focus:border-[#3b82f6]/50"
+              className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2 text-sm text-bw-navy-950 outline-none focus:border-bw-blue-600/50"
             />
           </label>
           <div className="grid min-w-0 grid-cols-2 gap-2">
@@ -371,7 +371,7 @@ export function AdminTransactionsPage() {
                 value={amountMin}
                 onChange={(e) => setAmountMin(e.target.value)}
                 placeholder="0.00"
-                className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2 text-sm text-white outline-none placeholder:text-slate-600 focus:border-[#3b82f6]/50"
+                className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2 text-sm text-bw-navy-950 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/50"
               />
             </label>
             <label className="block min-w-0">
@@ -383,7 +383,7 @@ export function AdminTransactionsPage() {
                 value={amountMax}
                 onChange={(e) => setAmountMax(e.target.value)}
                 placeholder="9999"
-                className="mt-1.5 w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2 text-sm text-white outline-none placeholder:text-slate-600 focus:border-[#3b82f6]/50"
+                className="mt-1.5 w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2 text-sm text-bw-navy-950 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/50"
               />
             </label>
           </div>
@@ -393,7 +393,7 @@ export function AdminTransactionsPage() {
           <button
             type="button"
             onClick={() => void load()}
-            className="rounded-lg bg-[#3b82f6] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#2563eb]"
+            className="rounded-lg bg-bw-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-bw-navy-800"
           >
             Apply filters
           </button>
@@ -408,7 +408,7 @@ export function AdminTransactionsPage() {
               setEngineKind('all')
               setQuery('')
             }}
-            className="rounded-lg border border-[#2a2f3a] px-4 py-2.5 text-sm font-semibold text-slate-300 hover:bg-[#1c1f26]"
+            className="rounded-lg border border-bw-sand-200 px-4 py-2.5 text-sm font-semibold text-slate-300 hover:bg-white"
           >
             Clear filters
           </button>
@@ -426,7 +426,7 @@ export function AdminTransactionsPage() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search title, type, id, customer…"
-            className="w-full rounded-lg border border-[#2a2f3a] bg-[#1c1f26] py-2.5 pl-10 pr-3 text-sm text-white outline-none placeholder:text-slate-600 focus:border-[#3b82f6]/50 focus:ring-2 focus:ring-[#3b82f6]/20"
+            className="w-full rounded-lg border border-bw-sand-200 bg-white py-2.5 pl-10 pr-3 text-sm text-bw-navy-950 outline-none placeholder:text-slate-600 focus:border-bw-blue-600/50 focus:ring-2 focus:ring-bw-blue-600/20"
             autoComplete="off"
           />
         </div>
@@ -441,11 +441,11 @@ export function AdminTransactionsPage() {
         </div>
       ) : null}
 
-      <div className="w-full min-w-0 overflow-hidden rounded-xl border border-[#2a2f3a] bg-[#1c1f26] shadow-lg shadow-black/20">
+      <div className="w-full min-w-0 overflow-hidden rounded-xl border border-bw-sand-200 bg-white shadow-bw-card">
         <div className="w-full min-w-0 overflow-x-auto">
           <table className="min-w-[72rem] text-left text-sm">
             <thead>
-              <tr className="border-b border-[#2a2f3a] bg-[#121417]/80 text-[11px] font-bold uppercase tracking-[0.08em] text-slate-500">
+              <tr className="border-b border-bw-sand-200 bg-white/90 text-[11px] font-bold uppercase tracking-[0.08em] text-slate-500">
                 <th className="px-4 py-3.5">Status</th>
                 <th className="px-4 py-3.5">Class</th>
                 <th className="px-4 py-3.5">Amount</th>
@@ -457,7 +457,7 @@ export function AdminTransactionsPage() {
                 <th className="min-w-[16rem] px-4 py-3.5">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#2a2f3a]">
+            <tbody className="divide-y divide-bw-sand-200">
               {rows.length === 0 ? (
                 <tr>
                   <td
@@ -477,7 +477,7 @@ export function AdminTransactionsPage() {
                     <button
                       type="button"
                       onClick={() => setQuery('')}
-                      className="mt-3 text-sm font-semibold text-[#93c5fd] hover:underline"
+                      className="mt-3 text-sm font-semibold text-bw-blue-500 hover:underline"
                     >
                       Clear search
                     </button>
@@ -487,7 +487,7 @@ export function AdminTransactionsPage() {
                 filteredRows.map((row) => (
                   <tr
                     key={row.id}
-                    className="align-top text-slate-200 transition hover:bg-[#121417]/50"
+                    className="align-top text-slate-200 transition hover:bg-bw-sand-100/90"
                   >
                     <td className="px-4 py-4">
                       <span className={statusPill(row.status)}>{row.status}</span>
@@ -507,13 +507,13 @@ export function AdminTransactionsPage() {
                         {engineKindLabel(row.engineKind)}
                       </span>
                     </td>
-                    <td className="px-4 py-4 font-mono text-sm tabular-nums text-white">
+                    <td className="px-4 py-4 font-mono text-sm tabular-nums text-bw-navy-950">
                       {formatMoney(row.amountCents)}
                     </td>
                     <td className="px-4 py-4 text-xs text-slate-400">
                       {formatWhen(row.createdAt)}
                     </td>
-                    <td className="px-4 py-4 text-xs font-medium text-white">
+                    <td className="px-4 py-4 text-xs font-medium text-bw-navy-950">
                       {row.submitterId}
                     </td>
                     <td className="px-4 py-4 font-mono text-[10px] text-slate-500">
@@ -538,14 +538,14 @@ export function AdminTransactionsPage() {
                                 [row.id]: e.target.value,
                               }))
                             }
-                            className="w-full rounded-lg border border-[#2a2f3a] bg-[#121417] px-3 py-2 text-xs text-white outline-none placeholder:text-white/25 focus:border-[#3b82f6]/50 focus:ring-2 focus:ring-[#3b82f6]/15"
+                            className="w-full rounded-lg border border-bw-sand-200 bg-bw-sand-100 px-3 py-2 text-xs text-bw-navy-950 outline-none placeholder:text-bw-navy-950/25 focus:border-bw-blue-600/50 focus:ring-2 focus:ring-bw-blue-600/15"
                           />
                           <div className="flex flex-wrap gap-2">
                             <button
                               type="button"
                               disabled={busyId === row.id}
                               onClick={() => void decide(row.id, 'approved')}
-                              className="rounded-lg bg-emerald-600 px-3 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-emerald-500 disabled:opacity-50"
+                              className="rounded-lg bg-bw-blue-600 px-3 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-bw-blue-500 disabled:opacity-50"
                             >
                               Approve
                             </button>

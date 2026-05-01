@@ -38,8 +38,8 @@ export function AdminUsersPage() {
     >
       {loading ? (
         <div className="animate-pulse space-y-4">
-          <div className="h-14 rounded-xl bg-[#1c1f26]" />
-          <div className="h-72 rounded-xl bg-[#1c1f26]" />
+          <div className="h-14 rounded-xl bg-white" />
+          <div className="h-72 rounded-xl bg-white" />
         </div>
       ) : loadErr ? (
         <div className="max-w-xl rounded-2xl border border-red-500/25 bg-red-950/30 p-6">
@@ -75,7 +75,7 @@ export function AdminUsersPage() {
           <p className="text-xs text-slate-500">
             <Link
               to="/admin"
-              className="font-semibold text-[#93c5fd] hover:text-white"
+              className="font-semibold text-bw-blue-500 hover:text-bw-navy-950"
             >
               ← Back to dashboard
             </Link>

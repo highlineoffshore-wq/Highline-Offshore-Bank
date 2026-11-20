@@ -1,7 +1,5 @@
-# Static SPA only — the Node API runs elsewhere (e.g. DigitalOcean).
-# Small JSON calls can use the /api proxy below. Large uploads (admin hero image base64)
-# often get HTTP 413 through Netlify’s edge — then set VITE_API_BASE to an HTTPS API URL
-# that hits your server directly (tunnel or api.domain), not through Netlify.
+# Static SPA only. The Node API runs on a DigitalOcean droplet and the browser
+# calls it directly via VITE_API_BASE (set in Netlify's environment variables).
 # Match NOTIFY_ALLOWED_ORIGINS on the API to your Netlify URL (and custom domain).
 
 [build]
@@ -10,13 +8,6 @@
 
 [build.environment]
   NODE_VERSION = "22"
-
-# API must come BEFORE the SPA catch-all, or `/api/*` returns index.html (admin login breaks).
-[[redirects]]
-  from = "/api/*"
-  to = "http://137.184.125.95/api/:splat"
-  status = 200
-  force = true
 
 # Client-side routing (React Router): non-file paths serve index.html
 [[redirects]]
